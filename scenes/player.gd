@@ -75,7 +75,6 @@ func process_player_input() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if time_since_last_jump > TIME_BETWEEN_JUMPS:
 			dir_to_move.y = jump_power
-			time_since_last_jump = 0.0
 			process_kick()
 	apply_central_impulse(dir_to_move)
 
@@ -96,6 +95,11 @@ func process_ai_movement() -> void:
 	#nav.set_velocity(dir)
 	dir_to_move = dir
 	apply_central_impulse(dir_to_move)
+	
+	if %KickRay.is_colliding():
+		var obj = %KickRay.get_collider()
+		if (obj is Ball) or (obj is Player && obj.is_team1 != is_team1):
+			process_kick()
 
 var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -123,6 +127,7 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 		state.angular_velocity.y = new_av.y
 
 func process_kick() -> void:
+	time_since_last_jump = 0.0
 	if %KickRay.is_colliding():
 		var obj = %KickRay.get_collider()
 		if obj.has_method("on_kick"):
@@ -142,6 +147,16 @@ func swap_to_anim_if_not_started(anim: String, a_speed: float) -> void:
 
 func set_nav_reg(nr: NavigationRegion3D) -> void:
 	nav.set_navigation_map(nr.get_navigation_map())
+
+
+func set_is_player(b: bool) -> void:
+	is_player_controlled = b
+	if is_player_controlled:
+		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.GOLD
+	elif is_team1:
+		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.DODGER_BLUE
+	else:
+		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.LIGHT_SALMON
 
 func set_closest_ball(b: Ball) -> void:
 	closest_ball = b
