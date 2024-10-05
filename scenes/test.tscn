@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_qibxi")
 size = Vector2(200, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_366qn"]
-size = Vector3(200, 100, 1)
+size = Vector3(200, 300, 1)
 
 [node name="test" type="Node3D"]
 script = ExtResource("1_7qlyq")
@@ -58,6 +58,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="wall2" type="StaticBody3D" parent="Walls"]
@@ -68,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="wall3" type="StaticBody3D" parent="Walls"]
@@ -78,6 +80,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="wall4" type="StaticBody3D" parent="Walls"]
@@ -88,6 +91,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
