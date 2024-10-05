@@ -32,6 +32,12 @@ directional_shadow_max_distance = 200.0
 [node name="ball" parent="." instance=ExtResource("1_j8yqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.5732, 0)
 
+[node name="ball2" parent="." instance=ExtResource("1_j8yqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8504, 53.5948, 9.86749)
+
+[node name="ball3" parent="." instance=ExtResource("1_j8yqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6795, 51.1859, -8.46413)
+
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]

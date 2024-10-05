@@ -43,7 +43,7 @@ func process_player_input() -> void:
 	dir_to_move = dir_to_move.normalized() * 2
 	
 	# process jump afterwards
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		if time_since_last_jump > TIME_BETWEEN_JUMPS:
 			dir_to_move.y = 30
 			time_since_last_jump = 0.0
@@ -68,15 +68,10 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()
 	var target_dir: Vector3 = (target_position - current_transform.origin).normalized()
 	var local_speed: float = clampf(rot_speed, 0, acos(forward_dir.dot(target_dir)))
-	if forward_dir.dot(target_dir) > 1e-4:
+	if abs(forward_dir.dot(target_dir)) > 1e-4:
 		var new_av = local_speed * forward_dir.cross(target_dir) / state.step
 		#state.angular_velocity = new_av
 		state.angular_velocity.y = new_av.y
-
-func rotate_towards(state: PhysicsDirectBodyState3D, current_transform: Transform3D, target_dir: Vector3) -> void:
-	var forward_local_axis: Vector3 = Vector3(1, 0, 0)
-	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()
-	#state.apply_torque_impulse()
 
 func process_kick() -> void:
 	if $KickRay.is_colliding():
@@ -88,5 +83,5 @@ func process_kick() -> void:
 func on_kick(g_pos: Vector3, kick_power:float) -> void:
 	print(self, " Was kicked!")
 	time_since_kicked = 0
-	var imp = (global_position - g_pos).normalized() * kick_power
+	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * kick_power
 	apply_central_impulse(imp)
