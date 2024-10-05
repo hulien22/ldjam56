@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://doad7nohjqxxn"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_eh0gu"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="2_fg6xo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mm0nh"]
+radius = 3.31426
+height = 10.1885
+
+[node name="player" instance=ExtResource("1_eh0gu")]
+move_speed = 2.0
+
+[node name="Rat" parent="." index="0" instance=ExtResource("2_fg6xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_mm0nh")

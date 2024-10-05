@@ -1,11 +1,16 @@
 extends RigidBody3D
+class_name Player
+
+@export var TIME_STUCK_IN_KICK: float = 5.0
+@export var TIME_BETWEEN_JUMPS:float = 2.0
+@export var move_speed:float = 1.0
+@export var jump_power:float = 30
+@export var kick_power:float = 100
 
 var is_player_controlled:bool = false
 
 var on_ground:bool = false;
-const TIME_STUCK_IN_KICK:float = 5.0
 var time_since_kicked:float = TIME_STUCK_IN_KICK
-const TIME_BETWEEN_JUMPS:float = 2.0
 var time_since_last_jump: float = TIME_BETWEEN_JUMPS
 
 func can_move() -> bool:
@@ -14,16 +19,16 @@ func can_move() -> bool:
 func _physics_process(delta: float) -> void:
 	dir_to_move = Vector3.ZERO
 	time_since_kicked += delta
-	if ($IsOnGround.is_colliding()):
+	if (%IsOnGround.is_colliding()):
 		on_ground = true
 		time_since_last_jump += delta
 	else:
 		on_ground = false
 	
 	if can_move():
-		$MeshInstance3D.hide()
+		%MeshInstance3D.hide()
 	else:
-		$MeshInstance3D.show()
+		%MeshInstance3D.show()
 	
 	if (is_player_controlled):
 		process_player_input()
@@ -40,12 +45,12 @@ func process_player_input() -> void:
 	if Input.is_action_pressed("ui_up"):
 		dir_to_move.z -= 1
 		
-	dir_to_move = dir_to_move.normalized() * 2
+	dir_to_move = dir_to_move.normalized() * move_speed
 	
 	# process jump afterwards
 	if Input.is_action_just_pressed("ui_accept"):
 		if time_since_last_jump > TIME_BETWEEN_JUMPS:
-			dir_to_move.y = 30
+			dir_to_move.y = jump_power
 			time_since_last_jump = 0.0
 			process_kick()
 	apply_central_impulse(dir_to_move)
@@ -74,14 +79,13 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 		state.angular_velocity.y = new_av.y
 
 func process_kick() -> void:
-	if $KickRay.is_colliding():
-		var obj = $KickRay.get_collider()
+	if %KickRay.is_colliding():
+		var obj = %KickRay.get_collider()
 		if obj.has_method("on_kick"):
-			var kick_power:float = 100
 			obj.on_kick(global_position, kick_power)
 
-func on_kick(g_pos: Vector3, kick_power:float) -> void:
+func on_kick(g_pos: Vector3, k_power:float) -> void:
 	print(self, " Was kicked!")
 	time_since_kicked = 0
-	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * kick_power
+	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * k_power
 	apply_central_impulse(imp)

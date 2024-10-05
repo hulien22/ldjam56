@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=11 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
 [ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="2_581r5"]
-[ext_resource type="PackedScene" uid="uid://do1upl2j5g8ar" path="res://scenes/rat.tscn" id="3_mbn6g"]
+[ext_resource type="PackedScene" uid="uid://doad7nohjqxxn" path="res://scenes/players/rat.tscn" id="4_7ungm"]
+[ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(200, 1, 150)
@@ -102,11 +103,6 @@ current = true
 
 [node name="Players" type="Node" parent="."]
 
-[node name="Rat" parent="Players" instance=ExtResource("3_mbn6g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8542, 5.91352, -1.09882)
+[node name="player" parent="Players" instance=ExtResource("4_7ungm")]
 
-[node name="Rat2" parent="Players" instance=ExtResource("3_mbn6g")]
-transform = Transform3D(-0.922915, 0, 0.385004, 0, 1, 0, -0.385004, 0, -0.922915, 7.78407, 2.65497, 38.432)
-
-[node name="Rat3" parent="Players" instance=ExtResource("3_mbn6g")]
-transform = Transform3D(-0.893622, 0, -0.44882, 0, 1, 0, 0.44882, 0, -0.893622, 7.94007, 9.2894, -5.11483)
+[node name="player2" parent="Players" instance=ExtResource("5_s688w")]
