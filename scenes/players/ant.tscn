@@ -3,17 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_wxvkw"]
 [ext_resource type="PackedScene" uid="uid://o5rw8o3ouc03" path="res://assets/Ant.glb" id="2_wd05j"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_j6isv"]
+radius = 2.094
+height = 2.403
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_786p4"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.266667)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3v1hy"]
 radius = 2.0
 height = 4.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_pn6p1"]
-radius = 2.0
-height = 2.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olnso"]
-transparency = 1
-albedo_color = Color(1, 0, 0, 0.266667)
 
 [node name="player" instance=ExtResource("1_wxvkw")]
 TIME_STUCK_IN_KICK = 10.0
@@ -22,17 +22,17 @@ move_speed = 0.9
 jump_power = 0.0
 on_kicked_mult = 3.0
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="Ant" parent="Model" index="0" instance=ExtResource("2_wd05j")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.763598, 0, 0)
+
+[node name="MeshInstance3D" parent="Model" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.989081, 0, 0, 0, 1, -0.314361, 0.69969, 0)
+mesh = SubResource("SphereMesh_j6isv")
+surface_material_override/0 = SubResource("StandardMaterial3D_786p4")
+
+[node name="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67684, 0)
 shape = SubResource("CapsuleShape3D_3v1hy")
 
-[node name="KickRay" parent="." index="1"]
+[node name="KickRay" parent="." index="2"]
 target_position = Vector3(5, 0, 0)
-
-[node name="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167823, 0.886031, 0)
-mesh = SubResource("SphereMesh_pn6p1")
-surface_material_override/0 = SubResource("StandardMaterial3D_olnso")
-
-[node name="Ant" parent="." index="4" instance=ExtResource("2_wd05j")]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.763598, 0, 0)

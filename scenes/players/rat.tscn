@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://doad7nohjqxxn"]
+[gd_scene load_steps=5 format=3 uid="uid://doad7nohjqxxn"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_eh0gu"]
 [ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="2_fg6xo"]
@@ -7,14 +7,16 @@
 radius = 3.31426
 height = 10.1885
 
+[sub_resource type="Skin" id="Skin_evoto"]
+
 [node name="player" instance=ExtResource("1_eh0gu")]
 move_speed = 2.0
 
-[node name="Rat" parent="." index="0" instance=ExtResource("2_fg6xo")]
+[node name="Rat" parent="Model" index="0" instance=ExtResource("2_fg6xo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648608, 0, 0)
 
 [node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("CapsuleShape3D_mm0nh")
 
-[node name="MeshInstance3D" parent="." index="4"]
-visible = false
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
+skin = SubResource("Skin_evoto")

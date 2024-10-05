@@ -61,6 +61,7 @@ func process_player_input() -> void:
 var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if !can_move():
+		swap_to_anim_if_not_started("RESET", 1.0)
 		return
 	
 	#apply_torque_impulse(Vector3(0,1,0))
@@ -68,6 +69,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if (dir_to_move != Vector3.ZERO):
 		print(dir_to_move)
 		look_follow(state, global_transform, global_position + dir_to_move)
+		swap_to_anim_if_not_started("run", move_speed)
+	else:
+		swap_to_anim_if_not_started("bounce", 1.0)
 
 func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D, target_position: Vector3) -> void:
 	var forward_local_axis: Vector3 = Vector3(1, 0, 0)
@@ -90,3 +94,9 @@ func on_kick(g_pos: Vector3, k_power:float) -> void:
 	time_since_kicked = 0
 	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * k_power * on_kicked_mult
 	apply_central_impulse(imp)
+
+func swap_to_anim_if_not_started(anim: String, a_speed: float) -> void:
+	if %AnimationPlayer.current_animation != anim:
+		var t = %AnimationPlayer.get_current_animation_position()
+		%AnimationPlayer.play(anim, -1, a_speed)
+		%AnimationPlayer.seek(t)

@@ -6,15 +6,15 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mdaf"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqac6"]
-radius = 4.468
-height = 9.862
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rh52r"]
 height = 30.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6hpj"]
 albedo_color = Color(0.78, 0.156, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqac6"]
+radius = 4.468
+height = 9.862
 
 [node name="player" instance=ExtResource("1_6xuho")]
 physics_material_override = SubResource("PhysicsMaterial_6mdaf")
@@ -23,8 +23,16 @@ TIME_BETWEEN_JUMPS = 0.0
 jump_power = 100.0
 rot_speed = 0.03
 
-[node name="Frog" parent="." index="0" instance=ExtResource("2_j8mhp")]
+[node name="Frog" parent="Model" index="0" instance=ExtResource("2_j8mhp")]
 transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 0, 0, 0)
+
+[node name="TongueMesh" type="MeshInstance3D" parent="Model" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 14.3063, 4.31742, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_rh52r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_w6hpj")
 
 [node name="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22413, 0)
@@ -33,14 +41,3 @@ shape = SubResource("CapsuleShape3D_gqac6")
 [node name="KickRay" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84759, 0)
 target_position = Vector3(30, 0, 0)
-
-[node name="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0839628, 2.9361, 0)
-visible = false
-
-[node name="TongueMesh" type="MeshInstance3D" parent="." index="5"]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 14.3063, 4.31742, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_rh52r")
-surface_material_override/0 = SubResource("StandardMaterial3D_w6hpj")
