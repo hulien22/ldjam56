@@ -99,6 +99,12 @@ center_of_mass_mode = 1
 angular_damp = 3.0
 script = ExtResource("1_vm0mt")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 10.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.855364, 1.05888e-06, 0.452415, 1)
+
 [node name="Model" type="Node3D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model"]
@@ -132,3 +138,5 @@ target_position = Vector3(10, 0, 0)
 unique_name_in_owner = true
 target_position = Vector3(0, -5, 0)
 debug_shape_thickness = 5
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_safe_velocity_computed"]

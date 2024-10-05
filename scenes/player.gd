@@ -9,12 +9,16 @@ class_name Player
 @export var rot_speed: float = 0.1
 @export var on_kicked_mult: float = 1.0
 
+@onready var nav:NavigationAgent3D = $NavigationAgent3D
+
 var is_player_controlled:bool = false
 var is_team1: bool = true
 
 var on_ground:bool = false;
 var time_since_kicked:float = TIME_STUCK_IN_KICK
 var time_since_last_jump: float = TIME_BETWEEN_JUMPS
+
+var ai_target_posn:Vector3
 
 func can_move() -> bool:
 	return on_ground && time_since_kicked >= TIME_STUCK_IN_KICK
@@ -35,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	
 	if (is_player_controlled):
 		process_player_input()
+	else:
+		process_ai_movement()
 
 func process_player_input() -> void:
 	if !can_move():
@@ -57,7 +63,22 @@ func process_player_input() -> void:
 			time_since_last_jump = 0.0
 			process_kick()
 	apply_central_impulse(dir_to_move)
+
+func process_ai_movement() -> void:
+	if !can_move():
+		return
+	nav.target_position = ai_target_posn
+	if (global_position - ai_target_posn).length_squared() < 10:
+		return
+	var next_point:Vector3 = nav.get_next_path_position()
+	var dir:Vector3 = next_point - global_transform.origin
+	dir.y = 0
+	dir = dir.normalized() * move_speed
 	
+	#NavigationServer3D.agent_set_velocity(nav_agent_rid, linear_velocity)
+	#nav.set_velocity(dir)
+	dir_to_move = dir
+	apply_central_impulse(dir_to_move)
 
 var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -68,7 +89,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	#apply_torque_impulse(Vector3(0,1,0))
 	#
 	if (dir_to_move != Vector3.ZERO):
-		print(dir_to_move)
+		#print(dir_to_move)
 		look_follow(state, global_transform, global_position + dir_to_move)
 		swap_to_anim_if_not_started("run", move_speed)
 	else:
@@ -101,3 +122,10 @@ func swap_to_anim_if_not_started(anim: String, a_speed: float) -> void:
 		var t = %AnimationPlayer.get_current_animation_position()
 		%AnimationPlayer.play(anim, -1, a_speed)
 		%AnimationPlayer.seek(t)
+
+func set_nav_reg(nr: NavigationRegion3D) -> void:
+	nav.set_navigation_map(nr.get_navigation_map())
+
+func set_target_posn(p: Vector3) -> void:
+	ai_target_posn = p
+	ai_target_posn.y = 0

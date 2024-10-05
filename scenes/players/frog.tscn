@@ -37,10 +37,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_w6hpj")
 [node name="DizzyStars" parent="Model" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.50022, 0)
 
-[node name="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22413, 0)
 shape = SubResource("CapsuleShape3D_gqac6")
 
-[node name="KickRay" parent="." index="2"]
+[node name="KickRay" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84759, 0)
 target_position = Vector3(30, 0, 0)

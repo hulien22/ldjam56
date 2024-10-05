@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=14 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
@@ -7,6 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sfjhi"]
+size = Vector2(200, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_366qn"]
+size = Vector3(200, 300, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_363jy"]
+vertices = PackedVector3Array(-99.5, 1, -74.5, -99.5, 1, 74.5, 99.5, 1, 74.5, 99.5, 1, -74.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(200, 1, 150)
@@ -18,12 +28,6 @@ uv1_scale = Vector3(3, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_3vqi6"]
 material = SubResource("StandardMaterial3D_qibxi")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_sfjhi"]
-size = Vector2(200, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_366qn"]
-size = Vector3(200, 300, 1)
-
 [node name="test" type="Node3D"]
 script = ExtResource("1_7qlyq")
 
@@ -32,23 +36,16 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, -0.0257758, 0.537999, 0.8425
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
-[node name="ball" parent="." instance=ExtResource("1_j8yqo")]
+[node name="Balls" type="Node" parent="."]
+
+[node name="ball" parent="Balls" instance=ExtResource("1_j8yqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.5732, 0)
 
-[node name="ball2" parent="." instance=ExtResource("1_j8yqo")]
+[node name="ball2" parent="Balls" instance=ExtResource("1_j8yqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8504, 53.5948, 9.86749)
 
-[node name="ball3" parent="." instance=ExtResource("1_j8yqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6795, 51.1859, -8.46413)
-
-[node name="Floor" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_dgiw2")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
-mesh = SubResource("BoxMesh_3vqi6")
+[node name="ball3" parent="Balls" instance=ExtResource("1_j8yqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6795, 16.1335, 25.8744)
 
 [node name="Walls" type="Node" parent="."]
 
@@ -117,3 +114,16 @@ current = true
 
 [node name="player4" parent="Players" instance=ExtResource("7_qjedi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1215, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+unique_name_in_owner = true
+navigation_mesh = SubResource("NavigationMesh_363jy")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+shape = SubResource("BoxShape3D_dgiw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
+mesh = SubResource("BoxMesh_3vqi6")

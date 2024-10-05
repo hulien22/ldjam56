@@ -18,8 +18,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.214
 [node name="DizzyStars" parent="Model" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87642, 6.04641, 0)
 
-[node name="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D" parent="." index="2"]
 shape = SubResource("CapsuleShape3D_6up1i")
 
-[node name="KickRay" parent="." index="2"]
+[node name="KickRay" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.54103, 0)
