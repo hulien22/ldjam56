@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcvea2n7ku1rs"]
+
+[ext_resource type="PackedScene" uid="uid://b4tvq2v5ldoyy" path="res://assets/Star.glb" id="1_5x0w4"]
+
+[node name="Star" type="Node3D"]
+
+[node name="Star" parent="." instance=ExtResource("1_5x0w4")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, -0.85115)

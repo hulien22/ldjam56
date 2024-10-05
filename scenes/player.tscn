@@ -1,23 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c74urwytqw3wl"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vm0mt"]
-[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="2_c2iq7"]
-
-[sub_resource type="Animation" id="Animation_7ixjh"]
-resource_name = "bounce"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.966667),
-"transitions": PackedFloat32Array(0.659754, 1.68179, 0.594604),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1.2), Vector3(1, 1, 1)]
-}
+[ext_resource type="PackedScene" uid="uid://8qw51eg0amo" path="res://scenes/dizzy_stars.tscn" id="2_q6x8p"]
 
 [sub_resource type="Animation" id="Animation_sm74f"]
 length = 0.001
@@ -44,6 +28,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ixjh"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.966667),
+"transitions": PackedFloat32Array(0.659754, 1.68179, 0.594604),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1.2), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_05poo"]
@@ -111,12 +111,13 @@ autoplay = "bounce"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01078, 4.40216, 0)
+visible = false
 mesh = SubResource("SphereMesh_1ommg")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tojpc")
 
-[node name="Rat" parent="Model" instance=ExtResource("2_c2iq7")]
-visible = false
+[node name="DizzyStars" parent="Model" instance=ExtResource("2_q6x8p")]
+unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

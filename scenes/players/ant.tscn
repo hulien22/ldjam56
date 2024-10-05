@@ -30,6 +30,9 @@ transform = Transform3D(1, 0, 0, 0, 0.989081, 0, 0, 0, 1, -0.314361, 0.69969, 0)
 mesh = SubResource("SphereMesh_j6isv")
 surface_material_override/0 = SubResource("StandardMaterial3D_786p4")
 
+[node name="DizzyStars" parent="Model" index="3"]
+transform = Transform3D(0.685, 0, 0, 0, 0.685, 0, 0, 0, 0.685, 0, 0.534911, 0)
+
 [node name="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67684, 0)
 shape = SubResource("CapsuleShape3D_3v1hy")

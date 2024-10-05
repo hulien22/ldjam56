@@ -10,6 +10,7 @@ class_name Player
 @export var on_kicked_mult: float = 1.0
 
 var is_player_controlled:bool = false
+var is_team1: bool = true
 
 var on_ground:bool = false;
 var time_since_kicked:float = TIME_STUCK_IN_KICK
@@ -28,9 +29,9 @@ func _physics_process(delta: float) -> void:
 		on_ground = false
 	
 	if can_move():
-		%MeshInstance3D.hide()
+		%DizzyStars.hide()
 	else:
-		%MeshInstance3D.show()
+		%DizzyStars.show()
 	
 	if (is_player_controlled):
 		process_player_input()
