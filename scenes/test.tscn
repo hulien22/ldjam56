@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3uqthjdacj11"]
+
+[ext_resource type="PackedScene" uid="uid://50wyn1c0ks0w" path="res://assets/soccerball.fbx" id="1_itmdt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ov1a8"]
+bounce = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nwpr0"]
+radius = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vqi6"]
+
+[node name="test" type="Node3D"]
+
+[node name="ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.7593, 0.0424385)
+physics_material_override = SubResource("PhysicsMaterial_ov1a8")
+metadata/_edit_group_ = true
+
+[node name="soccerball" parent="ball" instance=ExtResource("1_itmdt")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("SphereShape3D_nwpr0")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_dgiw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("BoxMesh_3vqi6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.264614, 0.964355, 0, -0.964355, 0.264614, -1.09894, 37.2005, 1.7517)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.927608, 0.373554, 0, -0.373554, 0.927608, 0, 37.0444, 68.1974)
