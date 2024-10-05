@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8b775sm8ye1x"]
+[gd_scene load_steps=8 format=3 uid="uid://b8b775sm8ye1x"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_6xuho"]
 [ext_resource type="Script" path="res://scripts/frog.gd" id="2_d1ua0"]
 [ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/Frog.glb" id="2_j8mhp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mdaf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqac6"]
 radius = 4.468
@@ -15,6 +17,8 @@ height = 30.0
 albedo_color = Color(0.78, 0.156, 0, 1)
 
 [node name="player" instance=ExtResource("1_6xuho")]
+physics_material_override = SubResource("PhysicsMaterial_6mdaf")
+angular_damp = 3.0
 script = ExtResource("2_d1ua0")
 jump_power = 100.0
 
@@ -26,14 +30,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22413, 0)
 shape = SubResource("CapsuleShape3D_gqac6")
 
 [node name="KickRay" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84759, 0)
 target_position = Vector3(30, 0, 0)
 
 [node name="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0839628, 2.9361, 0)
+visible = false
 
 [node name="TongueMesh" type="MeshInstance3D" parent="." index="5"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 15.1445, 4.31742, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 14.3063, 4.31742, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_rh52r")
 surface_material_override/0 = SubResource("StandardMaterial3D_w6hpj")

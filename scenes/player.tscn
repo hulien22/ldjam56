@@ -17,7 +17,7 @@ albedo_color = Color(1, 0, 0, 0.266667)
 [node name="player" type="RigidBody3D"]
 gravity_scale = 5.0
 center_of_mass_mode = 1
-angular_damp = 1.0
+angular_damp = 3.0
 script = ExtResource("1_vm0mt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
