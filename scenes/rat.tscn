@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://do1upl2j5g8ar"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_4vqf6"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="1_miyd4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvg37"]
+radius = 3.31426
+height = 10.1885
+
+[node name="Rat" type="Node3D"]
+
+[node name="body" type="RigidBody3D" parent="."]
+gravity_scale = 5.0
+center_of_mass_mode = 1
+script = ExtResource("1_4vqf6")
+
+[node name="Rat" parent="body" instance=ExtResource("1_miyd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01243, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CapsuleShape3D_tvg37")
