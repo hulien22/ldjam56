@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=10 format=3 uid="uid://c3uqthjdacj11"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
 [ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="2_581r5"]
 [ext_resource type="PackedScene" uid="uid://do1upl2j5g8ar" path="res://scenes/rat.tscn" id="3_mbn6g"]
@@ -21,6 +22,7 @@ size = Vector2(200, 100)
 size = Vector3(200, 100, 1)
 
 [node name="test" type="Node3D"]
+script = ExtResource("1_7qlyq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.0257758, 0.537999, 0.842551, -0.499335, 0.723227, -0.477082, -22.1823, -18.8988, -1.29379)
@@ -81,15 +83,6 @@ mesh = SubResource("PlaneMesh_sfjhi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall4"]
 shape = SubResource("BoxShape3D_366qn")
 
-[node name="Rat" parent="." instance=ExtResource("3_mbn6g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8542, 5.91352, -1.09882)
-
-[node name="Rat2" parent="." instance=ExtResource("3_mbn6g")]
-transform = Transform3D(-0.922915, 0, 0.385004, 0, 1, 0, -0.385004, 0, -0.922915, 7.78407, 2.65497, 38.432)
-
-[node name="Rat3" parent="." instance=ExtResource("3_mbn6g")]
-transform = Transform3D(-0.893622, 0, -0.44882, 0, 1, 0, 0.44882, 0, -0.893622, 7.94007, 9.2894, -5.11483)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.927608, 0.373554, 0, -0.373554, 0.927608, 0, 40.9464, 111.158)
 
@@ -100,3 +93,14 @@ current = true
 [node name="Camera3D_45" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.550481, 0.834848, 0, -0.834848, 0.550481, 0, 100, 70)
 current = true
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Rat" parent="Players" instance=ExtResource("3_mbn6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8542, 5.91352, -1.09882)
+
+[node name="Rat2" parent="Players" instance=ExtResource("3_mbn6g")]
+transform = Transform3D(-0.922915, 0, 0.385004, 0, 1, 0, -0.385004, 0, -0.922915, 7.78407, 2.65497, 38.432)
+
+[node name="Rat3" parent="Players" instance=ExtResource("3_mbn6g")]
+transform = Transform3D(-0.893622, 0, -0.44882, 0, 1, 0, 0.44882, 0, -0.893622, 7.94007, 9.2894, -5.11483)

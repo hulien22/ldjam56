@@ -15,30 +15,28 @@ height = 11.863
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.266667)
 
-[node name="Rat" type="Node3D"]
-
-[node name="body" type="RigidBody3D" parent="."]
+[node name="body" type="RigidBody3D"]
 gravity_scale = 5.0
 center_of_mass_mode = 1
 angular_damp = 1.0
 script = ExtResource("1_4vqf6")
 
-[node name="Rat" parent="body" instance=ExtResource("1_miyd4")]
+[node name="Rat" parent="." instance=ExtResource("1_miyd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01243, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="body"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("CapsuleShape3D_tvg37")
 
-[node name="IsOnGround" type="RayCast3D" parent="body"]
+[node name="IsOnGround" type="RayCast3D" parent="."]
 target_position = Vector3(0, -5, 0)
 debug_shape_thickness = 5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01078, 4.40216, 0)
 mesh = SubResource("SphereMesh_1ommg")
 surface_material_override/0 = SubResource("StandardMaterial3D_tojpc")
 
-[node name="KickRay" type="RayCast3D" parent="body"]
+[node name="KickRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.18914, 0)
 target_position = Vector3(10, 0, 0)

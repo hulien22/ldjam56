@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+var is_player_controlled:bool = false
+
 var on_ground:bool = false;
 const TIME_STUCK_IN_KICK:float = 5.0
 var time_since_kicked:float = TIME_STUCK_IN_KICK
@@ -10,6 +12,7 @@ func can_move() -> bool:
 	return on_ground && time_since_kicked >= TIME_STUCK_IN_KICK
 
 func _physics_process(delta: float) -> void:
+	dir_to_move = Vector3.ZERO
 	time_since_kicked += delta
 	if ($IsOnGround.is_colliding()):
 		on_ground = true
@@ -21,35 +24,43 @@ func _physics_process(delta: float) -> void:
 		$MeshInstance3D.hide()
 	else:
 		$MeshInstance3D.show()
-		
+	
+	if (is_player_controlled):
+		process_player_input()
 
+func process_player_input() -> void:
+	if !can_move():
+		return
+	if Input.is_action_pressed("ui_left"):
+		dir_to_move.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		dir_to_move.x += 1
+	if Input.is_action_pressed("ui_down"):
+		dir_to_move.z += 1
+	if Input.is_action_pressed("ui_up"):
+		dir_to_move.z -= 1
+		
+	dir_to_move = dir_to_move.normalized() * 2
+	
+	# process jump afterwards
+	if Input.is_action_pressed("ui_accept"):
+		if time_since_last_jump > TIME_BETWEEN_JUMPS:
+			dir_to_move.y = 30
+			time_since_last_jump = 0.0
+			process_kick()
+	apply_central_impulse(dir_to_move)
+	
+
+var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if !can_move():
 		return
-	var dir:Vector2 = Vector2.ZERO
-	var jump:float = 0.0
 	
-	if Input.is_action_pressed("ui_left"):
-		dir.x -= 1
-	if Input.is_action_pressed("ui_right"):
-		dir.x += 1
-	if Input.is_action_pressed("ui_down"):
-		dir.y += 1
-	if Input.is_action_pressed("ui_up"):
-		dir.y -= 1
-	if Input.is_action_pressed("ui_accept"):
-		if time_since_last_jump > TIME_BETWEEN_JUMPS:
-			jump = 30
-			time_since_last_jump = 0.0
-			process_kick()
-	
-	dir = dir.normalized() * 2
-	
-	apply_central_impulse(Vector3(dir.x, jump, dir.y))
 	#apply_torque_impulse(Vector3(0,1,0))
 	#
-	if (dir != Vector2.ZERO):
-		look_follow(state, global_transform, global_position + Vector3(dir.x, 0, dir.y))
+	if (dir_to_move != Vector3.ZERO):
+		print(dir_to_move)
+		look_follow(state, global_transform, global_position + dir_to_move)
 
 var rot_speed: float = 0.1
 func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D, target_position: Vector3) -> void:
