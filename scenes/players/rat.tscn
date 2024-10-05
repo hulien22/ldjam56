@@ -11,7 +11,10 @@ height = 10.1885
 move_speed = 2.0
 
 [node name="Rat" parent="." index="0" instance=ExtResource("2_fg6xo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648608, 0, 0)
 
 [node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("CapsuleShape3D_mm0nh")
+
+[node name="MeshInstance3D" parent="." index="4"]
+visible = false
