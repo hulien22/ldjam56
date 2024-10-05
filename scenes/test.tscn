@@ -107,13 +107,32 @@ current = true
 [node name="Players" type="Node" parent="."]
 
 [node name="player" parent="Players" instance=ExtResource("4_7ungm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, 0, 0)
 
 [node name="player2" parent="Players" instance=ExtResource("5_s688w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, 0, 14.0098)
 
 [node name="player3" parent="Players" instance=ExtResource("6_8wiww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.8125, 0, 0)
 
 [node name="player4" parent="Players" instance=ExtResource("7_qjedi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1215, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.481, 0, 0)
+
+[node name="player5" parent="Players" instance=ExtResource("4_7ungm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.9221, 0, 0)
+is_team1 = false
+
+[node name="player6" parent="Players" instance=ExtResource("5_s688w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.9221, 0, 20.4232)
+is_team1 = false
+
+[node name="player7" parent="Players" instance=ExtResource("6_8wiww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.7121, 0, 0)
+is_team1 = false
+
+[node name="player8" parent="Players" instance=ExtResource("7_qjedi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.0436, 0, 0)
+is_team1 = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 unique_name_in_owner = true

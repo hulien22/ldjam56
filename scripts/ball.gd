@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Ball
 
 func on_kick(g_pos: Vector3, kick_power:float) -> void:
 	var imp = (global_position - g_pos).normalized() * kick_power

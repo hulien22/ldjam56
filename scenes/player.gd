@@ -8,17 +8,28 @@ class_name Player
 @export var kick_power:float = 100
 @export var rot_speed: float = 0.1
 @export var on_kicked_mult: float = 1.0
+@export var reset_posn: Vector3 = Vector3.ZERO
+@export var attack_angle_deg: float = 45
+@export var is_team1: bool = true
 
 @onready var nav:NavigationAgent3D = $NavigationAgent3D
 
 var is_player_controlled:bool = false
-var is_team1: bool = true
 
 var on_ground:bool = false;
 var time_since_kicked:float = TIME_STUCK_IN_KICK
 var time_since_last_jump: float = TIME_BETWEEN_JUMPS
 
 var ai_target_posn:Vector3
+var closest_ball: Ball
+
+func _ready() -> void:
+	var mat:StandardMaterial3D = StandardMaterial3D.new()
+	if is_team1:
+		mat.albedo_color = Color.DODGER_BLUE
+	else:
+		mat.albedo_color = Color.LIGHT_SALMON
+	%TeamBottom.material_override = mat
 
 func can_move() -> bool:
 	return on_ground && time_since_kicked >= TIME_STUCK_IN_KICK
@@ -41,6 +52,10 @@ func _physics_process(delta: float) -> void:
 		process_player_input()
 	else:
 		process_ai_movement()
+	
+	%TeamBottom.global_position = global_position
+	%TeamBottom.global_position.y = 1
+	%TeamBottom.global_rotation = Vector3.ZERO
 
 func process_player_input() -> void:
 	if !can_move():
@@ -64,9 +79,11 @@ func process_player_input() -> void:
 			process_kick()
 	apply_central_impulse(dir_to_move)
 
+
 func process_ai_movement() -> void:
 	if !can_move():
 		return
+	compute_target_posn()
 	nav.target_position = ai_target_posn
 	if (global_position - ai_target_posn).length_squared() < 10:
 		return
@@ -126,6 +143,53 @@ func swap_to_anim_if_not_started(anim: String, a_speed: float) -> void:
 func set_nav_reg(nr: NavigationRegion3D) -> void:
 	nav.set_navigation_map(nr.get_navigation_map())
 
+func set_closest_ball(b: Ball) -> void:
+	closest_ball = b
+
 func set_target_posn(p: Vector3) -> void:
 	ai_target_posn = p
 	ai_target_posn.y = 0
+
+func compute_target_posn() -> void:
+	# if no ball, return to reset posn?
+	if closest_ball == null:
+		print(self, " no ball close")
+		set_target_posn(reset_posn)
+		return
+	
+	var my_posn: Vector2 = Vector2(global_position.x, global_position.z)
+	var ball_posn: Vector2 = Vector2(closest_ball.global_position.x, closest_ball.global_position.z)
+	var angle:float
+	if (is_team1):
+		angle = my_posn.angle_to_point(ball_posn)
+	else:
+		angle = ball_posn.angle_to_point(my_posn)
+	
+	# In the attack cone, so charge!!
+	if (abs(angle) < deg_to_rad(attack_angle_deg)):
+		print(self, " charge!!")
+		set_target_posn(closest_ball.global_position)
+		return
+	
+	# behind the ball, but not in attack cone, so move towards the cone
+	if (is_team1 && my_posn.x < ball_posn.x) || (!is_team1 && my_posn.x > ball_posn.x):
+		var dir: Vector2 = Vector2.RIGHT * 100
+		if my_posn.y > ball_posn.y:
+			# below the ball
+			dir = dir.rotated(-deg_to_rad(attack_angle_deg))
+		else:
+			# above the ball
+			dir = dir.rotated(deg_to_rad(attack_angle_deg))
+		if is_team1:
+			# flip across y axis
+			dir.x *= -1
+		set_target_posn(global_position + Vector3(dir.x, 0, dir.y))
+		print(self, " move into attack cone")
+		return
+	
+	# on wrong side of ball, need to get other side
+	print(self, " wrong side")
+	var dir: Vector2 = Vector2.RIGHT * 100
+	if is_team1:
+		dir.x *= -1
+	set_target_posn(global_position + Vector3(dir.x, 0, dir.y))
