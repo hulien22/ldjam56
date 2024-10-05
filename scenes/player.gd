@@ -6,6 +6,7 @@ class_name Player
 @export var move_speed:float = 1.0
 @export var jump_power:float = 30
 @export var kick_power:float = 100
+@export var rot_speed: float = 0.1
 
 var is_player_controlled:bool = false
 
@@ -67,7 +68,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		print(dir_to_move)
 		look_follow(state, global_transform, global_position + dir_to_move)
 
-var rot_speed: float = 0.1
 func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D, target_position: Vector3) -> void:
 	var forward_local_axis: Vector3 = Vector3(1, 0, 0)
 	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()

@@ -18,9 +18,10 @@ albedo_color = Color(0.78, 0.156, 0, 1)
 
 [node name="player" instance=ExtResource("1_6xuho")]
 physics_material_override = SubResource("PhysicsMaterial_6mdaf")
-angular_damp = 3.0
 script = ExtResource("2_d1ua0")
+TIME_BETWEEN_JUMPS = 0.0
 jump_power = 100.0
+rot_speed = 0.03
 
 [node name="Frog" parent="." index="0" instance=ExtResource("2_j8mhp")]
 transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 0, 0, 0)
