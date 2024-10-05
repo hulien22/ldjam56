@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=13 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://doad7nohjqxxn" path="res://scenes/players/rat.tscn" id="4_7ungm"]
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
+[ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(200, 1, 150)
@@ -113,3 +114,6 @@ current = true
 [node name="player2" parent="Players" instance=ExtResource("5_s688w")]
 
 [node name="player3" parent="Players" instance=ExtResource("6_8wiww")]
+
+[node name="player4" parent="Players" instance=ExtResource("7_qjedi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1215, 0, 0)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://3un8ql7oylar"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_38lxv"]
+[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/Cheetah.glb" id="2_2v6pk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6up1i"]
+radius = 4.08178
+height = 10.1885
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ju1g"]
+radius = 5.0
+height = 8.922
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kmr2"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.266667)
+
+[node name="player" instance=ExtResource("1_38lxv")]
+move_speed = 3.0
+jump_power = 20.0
+rot_speed = 0.2
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_6up1i")
+
+[node name="KickRay" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.54103, 0)
+
+[node name="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32155, 3.68186, 0)
+mesh = SubResource("SphereMesh_4ju1g")
+surface_material_override/0 = SubResource("StandardMaterial3D_4kmr2")
+
+[node name="Cheetah" parent="." index="4" instance=ExtResource("2_2v6pk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.214039, 0, 0)
