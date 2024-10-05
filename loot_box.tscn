@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxk6f850u0vnp"]
+
+[ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
+[ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("1_mpnbw")
+
+[node name="Card" parent="." instance=ExtResource("1_m6i81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.75)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32536)
+
+[node name="CardFlipHack" parent="." instance=ExtResource("1_m6i81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+
+[node name="CardFlipHack2" parent="." instance=ExtResource("1_m6i81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.75)
