@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://do1upl2j5g8ar"]
+[gd_scene load_steps=6 format=3 uid="uid://do1upl2j5g8ar"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_4vqf6"]
 [ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="1_miyd4"]
@@ -7,11 +7,20 @@
 radius = 3.31426
 height = 10.1885
 
+[sub_resource type="SphereMesh" id="SphereMesh_1ommg"]
+radius = 5.0
+height = 11.863
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tojpc"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.266667)
+
 [node name="Rat" type="Node3D"]
 
 [node name="body" type="RigidBody3D" parent="."]
 gravity_scale = 5.0
 center_of_mass_mode = 1
+angular_damp = 1.0
 script = ExtResource("1_4vqf6")
 
 [node name="Rat" parent="body" instance=ExtResource("1_miyd4")]
@@ -20,3 +29,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01243, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("CapsuleShape3D_tvg37")
+
+[node name="IsOnGround" type="RayCast3D" parent="body"]
+target_position = Vector3(0, -5, 0)
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01078, 4.40216, 0)
+mesh = SubResource("SphereMesh_1ommg")
+surface_material_override/0 = SubResource("StandardMaterial3D_tojpc")
