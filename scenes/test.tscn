@@ -21,6 +21,11 @@ material = SubResource("StandardMaterial3D_qibxi")
 
 [node name="test" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.0257758, 0.537999, 0.842551, -0.499335, 0.723227, -0.477082, -22.1823, -18.8988, -1.29379)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+
 [node name="ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.7593, 0.0424385)
 mass = 10000.0
@@ -72,9 +77,5 @@ shape = SubResource("BoxShape3D_dgiw2")
 transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
 mesh = SubResource("BoxMesh_3vqi6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.337194, 0.941435, 0, -0.941435, -0.337194, -1.09894, 43.6279, -13.8607)
-shadow_enabled = true
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.927608, 0.373554, 0, -0.373554, 0.927608, 0, 63.5822, 143.53)
+transform = Transform3D(1, 0, 0, 0, 0.927608, 0.373554, 0, -0.373554, 0.927608, 0, 40.9464, 111.158)
