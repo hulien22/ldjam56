@@ -1,14 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=9 format=3 uid="uid://c3uqthjdacj11"]
 
-[ext_resource type="PackedScene" uid="uid://50wyn1c0ks0w" path="res://assets/soccerball.fbx" id="1_itmdt"]
+[ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
 [ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="2_581r5"]
 [ext_resource type="PackedScene" uid="uid://do1upl2j5g8ar" path="res://scenes/rat.tscn" id="3_mbn6g"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ov1a8"]
-bounce = 0.6
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_nwpr0"]
-radius = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(200, 1, 150)
@@ -33,44 +27,8 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, -0.0257758, 0.537999, 0.8425
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
-[node name="ball" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.7593, 0.0424385)
-physics_material_override = SubResource("PhysicsMaterial_ov1a8")
-gravity_scale = 5.0
-metadata/_edit_group_ = true
-
-[node name="soccerball" parent="ball" instance=ExtResource("1_itmdt")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ball"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-shape = SubResource("SphereShape3D_nwpr0")
-
-[node name="ball3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0343, 48.5363, -7.46511)
-physics_material_override = SubResource("PhysicsMaterial_ov1a8")
-gravity_scale = 5.0
-metadata/_edit_group_ = true
-
-[node name="soccerball" parent="ball3" instance=ExtResource("1_itmdt")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ball3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-shape = SubResource("SphereShape3D_nwpr0")
-
-[node name="ball2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38007, 68.8305, 9.01627)
-physics_material_override = SubResource("PhysicsMaterial_ov1a8")
-gravity_scale = 5.0
-metadata/_edit_group_ = true
-
-[node name="soccerball" parent="ball2" instance=ExtResource("1_itmdt")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ball2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-shape = SubResource("SphereShape3D_nwpr0")
+[node name="ball" parent="." instance=ExtResource("1_j8yqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.5732, 0)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 

@@ -38,3 +38,7 @@ debug_shape_thickness = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01078, 4.40216, 0)
 mesh = SubResource("SphereMesh_1ommg")
 surface_material_override/0 = SubResource("StandardMaterial3D_tojpc")
+
+[node name="KickRay" type="RayCast3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.18914, 0)
+target_position = Vector3(10, 0, 0)

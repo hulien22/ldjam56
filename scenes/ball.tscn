@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc8bsi8l1d3rr"]
+
+[ext_resource type="PackedScene" uid="uid://50wyn1c0ks0w" path="res://assets/soccerball.fbx" id="1_bgufm"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_o1mql"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ov1a8"]
+bounce = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nwpr0"]
+radius = 10.0
+
+[node name="ball" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+physics_material_override = SubResource("PhysicsMaterial_ov1a8")
+gravity_scale = 5.0
+script = ExtResource("1_o1mql")
+metadata/_edit_group_ = true
+
+[node name="soccerball" parent="." instance=ExtResource("1_bgufm")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("SphereShape3D_nwpr0")
