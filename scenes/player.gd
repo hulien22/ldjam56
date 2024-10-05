@@ -7,6 +7,7 @@ class_name Player
 @export var jump_power:float = 30
 @export var kick_power:float = 100
 @export var rot_speed: float = 0.1
+@export var on_kicked_mult: float = 1.0
 
 var is_player_controlled:bool = false
 
@@ -87,5 +88,5 @@ func process_kick() -> void:
 func on_kick(g_pos: Vector3, k_power:float) -> void:
 	print(self, " Was kicked!")
 	time_since_kicked = 0
-	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * k_power
+	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * k_power * on_kicked_mult
 	apply_central_impulse(imp)

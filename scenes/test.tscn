@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=12 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
 [ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="2_581r5"]
 [ext_resource type="PackedScene" uid="uid://doad7nohjqxxn" path="res://scenes/players/rat.tscn" id="4_7ungm"]
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
+[ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(200, 1, 150)
@@ -110,3 +111,5 @@ current = true
 [node name="player" parent="Players" instance=ExtResource("4_7ungm")]
 
 [node name="player2" parent="Players" instance=ExtResource("5_s688w")]
+
+[node name="player3" parent="Players" instance=ExtResource("6_8wiww")]
