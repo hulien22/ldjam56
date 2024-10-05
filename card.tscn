@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3ptubg66smx"]
+[gd_scene load_steps=16 format=3 uid="uid://d3ptubg66smx"]
 
 [ext_resource type="Script" path="res://card_image.gd" id="1_1mp24"]
 [ext_resource type="Script" path="res://card.gd" id="1_hwr4s"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="3_f66do"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qkust"]
 size = Vector3(0.8, 1, 0.01)
@@ -81,12 +82,22 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="World3D" id="World3D_mnj8a"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ruji"]
+albedo_color = Color(0.227451, 0.372549, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_pp8mx"]
+material = SubResource("StandardMaterial3D_0ruji")
 flip_faces = true
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xklix"]
 size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8qub"]
+albedo_color = Color(0, 1, 0.0509804, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_gs17x"]
+material = SubResource("StandardMaterial3D_k8qub")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucig5"]
 custom_solver_bias = 1.0
@@ -112,7 +123,7 @@ size = Vector2i(1152, 648)
 
 [node name="Camera3D" type="Camera3D" parent="Card/CardImage/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-cull_mask = 2
+cull_mask = 3
 
 [node name="Subscene" type="MeshInstance3D" parent="Card/CardImage/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1482, -0.241829)
@@ -121,11 +132,21 @@ mesh = SubResource("BoxMesh_pp8mx")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Card/CardImage/SubViewport/Subscene"]
+visible = false
 layers = 2
 mesh = SubResource("BoxMesh_xklix")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Card/CardImage/SubViewport/Subscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.442899)
 layers = 2
+
+[node name="Ground" type="MeshInstance3D" parent="Card/CardImage/SubViewport/Subscene"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -0.230862, -0.199977)
+layers = 2
+mesh = SubResource("QuadMesh_gs17x")
+
+[node name="Rat" parent="Card/CardImage/SubViewport/Subscene" instance=ExtResource("3_f66do")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.03, 0, 0.03, 0, -1.31134e-09, 0, -0.2, -0.2)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
