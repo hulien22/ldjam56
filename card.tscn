@@ -1,0 +1,154 @@
+[gd_scene load_steps=16 format=3 uid="uid://d3ptubg66smx"]
+
+[ext_resource type="Script" path="res://card_image.gd" id="1_1mp24"]
+[ext_resource type="Script" path="res://card.gd" id="1_hwr4s"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="3_f66do"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qkust"]
+size = Vector3(0.8, 1, 0.01)
+
+[sub_resource type="Shader" id="Shader_3gtf7"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = SCREEN_UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+
+	// Albedo Texture Force sRGB: Enabled
+	albedo_tex.rgb = mix(
+			pow((albedo_tex.rgb + vec3(0.055)) * (1.0 / (1.0 + 0.055)), vec3(2.4)),
+			albedo_tex.rgb.rgb * (1.0 / 12.92),
+			lessThan(albedo_tex.rgb, vec3(0.04045)));
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hleoc"]
+viewport_path = NodePath("Card/CardImage/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0677"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_3gtf7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("ViewportTexture_hleoc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_q0jy1"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_w0677")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="World3D" id="World3D_mnj8a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ruji"]
+albedo_color = Color(0.227451, 0.372549, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pp8mx"]
+material = SubResource("StandardMaterial3D_0ruji")
+flip_faces = true
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xklix"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8qub"]
+albedo_color = Color(0, 1, 0.0509804, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_gs17x"]
+material = SubResource("StandardMaterial3D_k8qub")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucig5"]
+custom_solver_bias = 1.0
+margin = 0.0
+size = Vector3(0.8, 1, 0.01)
+
+[node name="CardFlipHack" type="Node3D"]
+
+[node name="Card" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qkust")
+script = ExtResource("1_hwr4s")
+
+[node name="CardImage" type="MeshInstance3D" parent="Card" node_paths=PackedStringArray("subscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1482, 0.00663206)
+mesh = SubResource("QuadMesh_q0jy1")
+script = ExtResource("1_1mp24")
+subscene = NodePath("SubViewport/Subscene")
+
+[node name="SubViewport" type="SubViewport" parent="Card/CardImage"]
+own_world_3d = true
+world_3d = SubResource("World3D_mnj8a")
+size = Vector2i(1152, 648)
+
+[node name="Camera3D" type="Camera3D" parent="Card/CardImage/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+cull_mask = 3
+
+[node name="Subscene" type="MeshInstance3D" parent="Card/CardImage/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1482, -0.241829)
+layers = 2
+mesh = SubResource("BoxMesh_pp8mx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Card/CardImage/SubViewport/Subscene"]
+visible = false
+layers = 2
+mesh = SubResource("BoxMesh_xklix")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Card/CardImage/SubViewport/Subscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.442899)
+layers = 2
+
+[node name="Ground" type="MeshInstance3D" parent="Card/CardImage/SubViewport/Subscene"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -0.230862, -0.199977)
+layers = 2
+mesh = SubResource("QuadMesh_gs17x")
+
+[node name="Rat" parent="Card/CardImage/SubViewport/Subscene" instance=ExtResource("3_f66do")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.03, 0, 0.03, 0, -1.31134e-09, 0, -0.2, -0.2)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ucig5")
