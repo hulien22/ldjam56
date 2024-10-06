@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://o5rw8o3ouc03"
-path="res://.godot/imported/Ant.glb-d617952baccb2d559c0bcbecf677b568.scn"
+uid="uid://clxerufdosu7t"
+path="res://.godot/imported/Penguin.glb-1071153cd440094a00cc9214af4fae7e.scn"
 
 [deps]
 
-source_file="res://assets/Ant.glb"
-dest_files=["res://.godot/imported/Ant.glb-d617952baccb2d559c0bcbecf677b568.scn"]
+source_file="res://assets/animals/Penguin.glb"
+dest_files=["res://.godot/imported/Penguin.glb-1071153cd440094a00cc9214af4fae7e.scn"]
 
 [params]
 

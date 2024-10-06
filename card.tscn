@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://card.gd" id="1_hwr4s"]
 [ext_resource type="Texture2D" uid="uid://b7sgk5wk7ctcn" path="res://assets/cards/S_card.png" id="2_ocpbx"]
 [ext_resource type="Shader" path="res://card.gdshader" id="2_yaoao"]
-[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="3_f66do"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="3_f66do"]
 [ext_resource type="Texture2D" uid="uid://dj4kjtn3vwrwx" path="res://assets/cards/A_card.png" id="3_y5q2u"]
 [ext_resource type="Texture2D" uid="uid://h1pebjvxf84j" path="res://assets/cards/B_card.png" id="4_wkq8s"]
 [ext_resource type="Texture2D" uid="uid://gn8o6xo444ad" path="res://assets/cards/S_sticker.png" id="5_gpbdt"]

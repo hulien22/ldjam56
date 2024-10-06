@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dq7wo1456lxnq"
-path="res://.godot/imported/Frog.glb-616eacc713b32431686d5bf6f9a881ef.scn"
+uid="uid://cuytcypxpwf5m"
+path="res://.godot/imported/Rat.glb-603d258179f8f7b9f25afa7fb05631bf.scn"
 
 [deps]
 
-source_file="res://assets/Frog.glb"
-dest_files=["res://.godot/imported/Frog.glb-616eacc713b32431686d5bf6f9a881ef.scn"]
+source_file="res://assets/animals/Rat.glb"
+dest_files=["res://.godot/imported/Rat.glb-603d258179f8f7b9f25afa7fb05631bf.scn"]
 
 [params]
 

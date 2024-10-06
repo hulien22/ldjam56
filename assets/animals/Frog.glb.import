@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ftsmpwkl55jl"
-path="res://.godot/imported/Cheetah.glb-5c2dccb880142349d4aea394316e38b3.scn"
+uid="uid://dq7wo1456lxnq"
+path="res://.godot/imported/Frog.glb-aba0b914da759ef006b6603b391839e3.scn"
 
 [deps]
 
-source_file="res://assets/Cheetah.glb"
-dest_files=["res://.godot/imported/Cheetah.glb-5c2dccb880142349d4aea394316e38b3.scn"]
+source_file="res://assets/animals/Frog.glb"
+dest_files=["res://.godot/imported/Frog.glb-aba0b914da759ef006b6603b391839e3.scn"]
 
 [params]
 

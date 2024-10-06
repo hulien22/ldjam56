@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://mh0400ftqwvp"]
 
-[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/Cheetah.glb" id="1_b4s7f"]
+[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/animals/Cheetah.glb" id="1_b4s7f"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_klppk"]
 
 [resource]

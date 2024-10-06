@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://doad7nohjqxxn"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_eh0gu"]
-[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="2_fg6xo"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="2_fg6xo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mm0nh"]
 radius = 3.31426

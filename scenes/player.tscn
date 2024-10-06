@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c74urwytqw3wl"]
+[gd_scene load_steps=12 format=3 uid="uid://c74urwytqw3wl"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vm0mt"]
 [ext_resource type="PackedScene" uid="uid://8qw51eg0amo" path="res://scenes/dizzy_stars.tscn" id="2_q6x8p"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="3_ch8e0"]
 
 [sub_resource type="Animation" id="Animation_sm74f"]
 length = 0.001
@@ -127,6 +128,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tojpc")
 
 [node name="DizzyStars" parent="Model" instance=ExtResource("2_q6x8p")]
 unique_name_in_owner = true
+
+[node name="Rat" parent="Model" instance=ExtResource("3_ch8e0")]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_6xuho"]
 [ext_resource type="Script" path="res://scripts/frog.gd" id="2_d1ua0"]
-[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/Frog.glb" id="2_j8mhp"]
+[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/animals/Frog.glb" id="2_j8mhp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mdaf"]
 

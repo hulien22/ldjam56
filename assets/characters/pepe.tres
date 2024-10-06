@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://h120tirsu2xe"]
 
-[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/Frog.glb" id="1_ii1dp"]
+[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/animals/Frog.glb" id="1_ii1dp"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_rarvx"]
 
 [resource]

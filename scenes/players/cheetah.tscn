@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://3un8ql7oylar"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_38lxv"]
-[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/Cheetah.glb" id="2_2v6pk"]
+[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/animals/Cheetah.glb" id="2_2v6pk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6up1i"]
 radius = 4.08178

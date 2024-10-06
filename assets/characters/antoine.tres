@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://08m8d67l3ip4"]
 
-[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="1_a4ygk"]
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="1_a4ygk"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_g7lbw"]
 
 [resource]

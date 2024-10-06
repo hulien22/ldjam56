@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://dgbuhf1lbnumm" path="res://assets/characters/flik.tres" id="13_3fgax"]
 [ext_resource type="Resource" uid="uid://bsjw3o3rgo0j1" path="res://assets/characters/axel.tres" id="14_jm8iw"]
 [ext_resource type="Resource" uid="uid://c3f8kvbn8qyrg" path="res://assets/characters/charlie.tres" id="15_epesc"]
-[ext_resource type="PackedScene" uid="uid://d1k61sst1oxr8" path="res://character_option.tscn" id="17_5iyng"]
+[ext_resource type="PackedScene" uid="uid://glrrhyu4grvv" path="res://character_option.tscn" id="17_5iyng"]
 
 [sub_resource type="Environment" id="Environment_37ics"]
 background_mode = 1

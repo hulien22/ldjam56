@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cuytcypxpwf5m"
-path="res://.godot/imported/Rat.glb-7a5fe8943f93580619f7a7521f1d88cc.scn"
+uid="uid://hyuc0bdl848q"
+path="res://.godot/imported/Grasshopper.glb-535e83cee2affacacfd5cd35368d6999.scn"
 
 [deps]
 
-source_file="res://assets/Rat.glb"
-dest_files=["res://.godot/imported/Rat.glb-7a5fe8943f93580619f7a7521f1d88cc.scn"]
+source_file="res://assets/animals/Grasshopper.glb"
+dest_files=["res://.godot/imported/Grasshopper.glb-535e83cee2affacacfd5cd35368d6999.scn"]
 
 [params]
 
