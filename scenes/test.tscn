@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=40 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
 [ext_resource type="PackedScene" uid="uid://bganc66bm43gn" path="res://scenes/env.tscn" id="3_7bb6t"]
 [ext_resource type="PackedScene" uid="uid://tx8ieqpqh8vw" path="res://scenes/env2.tscn" id="3_mfhjo"]
 [ext_resource type="PackedScene" uid="uid://doad7nohjqxxn" path="res://scenes/players/rat.tscn" id="4_7ungm"]
+[ext_resource type="PackedScene" uid="uid://bueoouknkqp8h" path="res://scenes/floating_island_env.tscn" id="4_8cfnc"]
 [ext_resource type="PackedScene" uid="uid://ctc136adnmold" path="res://scenes/env3.tscn" id="5_lvccn"]
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
@@ -188,7 +189,10 @@ unique_name_in_owner = true
 
 [node name="env" type="Node" parent="."]
 
+[node name="Secret Camping spot" parent="env" instance=ExtResource("4_8cfnc")]
+
 [node name="Env2" parent="env" instance=ExtResource("3_mfhjo")]
+visible = false
 
 [node name="Env" parent="env" instance=ExtResource("3_7bb6t")]
 visible = false
