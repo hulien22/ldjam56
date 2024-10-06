@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=37 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
+[ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
 [ext_resource type="PackedScene" uid="uid://bganc66bm43gn" path="res://scenes/env.tscn" id="3_7bb6t"]
 [ext_resource type="PackedScene" uid="uid://tx8ieqpqh8vw" path="res://scenes/env2.tscn" id="3_mfhjo"]
 [ext_resource type="PackedScene" uid="uid://doad7nohjqxxn" path="res://scenes/players/rat.tscn" id="4_7ungm"]
@@ -18,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="10_tc1ft"]
 [ext_resource type="PackedScene" uid="uid://dtkxmb7d23xft" path="res://scenes/goal.tscn" id="11_ec0d2"]
+
+[sub_resource type="Theme" id="Theme_vcnc5"]
+default_font = ExtResource("2_ick18")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(300, 100, 200)
@@ -119,6 +123,21 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 text = "0"
+
+[node name="Countdown" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vcnc5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 500
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1823, -18.8988, -1.29379)
@@ -266,34 +285,53 @@ physics_material_override = SubResource("PhysicsMaterial_o44p1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 162, -50)
 shape = SubResource("BoxShape3D_vgmfe")
 
+[node name="OpeningAnim" type="Node" parent="."]
+
+[node name="CamHolder" type="Node3D" parent="OpeningAnim"]
+unique_name_in_owner = true
+
+[node name="OpeningCam" type="Camera3D" parent="OpeningAnim/CamHolder"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1000, 2000)
+environment = SubResource("Environment_snpd3")
+attributes = SubResource("CameraAttributesPractical_38kb1")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.927608, 0.373554, 0, -0.373554, 0.927608, 0, 40.9464, 111.158)
+visible = false
 
 [node name="Camera3D_top" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.00237364, 0.999997, 0, -0.999997, -0.00237364, 0, 150, 0)
-current = true
+visible = false
 
-[node name="Camera3D_45" type="Camera3D" parent="."]
+[node name="MainGameCamera" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.550481, 0.834848, 0, -0.834848, 0.550481, 0, 110, 70)
 environment = SubResource("Environment_snpd3")
 attributes = SubResource("CameraAttributesPractical_38kb1")
-current = true
 
 [node name="Players" type="Node" parent="."]
 
 [node name="player15" parent="Players" instance=ExtResource("6_c1ujs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player14" parent="Players" instance=ExtResource("6_gmisd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player13" parent="Players" instance=ExtResource("6_xo5sq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player12" parent="Players" instance=ExtResource("6_motx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player11" parent="Players" instance=ExtResource("6_ucc4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player10" parent="Players" instance=ExtResource("6_o2em6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player9" parent="Players" instance=ExtResource("6_ceyhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
 
 [node name="player" parent="Players" instance=ExtResource("4_7ungm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, -33.2535, 0)

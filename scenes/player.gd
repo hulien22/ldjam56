@@ -35,13 +35,22 @@ func _ready() -> void:
 	else:
 		set_bottom_color(Color.CRIMSON)
 	
+	%DizzyStars.hide()
+	
 	time_since_kicked = TIME_STUCK_IN_KICK
 	time_since_last_jump = TIME_BETWEEN_JUMPS
+
+func enable(b : bool) -> void:
+	freeze = !b
 
 func can_move() -> bool:
 	return (on_ground || is_flying) && time_since_kicked >= TIME_STUCK_IN_KICK
 
 func _physics_process(delta: float) -> void:
+	ForceBottomPos();
+	if freeze:
+		return
+	
 	dir_to_move = Vector3.ZERO
 	time_since_kicked += delta
 	if (%IsOnGround.is_colliding() || is_flying):
@@ -60,10 +69,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		process_ai_movement()
 		pass
-	
+
+func ForceBottomPos():
 	%TeamBottom.global_position = global_position
 	%TeamBottom.global_position.y = 0.6
 	%TeamBottom.global_rotation = Vector3.ZERO
+
 
 func process_player_input() -> void:
 	if !can_move():

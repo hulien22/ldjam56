@@ -2,13 +2,18 @@ extends Node3D
 
 const MIN_BALL_DISTANCE:float = 10000
 @onready var explosion_scene = preload("res://scenes/explosion.tscn")
+@onready var ball_scene = preload("res://scenes/ball.tscn")
 
+enum GameMode {INTRO, GAME, AFTERGAME}
+
+var game_mode:GameMode = GameMode.INTRO
 var team1_score: int = 0
 var team2_score: int = 0
 
 func _ready() -> void:
 	load_balls()
 	load_players()
+	play_intro()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_indent"):
@@ -45,6 +50,7 @@ func load_players():
 		players.push_back(obj)
 		obj.set_is_player(false)
 		obj.set_nav_reg(%NavigationRegion3D)
+		obj.enable(false)
 	cur_player = 0
 	players[cur_player].set_is_player(true)
 
@@ -66,3 +72,35 @@ func _on_goal_goal(body: Node3D, team1_net: bool) -> void:
 		body.reset_posn()
 		show_scores()
 	
+func play_intro() -> void:
+	%OpeningCam.current = true
+	var tween:Tween = create_tween()
+	tween.tween_property(%CamHolder, "rotation", Vector3(0, 0, 0), 0.1)
+	tween.tween_property(%CamHolder, "rotation", Vector3(0, 2*PI, 0), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(%OpeningCam, "position", Vector3(0, 110, 70), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(%OpeningCam, "current", false, 0.001)
+	tween.parallel().tween_property(%MainGameCamera, "current", true, 0.001)
+	tween.tween_property(%Countdown, "text", "3", 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,1), 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,0), 0.998).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_property(%Countdown, "text", "2", 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,1), 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,0), 0.998).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_property(%Countdown, "text", "1", 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,1), 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,0), 0.998).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(start_game)
+	tween.tween_property(%Countdown, "text", "GO!", 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,1), 0.001)
+	tween.tween_property(%Countdown, "modulate", Color(255,255,255,0), 0.998).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	
+func start_game():
+	game_mode = GameMode.GAME
+	for p in players:
+		p.enable(true)
+	# TODO start spawning in balls
+	
+
+func _process(delta: float) -> void:
+	if game_mode == GameMode.INTRO && %OpeningCam.current:
+		%OpeningCam.look_at(Vector3(0,4,0))
