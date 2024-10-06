@@ -1,7 +1,7 @@
 class_name Card
 extends MeshInstance3D
 			
-var rot = 0
+var rot = PI
 var tilt_target = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:

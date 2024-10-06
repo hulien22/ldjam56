@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bnw7scnhjf6je"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_h1mxd"]
+[ext_resource type="PackedScene" uid="uid://o5rw8o3ouc03" path="res://assets/Ant.glb" id="1_o0l5p"]
+
+[resource]
+script = ExtResource("1_h1mxd")
+name = "Anten Robben"
+determination = 65
+cuteness = 65
+model = ExtResource("1_o0l5p")
+chance = 2
+nationality = "Netherlands"
