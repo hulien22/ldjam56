@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=41 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d2sogis3k2l1o" path="res://scenes/players/bat.tscn" id="6_ucc4a"]
 [ext_resource type="PackedScene" uid="uid://dxufokv4kyj0t" path="res://scenes/players/kangaroo.tscn" id="6_xo5sq"]
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
+[ext_resource type="PackedScene" uid="uid://d3djhy6j25udh" path="res://scenes/players/giraffe.tscn" id="8_g7h5i"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="10_tc1ft"]
 [ext_resource type="PackedScene" uid="uid://dtkxmb7d23xft" path="res://scenes/goal.tscn" id="11_ec0d2"]
 
@@ -344,6 +345,9 @@ attributes = SubResource("CameraAttributesPractical_38kb1")
 
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="player16" parent="Players" instance=ExtResource("8_g7h5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0966, 0, 17.1606)
 
 [node name="player15" parent="Players" instance=ExtResource("6_c1ujs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3djhy6j25udh"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_v4uqa"]
+[ext_resource type="PackedScene" uid="uid://b8nbgwfisola8" path="res://assets/animals/Giraffe.glb" id="2_8deea"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xamyo"]
+radius = 4.58208
+height = 21.302
+
+[node name="player" instance=ExtResource("1_v4uqa")]
+move_speed = 1.2
+jump_power = 10.0
+kick_power = 120.0
+rot_speed = 0.05
+on_kicked_mult = 0.5
+
+[node name="Giraffe" parent="Model" index="0" instance=ExtResource("2_8deea")]
+transform = Transform3D(3, 0, 0, 0, 4, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="DizzyStars" parent="Model" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49452, 11.9439, 0)
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5263, 0)
+shape = SubResource("CapsuleShape3D_xamyo")
