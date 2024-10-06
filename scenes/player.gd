@@ -31,7 +31,9 @@ func _ready() -> void:
 	if is_team1:
 		mat.albedo_color = Color.DODGER_BLUE
 	else:
-		mat.albedo_color = Color.LIGHT_SALMON
+		mat.albedo_color = Color.CRIMSON
+	mat.albedo_color.a = 0.5
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA 
 	%TeamBottom.material_override = mat
 
 func can_move() -> bool:
@@ -57,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		process_ai_movement()
 	
 	%TeamBottom.global_position = global_position
-	%TeamBottom.global_position.y = 1
+	%TeamBottom.global_position.y = 0.5
 	%TeamBottom.global_rotation = Vector3.ZERO
 
 func process_player_input() -> void:
@@ -101,7 +103,11 @@ func process_ai_movement() -> void:
 	
 	if %KickRay.is_colliding():
 		var obj = %KickRay.get_collider()
-		if (obj is Ball) or (obj is Player && obj.is_team1 != is_team1):
+		if (obj is Ball):
+			# only kick if towards other side
+			if (is_team1 && global_position.x < obj.global_position.x) || (!is_team1 && global_position.x > obj.global_position.x):
+				process_kick()
+		elif (obj is Player && obj.is_team1 != is_team1):
 			process_kick()
 
 var dir_to_move: Vector3
@@ -173,7 +179,8 @@ func set_is_player(b: bool) -> void:
 	elif is_team1:
 		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.DODGER_BLUE
 	else:
-		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.LIGHT_SALMON
+		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.CRIMSON
+	(%TeamBottom.material_override as StandardMaterial3D).albedo_color.a = 0.5
 
 func set_closest_ball(b: Ball) -> void:
 	closest_ball = b

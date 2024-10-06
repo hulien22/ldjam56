@@ -52,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.594, 16.1335, 25.8744)
 [node name="ceil" type="StaticBody3D" parent="Walls"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ceil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 350, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
 shape = SubResource("BoxShape3D_dgiw2")
 
 [node name="wall" type="StaticBody3D" parent="Walls"]
