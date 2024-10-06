@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw436k1muwgdk"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_6k4ts"]
+[ext_resource type="PackedScene" uid="uid://hyuc0bdl848q" path="res://assets/animals/Grasshopper.glb" id="2_yjjit"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_li64m"]
+radius = 2.5
+height = 5.0
+
+[node name="player" instance=ExtResource("1_6k4ts")]
+TIME_BETWEEN_JUMPS = 0.5
+kick_power = 20.0
+on_kicked_mult = 3.0
+
+[node name="Grasshopper" parent="Model" index="0" instance=ExtResource("2_yjjit")]
+transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0, 1.14181, 0)
+
+[node name="DizzyStars" parent="Model" index="3"]
+transform = Transform3D(0.715, 0, 0, 0, 0.715, 0, 0, 0, 0.715, 0, 1.25684, 0)
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.415, 0)
+shape = SubResource("CapsuleShape3D_li64m")
+
+[node name="KickRay" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.87253, 0)
