@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtkxmb7d23xft"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwwjt"]
+radius = 2.0
+height = 50.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6rgv1"]
+radius = 2.0
+height = 50.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3r7y"]
+radius = 2.0
+height = 60.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_irgjl"]
+radius = 2.0
+height = 60.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ournw"]
+size = Vector3(23, 0.01, 56)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnuoo"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.145098)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ms37m"]
+size = Vector3(56, 0.01, 56)
+
+[node name="Goal" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.8867, -28.382)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_pwwjt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_6rgv1")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.8867, 28.382)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("CapsuleShape3D_pwwjt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_6rgv1")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 36.9736, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("CapsuleShape3D_s3r7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_irgjl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6429, 36.2428, 0.197617)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ournw")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnuoo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10.6429, 8.25193, 28.197)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ournw")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnuoo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10.6427, 8.25154, -27.8014)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ournw")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnuoo")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -22.1837, 8.26654, 0.197617)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ms37m")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnuoo")

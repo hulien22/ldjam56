@@ -99,16 +99,19 @@ func process_ai_movement() -> void:
 	#NavigationServer3D.agent_set_velocity(nav_agent_rid, linear_velocity)
 	#nav.set_velocity(dir)
 	dir_to_move = dir
-	apply_central_impulse(dir_to_move)
 	
-	if %KickRay.is_colliding():
+	if %KickRay.is_colliding() && time_since_last_jump > TIME_BETWEEN_JUMPS:
 		var obj = %KickRay.get_collider()
 		if (obj is Ball):
 			# only kick if towards other side
 			if (is_team1 && global_position.x < obj.global_position.x) || (!is_team1 && global_position.x > obj.global_position.x):
+				dir_to_move.y = jump_power
 				process_kick()
 		elif (obj is Player && obj.is_team1 != is_team1):
+			dir_to_move.y = jump_power
 			process_kick()
+
+	apply_central_impulse(dir_to_move)
 
 var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

@@ -7,12 +7,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_pgdri"]
 size = Vector3(300, 100, 200)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qibxi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddt0p"]
 albedo_texture = ExtResource("1_ryl82")
 uv1_scale = Vector3(3, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7a0lu"]
-material = SubResource("StandardMaterial3D_qibxi")
+material = SubResource("StandardMaterial3D_ddt0p")
 
 [node name="Env3" type="Node3D"]
 
