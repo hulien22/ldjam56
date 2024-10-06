@@ -41,11 +41,12 @@ func load_balls():
 	balls = []  
 	#for obj in %Balls.get_children():
 		#balls.push_back(obj)
-	for i in 3:
+	var num_balls:int = 3 # assumes odd num
+	for i in num_balls:
 		var b:Ball = ball_scene.instantiate()
 		balls.push_back(b)
 		%Balls.add_child(b)
-		b.global_position = Vector3((i - 1) * 40, 40, (i - 1) * 40)
+		b.global_position = Vector3((i - num_balls/2) * 40, 40, (i - num_balls/2) * 40)
 		b.freeze = true
 
 var players: Array[Player] = []

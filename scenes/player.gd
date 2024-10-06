@@ -198,10 +198,10 @@ func set_nav_reg(nr: NavigationRegion3D) -> void:
 
 func set_bottom_color(c: Color) -> void:
 	(%TeamBottom.material_override as StandardMaterial3D).albedo_color = c
-	(%TeamBottom.material_override as StandardMaterial3D).emission_enabled = true
-	(%TeamBottom.material_override as StandardMaterial3D).emission = c
-	(%TeamBottom.material_override as StandardMaterial3D).emission_energy_multiplier = 1
-	(%TeamBottom.material_override as StandardMaterial3D).albedo_color.a = 0.9
+	#(%TeamBottom.material_override as StandardMaterial3D).emission_enabled = true
+	#(%TeamBottom.material_override as StandardMaterial3D).emission = c
+	#(%TeamBottom.material_override as StandardMaterial3D).emission_energy_multiplier = 1
+	(%TeamBottom.material_override as StandardMaterial3D).albedo_color.a = 0.8
 	(%TeamBottom.material_override as StandardMaterial3D).transparency = BaseMaterial3D.TRANSPARENCY_ALPHA 
 
 func set_is_player(b: bool) -> void:
