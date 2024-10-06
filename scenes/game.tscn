@@ -85,7 +85,7 @@ uv1_scale = Vector3(3, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_3vqi6"]
 material = SubResource("StandardMaterial3D_o0aal")
 
-[node name="test" type="Node3D"]
+[node name="main" type="Node3D"]
 script = ExtResource("1_7qlyq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

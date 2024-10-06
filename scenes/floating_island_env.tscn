@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bueoouknkqp8h"]
+[gd_scene load_steps=6 format=4 uid="uid://bueoouknkqp8h"]
 
 [ext_resource type="PackedScene" uid="uid://8ydunox2fqtk" path="res://assets/env/Secret Camping spot.glb" id="1_m1vuo"]
 [ext_resource type="Script" path="res://scripts/float_island_env.gd" id="2_mxxeg"]
@@ -27,34 +27,6 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwf2n"]
 albedo_color = Color(0.43, 0.43, 0.43, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prgbn"]
-albedo_color = Color(0.71, 0.2485, 0.2485, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3hq2"]
-transparency = 1
-albedo_color = Color(0.33592, 0.68, 0.2312, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laudn"]
-albedo_color = Color(0.39, 0.2535, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bilg6"]
-albedo_color = Color(0.1458, 0.37827, 0.81, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yjco"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqa0r"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg0gp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hebsi"]
-transparency = 1
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 16.0
-
 [node name="Secret Camping spot" instance=ExtResource("1_m1vuo")]
 script = ExtResource("2_mxxeg")
 
@@ -65,11 +37,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fwf2n")
 
 [node name="model_064" parent="." index="1"]
 transform = Transform3D(-2426.74, 0, -1183.6, 0, 2700, 0, 1183.6, 0, -2426.74, 88.055, -90.287, -291.077)
-surface_material_override/0 = SubResource("StandardMaterial3D_prgbn")
-surface_material_override/1 = SubResource("StandardMaterial3D_f3hq2")
-surface_material_override/2 = SubResource("StandardMaterial3D_laudn")
-surface_material_override/3 = SubResource("StandardMaterial3D_bilg6")
-surface_material_override/4 = SubResource("StandardMaterial3D_4yjco")
-surface_material_override/5 = SubResource("StandardMaterial3D_wqa0r")
-surface_material_override/6 = SubResource("StandardMaterial3D_bg0gp")
-surface_material_override/7 = SubResource("StandardMaterial3D_hebsi")

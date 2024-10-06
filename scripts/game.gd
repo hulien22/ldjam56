@@ -58,6 +58,11 @@ func load_players():
 		obj.set_is_player(false)
 		obj.set_nav_reg(%NavigationRegion3D)
 		obj.enable(false)
+		if obj.is_team1:
+			obj.global_rotation.y = 0
+		else:
+			obj.global_rotation.y = PI
+			
 	cur_player = 0
 	players[cur_player].set_is_player(true)
 
