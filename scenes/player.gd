@@ -114,11 +114,11 @@ var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# Keep in bounds
 	if abs(global_position.x) > x_bound + 100:
-		global_position.x = sign(global_position.x) * 0.95 * x_bound
+		global_position = Vector3(0,100,0)
 		linear_velocity = Vector3.ZERO
 		return
 	if abs(global_position.z) > z_bound + 100:
-		global_position.z = sign(global_position.z) * 0.95 * z_bound
+		global_position = Vector3(0,100,0)
 		linear_velocity = Vector3.ZERO
 		return
 	if (global_position.y < -100):

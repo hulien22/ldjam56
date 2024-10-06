@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648608, 0, 0)
 [node name="DizzyStars" parent="Model" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.77475, 0)
 
-[node name="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D" parent="." index="2"]
 shape = SubResource("CapsuleShape3D_mm0nh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]

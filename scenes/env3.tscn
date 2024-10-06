@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctc136adnmold"]
+
+[ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="1_ryl82"]
+[ext_resource type="PackedScene" uid="uid://q1c34o12iw7v" path="res://assets/env/Small Table.glb" id="2_4dtjo"]
+[ext_resource type="PackedScene" uid="uid://d0acvbjcab4pr" path="res://assets/env/Mug.glb" id="3_4ds5x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgdri"]
+size = Vector3(300, 100, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qibxi"]
+albedo_texture = ExtResource("1_ryl82")
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7a0lu"]
+material = SubResource("StandardMaterial3D_qibxi")
+
+[node name="Env3" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+shape = SubResource("BoxShape3D_pgdri")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
+mesh = SubResource("BoxMesh_7a0lu")
+
+[node name="table" parent="." instance=ExtResource("2_4dtjo")]
+transform = Transform3D(2.62268e-05, 0, 200, 0, 200, 0, -200, 0, 2.62268e-05, 21.7903, -165.041, -4.70293)
+
+[node name="Mug" parent="." instance=ExtResource("3_4ds5x")]
+transform = Transform3D(91.2656, 0, -40.8729, 0, 100, 0, 40.8729, 0, 91.2656, 122.875, 0, -90.6788)
+
+[node name="Mug3" parent="." instance=ExtResource("3_4ds5x")]
+transform = Transform3D(45.7121, -88.2497, -11.0632, -24.0401, -0.283847, -97.067, 85.6299, 47.031, -21.3451, 94.8324, 7.63443, -104.122)
+
+[node name="Mug2" parent="." instance=ExtResource("3_4ds5x")]
+transform = Transform3D(-37.5771, 0, -92.6712, 0, 100, 0, 92.6712, 0, -37.5771, -118.916, 0, 78.9647)

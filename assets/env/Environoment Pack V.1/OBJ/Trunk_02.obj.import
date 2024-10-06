@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dcvba613apmhk"
+path="res://.godot/imported/Trunk_02.obj-bb9e6399de66d49243d507638a8f7bef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Trunk_02.obj-bb9e6399de66d49243d507638a8f7bef.mesh"]
+
+source_file="res://assets/env/Environoment Pack V.1/OBJ/Trunk_02.obj"
+dest_files=["res://.godot/imported/Trunk_02.obj-bb9e6399de66d49243d507638a8f7bef.mesh", "res://.godot/imported/Trunk_02.obj-bb9e6399de66d49243d507638a8f7bef.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
