@@ -25,3 +25,8 @@ window/stretch/mode="canvas_items"
 
 3d_physics/layer_1="Objects"
 3d_physics/layer_2="Ball"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

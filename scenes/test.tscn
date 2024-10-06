@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=28 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
@@ -50,6 +50,10 @@ background_mode = 2
 background_color = Color(0, 0.664, 0.83, 1)
 sky = SubResource("Sky_shtoq")
 reflected_light_source = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_38kb1"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 180.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_363jy"]
 vertices = PackedVector3Array(-99.5, 1, -74.5, -99.5, 1, 74.5, 99.5, 1, 74.5, 99.5, 1, -74.5)
@@ -111,6 +115,7 @@ text = "0"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1823, -18.8988, -1.29379)
+light_energy = 0.2
 shadow_enabled = true
 directional_shadow_max_distance = 350.0
 
@@ -264,6 +269,7 @@ current = true
 [node name="Camera3D_45" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.550481, 0.834848, 0, -0.834848, 0.550481, 0, 100, 70)
 environment = SubResource("Environment_snpd3")
+attributes = SubResource("CameraAttributesPractical_38kb1")
 current = true
 
 [node name="Players" type="Node" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c74urwytqw3wl"]
+[gd_scene load_steps=11 format=3 uid="uid://c74urwytqw3wl"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vm0mt"]
 [ext_resource type="PackedScene" uid="uid://8qw51eg0amo" path="res://scenes/dizzy_stars.tscn" id="2_q6x8p"]
@@ -97,8 +97,6 @@ height = 10.1885
 top_radius = 4.0
 height = 0.001
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej0xt"]
-
 [node name="player" type="RigidBody3D"]
 gravity_scale = 5.0
 center_of_mass_mode = 1
@@ -147,6 +145,5 @@ debug_shape_thickness = 5
 [node name="TeamBottom" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 mesh = SubResource("CylinderMesh_6pyh5")
-surface_material_override/0 = SubResource("StandardMaterial3D_ej0xt")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_safe_velocity_computed"]

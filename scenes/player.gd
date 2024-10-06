@@ -27,14 +27,11 @@ var ai_target_posn:Vector3
 var closest_ball: Ball
 
 func _ready() -> void:
-	var mat:StandardMaterial3D = StandardMaterial3D.new()
+	%TeamBottom.material_override = StandardMaterial3D.new()
 	if is_team1:
-		mat.albedo_color = Color.DODGER_BLUE
+		set_bottom_color(Color.DODGER_BLUE)
 	else:
-		mat.albedo_color = Color.CRIMSON
-	mat.albedo_color.a = 0.5
-	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA 
-	%TeamBottom.material_override = mat
+		set_bottom_color(Color.CRIMSON)
 	
 	time_since_kicked = TIME_STUCK_IN_KICK
 	time_since_last_jump = TIME_BETWEEN_JUMPS
@@ -59,11 +56,11 @@ func _physics_process(delta: float) -> void:
 	if (is_player_controlled):
 		process_player_input()
 	else:
-		#process_ai_movement()
+		process_ai_movement()
 		pass
 	
 	%TeamBottom.global_position = global_position
-	%TeamBottom.global_position.y = 0.5
+	%TeamBottom.global_position.y = 0.6
 	%TeamBottom.global_rotation = Vector3.ZERO
 
 func process_player_input() -> void:
@@ -178,16 +175,22 @@ func swap_to_anim_if_not_started(anim: String, a_speed: float) -> void:
 func set_nav_reg(nr: NavigationRegion3D) -> void:
 	nav.set_navigation_map(nr.get_navigation_map())
 
+func set_bottom_color(c: Color) -> void:
+	(%TeamBottom.material_override as StandardMaterial3D).albedo_color = c
+	(%TeamBottom.material_override as StandardMaterial3D).emission_enabled = true
+	(%TeamBottom.material_override as StandardMaterial3D).emission = c
+	(%TeamBottom.material_override as StandardMaterial3D).emission_energy_multiplier = 1
+	(%TeamBottom.material_override as StandardMaterial3D).albedo_color.a = 0.9
+	(%TeamBottom.material_override as StandardMaterial3D).transparency = BaseMaterial3D.TRANSPARENCY_ALPHA 
 
 func set_is_player(b: bool) -> void:
 	is_player_controlled = b
 	if is_player_controlled:
-		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.GOLD
+		set_bottom_color(Color.GOLD)
 	elif is_team1:
-		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.DODGER_BLUE
+		set_bottom_color(Color.DODGER_BLUE)
 	else:
-		(%TeamBottom.material_override as StandardMaterial3D).albedo_color = Color.CRIMSON
-	(%TeamBottom.material_override as StandardMaterial3D).albedo_color.a = 0.5
+		set_bottom_color(Color.CRIMSON)
 
 func set_closest_ball(b: Ball) -> void:
 	closest_ball = b
