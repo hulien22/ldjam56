@@ -5,6 +5,7 @@ class_name Player
 @export var TIME_BETWEEN_JUMPS:float = 2.0
 @export var move_speed:float = 1.0
 @export var jump_power:float = 30
+@export var forwards_jump_power:float = 0
 @export var kick_power:float = 100
 @export var rot_speed: float = 0.1
 @export var on_kicked_mult: float = 1.0
@@ -81,8 +82,7 @@ func process_player_input() -> void:
 	# process jump afterwards
 	if Input.is_action_just_pressed("ui_accept"):
 		if time_since_last_jump > TIME_BETWEEN_JUMPS:
-			dir_to_move.y = jump_power
-			process_kick()
+			process_jump_kick()
 	apply_central_impulse(dir_to_move)
 
 
@@ -109,11 +109,9 @@ func process_ai_movement() -> void:
 		if (obj is Ball):
 			# only kick if towards other side
 			if (is_team1 && global_position.x < obj.global_position.x) || (!is_team1 && global_position.x > obj.global_position.x):
-				dir_to_move.y = jump_power
-				process_kick()
+				process_jump_kick()
 		elif (obj is Player && obj.is_team1 != is_team1):
-			dir_to_move.y = jump_power
-			process_kick()
+			process_jump_kick()
 	elif is_flying && global_position.y < 5 && time_since_last_jump > TIME_BETWEEN_JUMPS:
 		dir_to_move.y = 3
 		time_since_last_jump = 0
@@ -159,8 +157,14 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 		#state.angular_velocity = new_av
 		state.angular_velocity.y = new_av.y
 
-func process_kick() -> void:
+func process_jump_kick() -> void:
+	# jump
+	dir_to_move.y = jump_power
 	time_since_last_jump = 0.0
+	if forwards_jump_power > 0:
+		var jump_f_dir:Vector3 = global_basis.x.normalized() * forwards_jump_power
+		dir_to_move += jump_f_dir
+	# kick
 	if %KickRay.is_colliding():
 		var obj = %KickRay.get_collider()
 		if obj.has_method("on_kick"):

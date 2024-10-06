@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc5yta7dfxagy"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_as4y1"]
+[ext_resource type="PackedScene" uid="uid://kquc3pnpgjud" path="res://assets/animals/Goat.glb" id="2_kyikd"]
+
+[node name="player" instance=ExtResource("1_as4y1")]
+TIME_STUCK_IN_KICK = 2.0
+move_speed = 1.6
+jump_power = 40.0
+forwards_jump_power = 100.0
+kick_power = 200.0
+
+[node name="DizzyStars" parent="Model" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3065, 6.18061, 0)
+
+[node name="Goat" parent="." index="6" instance=ExtResource("2_kyikd")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, 6.48858, 0)

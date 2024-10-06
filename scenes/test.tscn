@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=32 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
 [ext_resource type="PackedScene" uid="uid://cw436k1muwgdk" path="res://scenes/players/grasshopper.tscn" id="6_ceyhc"]
+[ext_resource type="PackedScene" uid="uid://cc5yta7dfxagy" path="res://scenes/players/goat.tscn" id="6_motx4"]
 [ext_resource type="PackedScene" uid="uid://bvw8oi358rqpt" path="res://scenes/players/penguin.tscn" id="6_o2em6"]
 [ext_resource type="PackedScene" uid="uid://d2sogis3k2l1o" path="res://scenes/players/bat.tscn" id="6_ucc4a"]
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
@@ -276,6 +277,8 @@ attributes = SubResource("CameraAttributesPractical_38kb1")
 current = true
 
 [node name="Players" type="Node" parent="."]
+
+[node name="player12" parent="Players" instance=ExtResource("6_motx4")]
 
 [node name="player11" parent="Players" instance=ExtResource("6_ucc4a")]
 
