@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=34 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
 [ext_resource type="PackedScene" uid="uid://cw436k1muwgdk" path="res://scenes/players/grasshopper.tscn" id="6_ceyhc"]
+[ext_resource type="PackedScene" uid="uid://scccjfpr6gwo" path="res://scenes/players/turtle.tscn" id="6_gmisd"]
 [ext_resource type="PackedScene" uid="uid://cc5yta7dfxagy" path="res://scenes/players/goat.tscn" id="6_motx4"]
 [ext_resource type="PackedScene" uid="uid://bvw8oi358rqpt" path="res://scenes/players/penguin.tscn" id="6_o2em6"]
 [ext_resource type="PackedScene" uid="uid://d2sogis3k2l1o" path="res://scenes/players/bat.tscn" id="6_ucc4a"]
@@ -279,8 +280,9 @@ current = true
 
 [node name="Players" type="Node" parent="."]
 
+[node name="player14" parent="Players" instance=ExtResource("6_gmisd")]
+
 [node name="player13" parent="Players" instance=ExtResource("6_xo5sq")]
-TIME_BETWEEN_JUMPS = 0.5
 
 [node name="player12" parent="Players" instance=ExtResource("6_motx4")]
 

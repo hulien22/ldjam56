@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://scccjfpr6gwo"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_gals1"]
+[ext_resource type="PackedScene" uid="uid://4rxuxrgjnlm1" path="res://assets/animals/Turtle.glb" id="2_ow76n"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f86o"]
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hhx45"]
+radius = 3.0
+height = 6.0
+
+[node name="player" instance=ExtResource("1_gals1")]
+physics_material_override = SubResource("PhysicsMaterial_0f86o")
+TIME_STUCK_IN_KICK = 1.0
+move_speed = 0.83
+jump_power = 0.0
+kick_power = 30.0
+rot_speed = 0.01
+on_kicked_mult = 0.5
+
+[node name="Turtle" parent="Model" index="0" instance=ExtResource("2_ow76n")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.8, 0, -0.5, 0, -2.18557e-08, -1.1931, -0.0355561, 0)
+
+[node name="DizzyStars" parent="Model" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38716, 0)
+shape = SubResource("CapsuleShape3D_hhx45")
+
+[node name="KickRay" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47556, 0)
