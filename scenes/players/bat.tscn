@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2sogis3k2l1o"]
+
+[ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_6rv37"]
+[ext_resource type="PackedScene" uid="uid://c8xclcxxdpmg0" path="res://assets/animals/Bat.glb" id="2_di4v5"]
+
+[node name="player" instance=ExtResource("1_6rv37")]
+gravity_scale = 3.0
+lock_rotation = true
+TIME_BETWEEN_JUMPS = 0.01
+jump_power = 20.0
+is_flying = true
+
+[node name="NavigationAgent3D" parent="." index="0"]
+debug_enabled = true
+
+[node name="Bat" parent="Model" index="0" instance=ExtResource("2_di4v5")]
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 2.49646, 0)
+
+[node name="DizzyStars" parent="Model" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.09217, 0)

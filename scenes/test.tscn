@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=31 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
 [ext_resource type="PackedScene" uid="uid://cw436k1muwgdk" path="res://scenes/players/grasshopper.tscn" id="6_ceyhc"]
 [ext_resource type="PackedScene" uid="uid://bvw8oi358rqpt" path="res://scenes/players/penguin.tscn" id="6_o2em6"]
+[ext_resource type="PackedScene" uid="uid://d2sogis3k2l1o" path="res://scenes/players/bat.tscn" id="6_ucc4a"]
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="10_tc1ft"]
 [ext_resource type="PackedScene" uid="uid://dtkxmb7d23xft" path="res://scenes/goal.tscn" id="11_ec0d2"]
@@ -58,7 +59,7 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 180.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_363jy"]
-vertices = PackedVector3Array(-99.5, 1, -74.5, -99.5, 1, 74.5, 99.5, 1, 74.5, 99.5, 1, -74.5)
+vertices = PackedVector3Array(-118, 1, -89.5, -118, 1, 89.5, 118, 1, 89.5, 118, 1, -89.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qibxi"]
@@ -276,6 +277,8 @@ current = true
 
 [node name="Players" type="Node" parent="."]
 
+[node name="player11" parent="Players" instance=ExtResource("6_ucc4a")]
+
 [node name="player10" parent="Players" instance=ExtResource("6_o2em6")]
 
 [node name="player9" parent="Players" instance=ExtResource("6_ceyhc")]
@@ -312,6 +315,12 @@ is_team1 = false
 unique_name_in_owner = true
 navigation_mesh = SubResource("NavigationMesh_363jy")
 
+[node name="Goal" parent="NavigationRegion3D" instance=ExtResource("11_ec0d2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.06, 0, 0)
+
+[node name="Goal2" parent="NavigationRegion3D" instance=ExtResource("11_ec0d2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 96.06, 0, 0)
+
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
@@ -321,12 +330,6 @@ shape = SubResource("BoxShape3D_dgiw2")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
 transform = Transform3D(237, 0, 0, 0, 1, 0, 0, 0, 180, 0, 0, 0)
 mesh = SubResource("BoxMesh_3vqi6")
-
-[node name="Goal" parent="NavigationRegion3D" instance=ExtResource("11_ec0d2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.06, 0, 0)
-
-[node name="Goal2" parent="NavigationRegion3D" instance=ExtResource("11_ec0d2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 96.06, 0, 0)
 
 [connection signal="goal" from="NavigationRegion3D/Goal" to="." method="_on_goal_goal" binds= [true]]
 [connection signal="goal" from="NavigationRegion3D/Goal2" to="." method="_on_goal_goal" binds= [false]]

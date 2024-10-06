@@ -8,6 +8,7 @@ class_name Player
 @export var kick_power:float = 100
 @export var rot_speed: float = 0.1
 @export var on_kicked_mult: float = 1.0
+@export var is_flying: bool = false
 @export var reset_posn: Vector3 = Vector3.ZERO
 @export var attack_angle_deg: float = 45
 @export var is_team1: bool = true
@@ -37,12 +38,12 @@ func _ready() -> void:
 	time_since_last_jump = TIME_BETWEEN_JUMPS
 
 func can_move() -> bool:
-	return on_ground && time_since_kicked >= TIME_STUCK_IN_KICK
+	return (on_ground || is_flying) && time_since_kicked >= TIME_STUCK_IN_KICK
 
 func _physics_process(delta: float) -> void:
 	dir_to_move = Vector3.ZERO
 	time_since_kicked += delta
-	if (%IsOnGround.is_colliding()):
+	if (%IsOnGround.is_colliding() || is_flying):
 		on_ground = true
 		time_since_last_jump += delta
 	else:
@@ -92,9 +93,11 @@ func process_ai_movement() -> void:
 	nav.target_position = ai_target_posn
 	if (global_position - ai_target_posn).length_squared() < 10:
 		return
-	var next_point:Vector3 = nav.get_next_path_position()
-	var dir:Vector3 = next_point - global_transform.origin
-	dir.y = 0
+	#var next_point:Vector3 = nav.get_next_path_position()
+	nav.get_next_path_position() # just for debug pathing
+	var next_point = ai_target_posn
+	var dir:Vector3 = Vector3(next_point.x - global_position.x, 0, next_point.z - global_position.z)
+	#dir.y = 0
 	dir = dir.normalized() * move_speed
 	
 	#NavigationServer3D.agent_set_velocity(nav_agent_rid, linear_velocity)
@@ -111,7 +114,10 @@ func process_ai_movement() -> void:
 		elif (obj is Player && obj.is_team1 != is_team1):
 			dir_to_move.y = jump_power
 			process_kick()
-
+	elif is_flying && global_position.y < 5 && time_since_last_jump > TIME_BETWEEN_JUMPS:
+		dir_to_move.y = 3
+		time_since_last_jump = 0
+	
 	apply_central_impulse(dir_to_move)
 
 var dir_to_move: Vector3
