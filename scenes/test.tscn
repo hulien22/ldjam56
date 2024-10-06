@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=36 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
-[ext_resource type="PackedScene" uid="uid://cc8bsi8l1d3rr" path="res://scenes/ball.tscn" id="1_j8yqo"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
 [ext_resource type="PackedScene" uid="uid://bganc66bm43gn" path="res://scenes/env.tscn" id="3_7bb6t"]
 [ext_resource type="PackedScene" uid="uid://tx8ieqpqh8vw" path="res://scenes/env2.tscn" id="3_mfhjo"]
@@ -146,15 +145,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 350.0
 
 [node name="Balls" type="Node" parent="."]
-
-[node name="ball" parent="Balls" instance=ExtResource("1_j8yqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.5732, 0)
-
-[node name="ball2" parent="Balls" instance=ExtResource("1_j8yqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.9209, 53.5948, 9.86749)
-
-[node name="ball3" parent="Balls" instance=ExtResource("1_j8yqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.7332, 27.937, 8.86817)
+unique_name_in_owner = true
 
 [node name="env" type="Node" parent="."]
 
@@ -311,6 +302,7 @@ environment = SubResource("Environment_snpd3")
 attributes = SubResource("CameraAttributesPractical_38kb1")
 
 [node name="Players" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="player15" parent="Players" instance=ExtResource("6_c1ujs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)

@@ -39,14 +39,20 @@ func _physics_process(delta: float) -> void:
 var balls: Array[Ball] = []
 func load_balls():
 	balls = []  
-	for obj in $Balls.get_children():
-		balls.push_back(obj)
+	#for obj in %Balls.get_children():
+		#balls.push_back(obj)
+	for i in 3:
+		var b:Ball = ball_scene.instantiate()
+		balls.push_back(b)
+		%Balls.add_child(b)
+		b.global_position = Vector3((i - 1) * 40, 40, (i - 1) * 40)
+		b.freeze = true
 
 var players: Array[Player] = []
 var cur_player: int = 0
 func load_players():
 	players = []  
-	for obj in $Players.get_children():
+	for obj in %Players.get_children():
 		players.push_back(obj)
 		obj.set_is_player(false)
 		obj.set_nav_reg(%NavigationRegion3D)
@@ -99,7 +105,8 @@ func start_game():
 	for p in players:
 		p.enable(true)
 	# TODO start spawning in balls
-	
+	for b in balls:
+		b.freeze = false
 
 func _process(delta: float) -> void:
 	if game_mode == GameMode.INTRO && %OpeningCam.current:
