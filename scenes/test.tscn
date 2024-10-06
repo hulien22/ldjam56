@@ -9,13 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
-size = Vector3(200, 1, 150)
+size = Vector3(300, 100, 200)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sfjhi"]
 size = Vector2(200, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_366qn"]
-size = Vector3(200, 300, 1)
+size = Vector3(300, 300, 100)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_363jy"]
 vertices = PackedVector3Array(-99.5, 1, -74.5, -99.5, 1, 74.5, 99.5, 1, 74.5, 99.5, 1, -74.5)
@@ -32,7 +32,7 @@ material = SubResource("StandardMaterial3D_qibxi")
 script = ExtResource("1_7qlyq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, -0.0257758, 0.537999, 0.842551, -0.499335, 0.723227, -0.477082, -22.1823, -18.8988, -1.29379)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1823, -18.8988, -1.29379)
 shadow_enabled = true
 directional_shadow_max_distance = 350.0
 
@@ -52,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.594, 16.1335, 25.8744)
 [node name="ceil" type="StaticBody3D" parent="Walls"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ceil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 350, 0)
 shape = SubResource("BoxShape3D_dgiw2")
 
 [node name="wall" type="StaticBody3D" parent="Walls"]
@@ -63,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, -50)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="wall2" type="StaticBody3D" parent="Walls"]
@@ -74,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, -50)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="wall3" type="StaticBody3D" parent="Walls"]
@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, -50)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="wall4" type="StaticBody3D" parent="Walls"]
@@ -96,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("PlaneMesh_sfjhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, -50)
 shape = SubResource("BoxShape3D_366qn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -113,7 +113,7 @@ current = true
 [node name="Players" type="Node" parent="."]
 
 [node name="player" parent="Players" instance=ExtResource("4_7ungm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, -33.2535, 0)
 
 [node name="player2" parent="Players" instance=ExtResource("5_s688w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, 0, 14.0098)
@@ -147,6 +147,7 @@ navigation_mesh = SubResource("NavigationMesh_363jy")
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 shape = SubResource("BoxShape3D_dgiw2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]

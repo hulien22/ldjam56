@@ -12,6 +12,9 @@ class_name Player
 @export var attack_angle_deg: float = 45
 @export var is_team1: bool = true
 
+@export var x_bound: float = 100
+@export var z_bound: float = 75
+
 @onready var nav:NavigationAgent3D = $NavigationAgent3D
 
 var is_player_controlled:bool = false
@@ -103,6 +106,20 @@ func process_ai_movement() -> void:
 
 var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	# Keep in bounds
+	if abs(global_position.x) > x_bound + 100:
+		global_position.x = sign(global_position.x) * 0.95 * x_bound
+		linear_velocity = Vector3.ZERO
+		return
+	if abs(global_position.z) > z_bound + 100:
+		global_position.z = sign(global_position.z) * 0.95 * z_bound
+		linear_velocity = Vector3.ZERO
+		return
+	if (global_position.y < -100):
+		global_position.y = 100
+		linear_velocity = Vector3.ZERO
+		return
+
 	if !can_move():
 		swap_to_anim_if_not_started("RESET", 1.0)
 		return
