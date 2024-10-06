@@ -1,6 +1,10 @@
 extends Node3D
 
 const MIN_BALL_DISTANCE:float = 10000
+@onready var explosion_scene = preload("res://scenes/explosion.tscn")
+
+var team1_score: int = 0
+var team2_score: int = 0
 
 func _ready() -> void:
 	load_balls()
@@ -43,3 +47,22 @@ func load_players():
 		obj.set_nav_reg(%NavigationRegion3D)
 	cur_player = 0
 	players[cur_player].set_is_player(true)
+
+func show_scores():
+	%Team1Score.text = str(team1_score)
+	%Team2Score.text = str(team2_score)
+
+func _on_goal_goal(body: Node3D, team1_net: bool) -> void:
+	if body.has_method("reset_posn"):
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = body.global_position
+		if team1_net:
+			team2_score += 1
+			explosion.set_color(Color.CRIMSON)
+		else:
+			team1_score += 1
+			explosion.set_color(Color.CORNFLOWER_BLUE)
+		add_child(explosion)
+		body.reset_posn()
+		show_scores()
+	

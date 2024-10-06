@@ -8,3 +8,7 @@ func on_kick(g_pos: Vector3, kick_power:float) -> void:
 func _physics_process(delta: float) -> void:
 	#print(rotation_degrees)
 	$Team1Area.global_rotation = Vector3(0,0,0)
+
+func reset_posn() -> void:
+	global_position = Vector3(0, 100, 0)
+	linear_velocity = Vector3.ZERO

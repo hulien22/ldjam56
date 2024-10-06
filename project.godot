@@ -14,3 +14,8 @@ config/name="ldjam56"
 run/main_scene="res://scenes/test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+3d_physics/layer_1="Objects"
+3d_physics/layer_2="Ball"

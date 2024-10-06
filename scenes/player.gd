@@ -20,8 +20,8 @@ class_name Player
 var is_player_controlled:bool = false
 
 var on_ground:bool = false;
-var time_since_kicked:float = TIME_STUCK_IN_KICK
-var time_since_last_jump: float = TIME_BETWEEN_JUMPS
+var time_since_kicked:float
+var time_since_last_jump: float
 
 var ai_target_posn:Vector3
 var closest_ball: Ball
@@ -35,6 +35,9 @@ func _ready() -> void:
 	mat.albedo_color.a = 0.5
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA 
 	%TeamBottom.material_override = mat
+	
+	time_since_kicked = TIME_STUCK_IN_KICK
+	time_since_last_jump = TIME_BETWEEN_JUMPS
 
 func can_move() -> bool:
 	return on_ground && time_since_kicked >= TIME_STUCK_IN_KICK
@@ -56,7 +59,8 @@ func _physics_process(delta: float) -> void:
 	if (is_player_controlled):
 		process_player_input()
 	else:
-		process_ai_movement()
+		#process_ai_movement()
+		pass
 	
 	%TeamBottom.global_position = global_position
 	%TeamBottom.global_position.y = 0.5
@@ -160,7 +164,7 @@ func process_kick() -> void:
 			obj.on_kick(global_position, kick_power)
 
 func on_kick(g_pos: Vector3, k_power:float) -> void:
-	print(self, " Was kicked!")
+	#print(self, " Was kicked!")
 	time_since_kicked = 0
 	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * k_power * on_kicked_mult
 	apply_central_impulse(imp)
@@ -195,7 +199,7 @@ func set_target_posn(p: Vector3) -> void:
 func compute_target_posn() -> void:
 	# if no ball, return to reset posn?
 	if closest_ball == null:
-		print(self, " no ball close")
+		#print(self, " no ball close")
 		set_target_posn(reset_posn)
 		return
 	
@@ -209,7 +213,7 @@ func compute_target_posn() -> void:
 	
 	# In the attack cone, so charge!!
 	if (abs(angle) < deg_to_rad(attack_angle_deg)):
-		print(self, " charge!!")
+		#print(self, " charge!!")
 		set_target_posn(closest_ball.global_position)
 		return
 	
@@ -226,11 +230,11 @@ func compute_target_posn() -> void:
 			# flip across y axis
 			dir.x *= -1
 		set_target_posn(global_position + Vector3(dir.x, 0, dir.y))
-		print(self, " move into attack cone")
+		#print(self, " move into attack cone")
 		return
 	
 	# on wrong side of ball, need to get other side
-	print(self, " wrong side")
+	#print(self, " wrong side")
 	var dir: Vector2 = Vector2.RIGHT * 100
 	if is_team1:
 		dir.x *= -1

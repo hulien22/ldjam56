@@ -1,4 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtkxmb7d23xft"]
+[gd_scene load_steps=11 format=3 uid="uid://dtkxmb7d23xft"]
+
+[ext_resource type="Script" path="res://scripts/goal.gd" id="1_0rdkr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttmn6"]
+size = Vector3(1, 56, 56)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_grpq3"]
+friction = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwwjt"]
 radius = 2.0
@@ -27,9 +35,20 @@ albedo_color = Color(1, 1, 1, 0.145098)
 size = Vector3(56, 0.01, 56)
 
 [node name="Goal" type="Node3D"]
+script = ExtResource("1_0rdkr")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6429, 36.2428, 0.197617)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4364, -28, 0)
+shape = SubResource("BoxShape3D_ttmn6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.8867, -28.382)
+physics_material_override = SubResource("PhysicsMaterial_grpq3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("CapsuleShape3D_pwwjt")
@@ -40,6 +59,7 @@ mesh = SubResource("CapsuleMesh_6rgv1")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.8867, 28.382)
+physics_material_override = SubResource("PhysicsMaterial_grpq3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("CapsuleShape3D_pwwjt")
@@ -50,6 +70,7 @@ mesh = SubResource("CapsuleMesh_6rgv1")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 36.9736, 0)
+physics_material_override = SubResource("PhysicsMaterial_grpq3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 shape = SubResource("CapsuleShape3D_s3r7y")
@@ -81,3 +102,5 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -22.18
 cast_shadow = 0
 mesh = SubResource("BoxMesh_ms37m")
 surface_material_override/0 = SubResource("StandardMaterial3D_cnuoo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
