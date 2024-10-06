@@ -55,7 +55,7 @@ func show_scores():
 func _on_goal_goal(body: Node3D, team1_net: bool) -> void:
 	if body.has_method("reset_posn"):
 		var explosion = explosion_scene.instantiate()
-		explosion.global_position = body.global_position
+		explosion.set_spawn_posn(body.get_global_position())
 		if team1_net:
 			team2_score += 1
 			explosion.set_color(Color.CRIMSON)
