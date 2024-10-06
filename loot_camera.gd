@@ -1,5 +1,8 @@
 extends Camera3D
 
+var looting = true
+
+signal swap_player(card: Node3D)
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -23,5 +26,14 @@ func on_click(pos: Vector2):
 			project_position(pos, 1000)))
 	if result.has("collider"):
 		if result["collider"].get_parent().get_child_count() > 0 and result["collider"].get_parent().get_child(0) is Card:
-			result["collider"].get_parent().get_child(0).flip_card()
+			if looting:
+				result["collider"].get_parent().get_child(0).flip_card()
+			else:
+				emit_signal("swap_player", result["collider"].get_parent())
+				print("allo")
 	
+func at_vending():
+	looting = true
+
+func at_sky():
+	looting = false

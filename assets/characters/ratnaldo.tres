@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bx71bluk36gss"]
+
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="1_3wdow"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_uogn5"]
+
+[resource]
+script = ExtResource("1_uogn5")
+name = "Cristiano Ratnaldo"
+determination = 90
+cuteness = 96
+model = ExtResource("1_3wdow")
+chance = 1
+nationality = "Portugal"

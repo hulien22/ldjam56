@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://b6lru1ravre2f"]
+
+[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/Cheetah.glb" id="1_6xekq"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_tkq5r"]
+
+[resource]
+script = ExtResource("1_tkq5r")
+name = "Iker Cheetillas"
+determination = 34
+cuteness = 43
+model = ExtResource("1_6xekq")
+chance = 2
+nationality = "Spain"

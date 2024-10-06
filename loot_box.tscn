@@ -1,26 +1,470 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=28 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
+[ext_resource type="Script" path="res://loot_box_manager.gd" id="1_tpc8w"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_aucgo"]
+[ext_resource type="Resource" uid="uid://bnw7scnhjf6je" path="res://assets/characters/anten.tres" id="3_bbe2g"]
+[ext_resource type="Resource" uid="uid://bwptmva1ahj5b" path="res://assets/characters/cheetallini.tres" id="4_51y3a"]
+[ext_resource type="PackedScene" uid="uid://btf7p5yhrwcew" path="res://assets/VendingMachine.glb" id="4_baohi"]
+[ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="5_a5osi"]
+[ext_resource type="Resource" uid="uid://b6lru1ravre2f" path="res://assets/characters/cheetillas.tres" id="5_wy843"]
+[ext_resource type="Resource" uid="uid://njhm1h6ugcxm" path="res://assets/characters/frogert.tres" id="6_jx01g"]
+[ext_resource type="Resource" uid="uid://b3huf27rkrk50" path="res://assets/characters/frogio.tres" id="7_iv135"]
+[ext_resource type="Resource" uid="uid://dwwa3yod3ebpi" path="res://assets/characters/giantluigi.tres" id="8_ljnyb"]
+[ext_resource type="Resource" uid="uid://mh0400ftqwvp" path="res://assets/characters/mcheetah.tres" id="9_rjh6s"]
+[ext_resource type="Resource" uid="uid://h120tirsu2xe" path="res://assets/characters/pepe.tres" id="10_5g5qr"]
+[ext_resource type="Resource" uid="uid://bvo0ljklokxrq" path="res://assets/characters/ratan.tres" id="11_g7hjt"]
+[ext_resource type="Resource" uid="uid://bx71bluk36gss" path="res://assets/characters/ratnaldo.tres" id="12_onkpj"]
+[ext_resource type="PackedScene" uid="uid://d1k61sst1oxr8" path="res://character_option.tscn" id="17_5iyng"]
+
+[sub_resource type="Environment" id="Environment_37ics"]
+background_mode = 1
+background_color = Color(0, 0.384314, 0.662745, 1)
+background_energy_multiplier = 1.57
+
+[sub_resource type="Animation" id="Animation_0q3tb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LootBox/CenterCard:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.957976, 2.69927, -3.14159)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LootBox/CenterCard")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.249678, -0.401007, -0.907479)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LootBox/LeftRot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LootBox/RightRot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.349066, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LootBox/LeftRot:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.349066, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LootBox/LeftRot/LeftCard:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LootBox/RightRot/RightCard:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "position_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LootBox/RightRot")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.85, 0, -0.2)
+
+[sub_resource type="Animation" id="Animation_q0blu"]
+resource_name = "dispense"
+length = 2.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LootBox/CenterCard")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.288, 0.64, -1.037, 0.966667, 1, 0.086, 0.359, -0.594, 2.5, 1, 0, 1, -0.35)
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LootBox/CenterCard")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.15, 0.15, 0.15, 0.966667, 1, 0.15, 0.15, 0.15, 2.5, 1, 1, 1, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LootBox/CenterCard:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.966667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.957976, 2.69927, -3.14159), Vector3(0.957976, 2.69927, -3.14159), Vector3(0, 3.14159, 0)]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LootBox/LeftRot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.288, 0.64, -1.037, 0.966667, 1, 0.086, 0.359, -0.594, 2.5, 1, -0.85, 1, -0.2)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LootBox/RightRot:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.933333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.958186, 2.70002, -3.14159), Vector3(0.958186, 2.70002, -3.14159), Vector3(0, -0.349066, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LootBox/LeftRot:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.933333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.958186, 2.70002, -3.14159), Vector3(0.958186, 2.70002, -3.14159), Vector3(0, 0.349066, 0)]
+}
+tracks/6/type = "scale_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LootBox/LeftRot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.15, 0.15, 0.15, 0.933333, 1, 0.15, 0.15, 0.15, 2.5, 1, 1, 1, 1)
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LootBox/LeftRot/LeftCard:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.56667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LootBox/RightRot/RightCard:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.56667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/9/type = "scale_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("LootBox/RightRot")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.15, 0.15, 0.15, 0.933333, 1, 0.15, 0.15, 0.15, 2.5, 1, 1, 1, 1)
+tracks/10/type = "position_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("LootBox/RightRot")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.288, 0.64, -1.037, 0.933333, 1, 0.086, 0.359, -0.594, 2.5, 1, 0.85, 1, -0.2)
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LootBox/CenterCard")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_card"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("LootBox/RightRot/RightCard")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_card"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("LootBox/LeftRot/LeftCard")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_card"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q7y8r"]
+_data = {
+"RESET": SubResource("Animation_0q3tb"),
+"dispense": SubResource("Animation_q0blu")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tibiy"]
+albedo_texture = ExtResource("5_a5osi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0tk5r"]
+material = SubResource("StandardMaterial3D_tibiy")
+size = Vector2(200, 100)
+orientation = 1
+
+[sub_resource type="Animation" id="Animation_fyuo3"]
+resource_name = "goto_vend"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -8, 6, -1, 1, 1, 11, 1, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"at_vending"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_me0by"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m8uwy"]
+resource_name = "goto_sky"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 11, 1, 1, 1, 1, -8, 6, -1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"at_sky"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ua3rh"]
+_data = {
+"RESET": SubResource("Animation_me0by"),
+"goto_sky": SubResource("Animation_m8uwy"),
+"goto_vend": SubResource("Animation_fyuo3")
+}
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_tpc8w")
+chars = Array[ExtResource("2_aucgo")]([ExtResource("3_bbe2g"), ExtResource("4_51y3a"), ExtResource("5_wy843"), ExtResource("6_jx01g"), ExtResource("7_iv135"), ExtResource("8_ljnyb"), ExtResource("9_rjh6s"), ExtResource("10_5g5qr"), ExtResource("11_g7hjt"), ExtResource("12_onkpj")])
+char_option = ExtResource("17_5iyng")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+environment = SubResource("Environment_37ics")
 script = ExtResource("1_mpnbw")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32536)
+[node name="LootBox" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="CenterCard" parent="." instance=ExtResource("1_m6i81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+[node name="OmniLight3D" type="OmniLight3D" parent="LootBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42133, 1.32536)
 
-[node name="RightRot" type="Node3D" parent="."]
-transform = Transform3D(0.925871, 0, -0.377841, 0, 1, 0, 0.377841, 0, 0.925871, 1, 0, -0.6)
+[node name="CenterCard" parent="LootBox" instance=ExtResource("1_m6i81")]
+transform = Transform3D(0.135564, -0.0525227, 0.0369298, -2.18727e-07, -0.0862765, -0.122704, 0.0642062, 0.110895, -0.0779733, 0.249678, -0.401007, -0.907479)
 
-[node name="RightCard" parent="RightRot" instance=ExtResource("1_m6i81")]
+[node name="RightRot" type="Node3D" parent="LootBox"]
+transform = Transform3D(0.140954, 0, -0.051303, 0, 0.15, 0, 0.051303, 0, 0.140954, 0.85, 0, -0.2)
 
-[node name="LeftRot" type="Node3D" parent="."]
-transform = Transform3D(0.894732, 0, 0.446604, 0, 1, 0, -0.446604, 0, 0.894732, -1, 0, -0.6)
+[node name="RightCard" parent="LootBox/RightRot" instance=ExtResource("1_m6i81")]
 
-[node name="LeftCard" parent="LeftRot" instance=ExtResource("1_m6i81")]
+[node name="LeftRot" type="Node3D" parent="LootBox"]
+transform = Transform3D(0.140954, 0, 0.051303, 0, 0.15, 0, -0.051303, 0, 0.140954, 0, 0, 0)
+
+[node name="LeftCard" parent="LootBox/LeftRot" instance=ExtResource("1_m6i81")]
+
+[node name="Vending" parent="LootBox" instance=ExtResource("4_baohi")]
+transform = Transform3D(0.172326, 0, -0.101508, 0, 0.2, 0, 0.101508, 0, 0.172326, -0.8, 0.2, -2.146)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LootBox"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_q7y8r")
+}
+movie_quit_on_finish = true
+
+[node name="CharSelect" type="Node3D" parent="."]
+
+[node name="CardFlipHack" parent="CharSelect" instance=ExtResource("1_m6i81")]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, -13.8104, 0, -1.36764)
+
+[node name="CardFlipHack2" parent="CharSelect" instance=ExtResource("1_m6i81")]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, -8.6943, 0, 1.20248)
+
+[node name="CardFlipHack3" parent="CharSelect" instance=ExtResource("1_m6i81")]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, -8.72744, -0.000276089, -3.50974)
+
+[node name="CardFlipHack4" parent="CharSelect" instance=ExtResource("1_m6i81")]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, -3.73509, -9.53674e-07, -1.47917)
+
+[node name="Field" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.65, 0, -1.47)
+mesh = SubResource("QuadMesh_0tk5r")
+skeleton = NodePath("../LootBox/Vending")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+grow_horizontal = 0
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+
+[node name="CharacterOption" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("17_5iyng")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Vend"
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Sky"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ua3rh")
+}
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.362893, 0.931831, 0, -0.931831, 0.362893, -2.30152, 3.72247, -3.13093)
+
+[connection signal="swap_player" from="Camera3D" to="." method="replace_character"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="goto_vending"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button2" to="." method="goto_sky"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bvo0ljklokxrq"]
+
+[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/Rat.glb" id="1_vds3f"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_yl5u2"]
+
+[resource]
+script = ExtResource("1_yl5u2")
+name = "Ratan Ibrahimovic"
+determination = 99
+cuteness = 85
+model = ExtResource("1_vds3f")
+chance = 2
+nationality = "Sweden"

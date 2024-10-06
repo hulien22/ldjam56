@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://b3huf27rkrk50"]
+
+[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/Frog.glb" id="1_45you"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_vm8ab"]
+
+[resource]
+script = ExtResource("1_vm8ab")
+name = "Frogio Ramos"
+determination = 85
+cuteness = 90
+model = ExtResource("1_45you")
+chance = 2
+nationality = "Spain"
