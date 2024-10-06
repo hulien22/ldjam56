@@ -9,5 +9,5 @@ name = "Ratan Ibrahimovic"
 determination = 99
 cuteness = 85
 model = ExtResource("1_vds3f")
-chance = 2
+chance = 1
 nationality = "Sweden"

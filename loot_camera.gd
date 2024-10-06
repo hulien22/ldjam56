@@ -30,7 +30,6 @@ func on_click(pos: Vector2):
 				result["collider"].get_parent().get_child(0).flip_card()
 			else:
 				emit_signal("swap_player", result["collider"].get_parent())
-				print("allo")
 	
 func at_vending():
 	looting = true

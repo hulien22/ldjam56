@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=33 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
@@ -15,7 +15,12 @@
 [ext_resource type="Resource" uid="uid://mh0400ftqwvp" path="res://assets/characters/mcheetah.tres" id="9_rjh6s"]
 [ext_resource type="Resource" uid="uid://h120tirsu2xe" path="res://assets/characters/pepe.tres" id="10_5g5qr"]
 [ext_resource type="Resource" uid="uid://bvo0ljklokxrq" path="res://assets/characters/ratan.tres" id="11_g7hjt"]
+[ext_resource type="Resource" uid="uid://08m8d67l3ip4" path="res://assets/characters/antoine.tres" id="11_jsn4a"]
+[ext_resource type="Resource" uid="uid://bcn12qjcfroh8" path="res://assets/characters/remi.tres" id="12_i0owo"]
 [ext_resource type="Resource" uid="uid://bx71bluk36gss" path="res://assets/characters/ratnaldo.tres" id="12_onkpj"]
+[ext_resource type="Resource" uid="uid://dgbuhf1lbnumm" path="res://assets/characters/flik.tres" id="13_3fgax"]
+[ext_resource type="Resource" uid="uid://bsjw3o3rgo0j1" path="res://assets/characters/axel.tres" id="14_jm8iw"]
+[ext_resource type="Resource" uid="uid://c3f8kvbn8qyrg" path="res://assets/characters/charlie.tres" id="15_epesc"]
 [ext_resource type="PackedScene" uid="uid://d1k61sst1oxr8" path="res://character_option.tscn" id="17_5iyng"]
 
 [sub_resource type="Environment" id="Environment_37ics"]
@@ -269,42 +274,6 @@ material = SubResource("StandardMaterial3D_tibiy")
 size = Vector2(200, 100)
 orientation = 1
 
-[sub_resource type="Animation" id="Animation_fyuo3"]
-resource_name = "goto_vend"
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -8, 6, -1, 1, 1, 11, 1, 1)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"at_vending"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_me0by"]
 length = 0.001
 tracks/0/type = "position_3d"
@@ -363,6 +332,56 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_fyuo3"]
+resource_name = "goto_vend"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -8, 6, -1, 1, 1, 11, 1, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"at_vending"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"at_vend"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ua3rh"]
 _data = {
 "RESET": SubResource("Animation_me0by"),
@@ -372,7 +391,8 @@ _data = {
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_tpc8w")
-chars = Array[ExtResource("2_aucgo")]([ExtResource("3_bbe2g"), ExtResource("4_51y3a"), ExtResource("5_wy843"), ExtResource("6_jx01g"), ExtResource("7_iv135"), ExtResource("8_ljnyb"), ExtResource("9_rjh6s"), ExtResource("10_5g5qr"), ExtResource("11_g7hjt"), ExtResource("12_onkpj")])
+basic_chars = Array[ExtResource("2_aucgo")]([ExtResource("7_iv135"), ExtResource("8_ljnyb"), ExtResource("11_g7hjt"), ExtResource("10_5g5qr"), ExtResource("6_jx01g"), ExtResource("5_wy843"), ExtResource("4_51y3a"), ExtResource("3_bbe2g"), ExtResource("11_jsn4a"), ExtResource("12_i0owo"), ExtResource("13_3fgax"), ExtResource("14_jm8iw"), ExtResource("15_epesc")])
+lege_chars = Array[ExtResource("2_aucgo")]([ExtResource("12_onkpj"), ExtResource("9_rjh6s")])
 char_option = ExtResource("17_5iyng")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -386,15 +406,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42133, 1.32536)
 
 [node name="CenterCard" parent="LootBox" instance=ExtResource("1_m6i81")]
-transform = Transform3D(0.135564, -0.0525227, 0.0369298, -2.18727e-07, -0.0862765, -0.122704, 0.0642062, 0.110895, -0.0779733, 0.249678, -0.401007, -0.907479)
+transform = Transform3D(0.135564, -0.0525227, 0.0369297, -2.18727e-07, -0.0862765, -0.122704, 0.0642063, 0.110895, -0.0779731, 0.249678, -0.401007, -0.907479)
 
 [node name="RightRot" type="Node3D" parent="LootBox"]
-transform = Transform3D(0.140954, 0, -0.051303, 0, 0.15, 0, 0.051303, 0, 0.140954, 0.85, 0, -0.2)
+transform = Transform3D(0.140954, 0, -0.0513031, 0, 0.15, 0, 0.0513031, 0, 0.140954, 0.85, 0, -0.2)
 
 [node name="RightCard" parent="LootBox/RightRot" instance=ExtResource("1_m6i81")]
 
 [node name="LeftRot" type="Node3D" parent="LootBox"]
-transform = Transform3D(0.140954, 0, 0.051303, 0, 0.15, 0, -0.051303, 0, 0.140954, 0, 0, 0)
+transform = Transform3D(0.140954, 0, 0.0513031, 0, 0.15, 0, -0.0513031, 0, 0.140954, 0, 0, 0)
 
 [node name="LeftCard" parent="LootBox/LeftRot" instance=ExtResource("1_m6i81")]
 
@@ -430,6 +450,7 @@ skeleton = NodePath("../LootBox/Vending")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
