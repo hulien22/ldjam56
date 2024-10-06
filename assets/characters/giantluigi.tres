@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://dwwa3yod3ebpi"]
 
-[ext_resource type="PackedScene" uid="uid://o5rw8o3ouc03" path="res://assets/animals/Ant.glb" id="1_7e52f"]
+[ext_resource type="PackedScene" uid="uid://tog6810subid" path="res://assets/characters/models/ant_model.tscn" id="1_efbq8"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_kfh58"]
 
 [resource]
@@ -8,6 +8,6 @@ script = ExtResource("1_kfh58")
 name = "Giantluigi Buffon"
 determination = 95
 cuteness = 87
-model = ExtResource("1_7e52f")
+model = ExtResource("1_efbq8")
 chance = 1
 nationality = "Italy"

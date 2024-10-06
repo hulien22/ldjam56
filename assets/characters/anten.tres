@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bnw7scnhjf6je"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_h1mxd"]
-[ext_resource type="PackedScene" uid="uid://o5rw8o3ouc03" path="res://assets/animals/Ant.glb" id="1_o0l5p"]
+[ext_resource type="PackedScene" uid="uid://tog6810subid" path="res://assets/characters/models/ant_model.tscn" id="1_qsrn2"]
 
 [resource]
 script = ExtResource("1_h1mxd")
 name = "Anten Robben"
 determination = 65
 cuteness = 65
-model = ExtResource("1_o0l5p")
+model = ExtResource("1_qsrn2")
 chance = 1
 nationality = "Netherlands"

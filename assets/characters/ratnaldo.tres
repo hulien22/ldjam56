@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bx71bluk36gss"]
 
-[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="1_3wdow"]
+[ext_resource type="PackedScene" uid="uid://d3knjqie0kwof" path="res://assets/characters/models/rat_model.tscn" id="1_hip3r"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_uogn5"]
 
 [resource]
@@ -8,6 +8,7 @@ script = ExtResource("1_uogn5")
 name = "Cristiano Ratnaldo"
 determination = 90
 cuteness = 96
-model = ExtResource("1_3wdow")
+model = ExtResource("1_hip3r")
 chance = 0
 nationality = "Portugal"
+type = 10
