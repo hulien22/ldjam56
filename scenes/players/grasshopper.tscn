@@ -9,6 +9,7 @@ height = 5.0
 
 [node name="player" instance=ExtResource("1_6k4ts")]
 TIME_BETWEEN_JUMPS = 0.5
+forwards_jump_power = 10.0
 kick_power = 20.0
 on_kicked_mult = 3.0
 
