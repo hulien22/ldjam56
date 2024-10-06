@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_rarvx")
-name = ""
+name = "Pepe"
 determination = 45
 cuteness = 76
 model = ExtResource("1_ii1dp")

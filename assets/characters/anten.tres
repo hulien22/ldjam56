@@ -9,5 +9,5 @@ name = "Anten Robben"
 determination = 65
 cuteness = 65
 model = ExtResource("1_o0l5p")
-chance = 2
+chance = 1
 nationality = "Netherlands"

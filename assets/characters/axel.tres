@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bsjw3o3rgo0j1"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_58a30"]
+[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/Frog.glb" id="1_q3dfn"]
+
+[resource]
+script = ExtResource("1_58a30")
+name = "Axel Frog"
+determination = 7
+cuteness = 1
+model = ExtResource("1_q3dfn")
+chance = 2
+nationality = "Sweden"

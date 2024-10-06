@@ -9,5 +9,5 @@ name = "Kylian Mcheetah"
 determination = 34
 cuteness = 43
 model = ExtResource("1_b4s7f")
-chance = 1
+chance = 0
 nationality = "France"

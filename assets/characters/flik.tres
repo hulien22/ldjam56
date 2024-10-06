@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://dgbuhf1lbnumm"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_e52lg"]
+[ext_resource type="PackedScene" uid="uid://o5rw8o3ouc03" path="res://assets/Ant.glb" id="1_y1s6r"]
+
+[resource]
+script = ExtResource("1_e52lg")
+name = "Flik Ant"
+determination = 4
+cuteness = 5
+model = ExtResource("1_y1s6r")
+chance = 2
+nationality = "Antigua"
