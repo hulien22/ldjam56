@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://tx8ieqpqh8vw"]
 
 [ext_resource type="PackedScene" uid="uid://u43fqcf6o5hs" path="res://assets/env/Floating place.glb" id="1_dvema"]
-[ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="2_txlpf"]
+[ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="2_nuaw4"]
 [ext_resource type="PackedScene" uid="uid://8ydunox2fqtk" path="res://assets/env/Secret Camping spot.glb" id="3_5ijr2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o10lo"]
@@ -28,15 +28,15 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fmll"]
 albedo_color = Color(0.43, 0.43, 0.43, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8woql"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_pi5qi"]
 size = Vector3(300, 100, 200)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejsp0"]
-albedo_texture = ExtResource("2_txlpf")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qibxi"]
+albedo_texture = ExtResource("2_nuaw4")
 uv1_scale = Vector3(3, 2, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hki5q"]
-material = SubResource("StandardMaterial3D_ejsp0")
+[sub_resource type="BoxMesh" id="BoxMesh_s5wku"]
+material = SubResource("StandardMaterial3D_qibxi")
 
 [node name="Env2" type="Node3D"]
 
@@ -45,20 +45,19 @@ transform = Transform3D(297.483, 59.811, -1366.72, -33.3167, 1398.56, 53.9527, 1
 visible = false
 
 [node name="Base" type="MeshInstance3D" parent="."]
-transform = Transform3D(69, 0, 0, 0, 50, 0, 0, 0, 70, 0, -41.3791, 0)
+transform = Transform3D(82.8, 0, 0, 0, 60, 0, 0, 0, 84, 0, -49.5457, 0)
 mesh = SubResource("ArrayMesh_xfrie")
 surface_material_override/0 = SubResource("StandardMaterial3D_2fmll")
 
-[node name="Floor" type="StaticBody3D" parent="."]
-visible = false
+[node name="Floor2" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
-shape = SubResource("BoxShape3D_8woql")
+shape = SubResource("BoxShape3D_pi5qi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
-mesh = SubResource("BoxMesh_hki5q")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+transform = Transform3D(248, 0, 0, 0, 1, 0, 0, 0, 180, 0, 0, 0)
+mesh = SubResource("BoxMesh_s5wku")
 
 [node name="Secret Camping spot" parent="." instance=ExtResource("3_5ijr2")]
-transform = Transform3D(-2247.25, 0, -1095.38, 0, 2500, 0, 1095.38, 0, -2247.25, 88.0547, -90.287, -291.077)
+transform = Transform3D(-2427.03, 0, -1183.01, 0, 2700, 0, 1183.01, 0, -2427.03, 88.0547, -90.287, -291.077)

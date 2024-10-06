@@ -23,7 +23,7 @@
 size = Vector3(300, 100, 200)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o44p1"]
-friction = 0.5
+friction = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sfjhi"]
 size = Vector2(200, 100)
@@ -66,12 +66,12 @@ dof_blur_far_distance = 180.0
 vertices = PackedVector3Array(-118, 1, -89.5, -118, 1, 89.5, 118, 1, 89.5, 118, 1, -89.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qibxi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0aal"]
 albedo_texture = ExtResource("10_tc1ft")
 uv1_scale = Vector3(3, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vqi6"]
-material = SubResource("StandardMaterial3D_qibxi")
+material = SubResource("StandardMaterial3D_o0aal")
 
 [node name="test" type="Node3D"]
 script = ExtResource("1_7qlyq")
@@ -213,7 +213,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -100, 
 physics_material_override = SubResource("PhysicsMaterial_o44p1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/backwall/back"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66993e-07, 21.219, -58.3958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.219, -61.971)
 shape = SubResource("BoxShape3D_rh65g")
 
 [node name="top" type="StaticBody3D" parent="Walls/backwall"]
@@ -255,7 +255,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -100, 
 physics_material_override = SubResource("PhysicsMaterial_o44p1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/backwall2/back"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66993e-07, 21.219, -58.3958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.219, -61.971)
 shape = SubResource("BoxShape3D_rh65g")
 
 [node name="top" type="StaticBody3D" parent="Walls/backwall2"]
@@ -274,7 +274,7 @@ transform = Transform3D(1, 0, 0, 0, -0.00237364, 0.999997, 0, -0.999997, -0.0023
 current = true
 
 [node name="Camera3D_45" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.550481, 0.834848, 0, -0.834848, 0.550481, 0, 100, 70)
+transform = Transform3D(1, 0, 0, 0, 0.550481, 0.834848, 0, -0.834848, 0.550481, 0, 110, 70)
 environment = SubResource("Environment_snpd3")
 attributes = SubResource("CameraAttributesPractical_38kb1")
 current = true
@@ -328,10 +328,10 @@ unique_name_in_owner = true
 navigation_mesh = SubResource("NavigationMesh_363jy")
 
 [node name="Goal" parent="NavigationRegion3D" instance=ExtResource("11_ec0d2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.06, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.006, 0, 0)
 
 [node name="Goal2" parent="NavigationRegion3D" instance=ExtResource("11_ec0d2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 96.06, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100, 0, 0)
 
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
 
@@ -340,7 +340,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 shape = SubResource("BoxShape3D_dgiw2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
-transform = Transform3D(237, 0, 0, 0, 1, 0, 0, 0, 180, 0, 0, 0)
+transform = Transform3D(248, 0, 0, 0, 1, 0, 0, 0, 180, 0, 0, 0)
 mesh = SubResource("BoxMesh_3vqi6")
 
 [connection signal="goal" from="NavigationRegion3D/Goal" to="." method="_on_goal_goal" binds= [true]]

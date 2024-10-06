@@ -7,6 +7,7 @@ size = Vector3(1, 56, 56)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_grpq3"]
 friction = 0.0
+bounce = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwwjt"]
 radius = 2.0
