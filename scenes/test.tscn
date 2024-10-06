@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=39 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dk0ui88cguwxs" path="res://scenes/players/duck.tscn" id="6_c1ujs"]
 [ext_resource type="PackedScene" uid="uid://cw436k1muwgdk" path="res://scenes/players/grasshopper.tscn" id="6_ceyhc"]
 [ext_resource type="PackedScene" uid="uid://scccjfpr6gwo" path="res://scenes/players/turtle.tscn" id="6_gmisd"]
+[ext_resource type="Environment" uid="uid://bc8bb5lim0d64" path="res://assets/world_environment.tres" id="6_mcpyr"]
 [ext_resource type="PackedScene" uid="uid://cc5yta7dfxagy" path="res://scenes/players/goat.tscn" id="6_motx4"]
 [ext_resource type="PackedScene" uid="uid://bvw8oi358rqpt" path="res://scenes/players/penguin.tscn" id="6_o2em6"]
 [ext_resource type="PackedScene" uid="uid://d2sogis3k2l1o" path="res://scenes/players/bat.tscn" id="6_ucc4a"]
@@ -68,17 +69,6 @@ size = Vector3(122, 100, 80)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgmfe"]
 size = Vector3(300, 250, 100)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jt8ad"]
-
-[sub_resource type="Sky" id="Sky_shtoq"]
-sky_material = SubResource("ProceduralSkyMaterial_jt8ad")
-
-[sub_resource type="Environment" id="Environment_snpd3"]
-background_mode = 2
-background_color = Color(0, 0.664, 0.83, 1)
-sky = SubResource("Sky_shtoq")
-reflected_light_source = 2
-
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_38kb1"]
 dof_blur_far_enabled = true
 dof_blur_far_distance = 180.0
@@ -96,6 +86,15 @@ material = SubResource("StandardMaterial3D_o0aal")
 
 [node name="test" type="Node3D"]
 script = ExtResource("1_7qlyq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.2
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_mcpyr")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -183,12 +182,6 @@ theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 500
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1823, -18.8988, -1.29379)
-light_energy = 0.2
-shadow_enabled = true
-directional_shadow_max_distance = 350.0
 
 [node name="Balls" type="Node" parent="."]
 unique_name_in_owner = true
@@ -330,7 +323,6 @@ unique_name_in_owner = true
 [node name="OpeningCam" type="Camera3D" parent="OpeningAnim/CamHolder"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1000, 2000)
-environment = SubResource("Environment_snpd3")
 attributes = SubResource("CameraAttributesPractical_38kb1")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -344,7 +336,6 @@ visible = false
 [node name="MainGameCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.550481, 0.834848, 0, -0.834848, 0.550481, 0, 110, 70)
-environment = SubResource("Environment_snpd3")
 attributes = SubResource("CameraAttributesPractical_38kb1")
 
 [node name="Players" type="Node" parent="."]
