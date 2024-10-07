@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://njhm1h6ugcxm"]
+
+[ext_resource type="PackedScene" uid="uid://vhy55yd4csqw" path="res://assets/characters/models/frog_model.tscn" id="1_xl601"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_xy0j8"]
+
+[resource]
+script = ExtResource("2_xy0j8")
+name = "Frogert Lewandowski"
+determination = 94
+cuteness = 90
+model = ExtResource("1_xl601")
+chance = 0
+nationality = "Poland"
+type = 4

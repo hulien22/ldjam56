@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://c75ebhx72sd7e"]
+
+[ext_resource type="PackedScene" uid="uid://2ofn7h7u0adc" path="res://assets/characters/models/giraffe_model.tscn" id="1_h5hl1"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_1eycy"]
+
+[resource]
+script = ExtResource("2_1eycy")
+name = "Girafael Leao"
+determination = 75
+cuteness = 78
+model = ExtResource("1_h5hl1")
+chance = 1
+nationality = "Portugal"
+type = 5

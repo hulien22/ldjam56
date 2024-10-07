@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://b8vvjqkq1njpk"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_iya8k"]
+[ext_resource type="PackedScene" uid="uid://b1xtjdwhp6f2t" path="res://assets/characters/models/penguin_model.tscn" id="1_l8gkm"]
+
+[resource]
+script = ExtResource("1_iya8k")
+name = "Andrea Pengo"
+determination = 83
+cuteness = 84
+model = ExtResource("1_l8gkm")
+chance = 1
+nationality = "Italy"
+type = 9

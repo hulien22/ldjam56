@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bmk3j7r0ukbu8"]
+
+[ext_resource type="PackedScene" uid="uid://birx3eunj0pfy" path="res://assets/characters/models/goat_model.tscn" id="1_h0vcs"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_l1uch"]
+
+[resource]
+script = ExtResource("1_l1uch")
+name = "Philipp Lamb"
+determination = 82
+cuteness = 79
+model = ExtResource("1_h0vcs")
+chance = 1
+nationality = "Germany"
+type = 6

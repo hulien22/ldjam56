@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cr1toom127lht"]
+
+[ext_resource type="PackedScene" uid="uid://diqui7s8cou75" path="res://assets/characters/models/bat_model.tscn" id="1_i0e5h"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_n74cj"]
+
+[resource]
+script = ExtResource("1_n74cj")
+name = "Bati Hernandez"
+determination = 93
+cuteness = 92
+model = ExtResource("1_i0e5h")
+chance = 0
+nationality = "Spain"
+type = 1

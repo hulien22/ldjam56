@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cbtq558kplk1o"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_j1oj7"]
+[ext_resource type="PackedScene" uid="uid://2ofn7h7u0adc" path="res://assets/characters/models/giraffe_model.tscn" id="1_scknp"]
+
+[resource]
+script = ExtResource("1_j1oj7")
+name = "Giteraffe Crouch"
+determination = 78
+cuteness = 83
+model = ExtResource("1_scknp")
+chance = 1
+nationality = "England"
+type = 5

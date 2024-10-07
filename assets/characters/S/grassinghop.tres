@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://c0j7pb2k8wsyx"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_5arco"]
+[ext_resource type="PackedScene" uid="uid://byrk0pbg2514c" path="res://assets/characters/models/grasshopper_model.tscn" id="1_oebr2"]
+
+[resource]
+script = ExtResource("1_5arco")
+name = "Jude Grassinghop"
+determination = 94
+cuteness = 92
+model = ExtResource("1_oebr2")
+chance = 0
+nationality = "England"
+type = 7

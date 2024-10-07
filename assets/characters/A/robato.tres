@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://7h0q6r0s2iem"]
+
+[ext_resource type="PackedScene" uid="uid://diqui7s8cou75" path="res://assets/characters/models/bat_model.tscn" id="1_f158n"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_cesln"]
+
+[resource]
+script = ExtResource("2_cesln")
+name = "Robato Carlos"
+determination = 82
+cuteness = 89
+model = ExtResource("1_f158n")
+chance = 1
+nationality = "Brazil"
+type = 1

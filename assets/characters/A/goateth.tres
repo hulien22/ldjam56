@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://djityjawmoly4"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_vgmk8"]
+[ext_resource type="PackedScene" uid="uid://birx3eunj0pfy" path="res://assets/characters/models/goat_model.tscn" id="1_wbft2"]
+
+[resource]
+script = ExtResource("1_vgmk8")
+name = "Goateth Bale"
+determination = 89
+cuteness = 85
+model = ExtResource("1_wbft2")
+chance = 1
+nationality = "Wales"
+type = 6

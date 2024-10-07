@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://un1ldyfqlg18"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_j8uu7"]
+[ext_resource type="PackedScene" uid="uid://bnniub860xvkm" path="res://assets/characters/models/turtle_model.tscn" id="1_svp43"]
+
+[resource]
+script = ExtResource("1_j8uu7")
+name = "Turti Kroos"
+determination = 89
+cuteness = 84
+model = ExtResource("1_svp43")
+chance = 1
+nationality = "Germany"
+type = 11

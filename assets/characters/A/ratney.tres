@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://drgn1j3ah8cl6"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_4vtma"]
+[ext_resource type="PackedScene" uid="uid://d3knjqie0kwof" path="res://assets/characters/models/rat_model.tscn" id="1_qjbxx"]
+
+[resource]
+script = ExtResource("1_4vtma")
+name = "Wayne Ratney"
+determination = 88
+cuteness = 84
+model = ExtResource("1_qjbxx")
+chance = 1
+nationality = "England"
+type = 10
