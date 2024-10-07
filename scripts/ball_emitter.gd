@@ -4,8 +4,15 @@ extends Node3D
 
 var balls: Array[Ball] = []
 
+func _ready() -> void:
+	$Timer.wait_time = randf_range(2.5, 3.5)
+	$Timer.start()
+	fire_ball()
 
 func _on_timer_timeout() -> void:
+	fire_ball()
+
+func fire_ball():
 	$Timer.wait_time = randf_range(2.5, 3.5)
 	var b:Ball = ball_scene.instantiate()
 	var v = Vector3.FORWARD * global_basis * 50
