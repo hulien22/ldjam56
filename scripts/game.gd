@@ -9,14 +9,15 @@ enum GameMode {INTRO, GAME, AFTERGAME}
 
 var game_mode:GameMode = GameMode.INTRO
 var team1_score: int = 0
-var team2_score: int = 10
+var team2_score: int = 0
 
 func _ready() -> void:
 	load_balls()
 	load_players()
 	play_intro()
-	%ClockLabel.text = str(clock_time)
 	Globals.match_num += 1
+	clock_time = Globals.match_length[Globals.team_num]
+	%ClockLabel.text = str(clock_time)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_indent"):
@@ -188,7 +189,7 @@ func go_to_menu():
 func go_to_store():
 	get_tree().change_scene_to_file("res://loot_box.tscn") #cant used packed scene because godot
 
-var clock_time: int = 5
+var clock_time: int = 60
 func _on_timer_timeout() -> void:
 	clock_time = max(-1, clock_time - 1)
 	if clock_time < 0:
@@ -217,10 +218,14 @@ func stop_game():
 func show_end_game_screen():
 	%EndGamePanel.show()
 	
+	#TODO - move on to next team, check for completion
+	
 	if team1_score > team2_score:
 		%EndGamePanel/title.text = "Victory!"
+		SoundEffectBus.play_tada()
 	else:
 		%EndGamePanel/title.text = "Defeat..."
+		SoundEffectBus.play_aww()
 	%EndGamePanel/info.text = ""
 	var total:int = 3
 	%EndGamePanel/info.text += "Match completed: $3\n"
@@ -238,6 +243,8 @@ func show_end_game_screen():
 		%EndGamePanel/info.text += "Moving on to the next team!"
 	else:
 		%EndGamePanel/info.text += "Revise your roster and try again!"
+	
+	Globals.money += total
 	
 	%EndGamePanel/info.visible_ratio = 0
 	var tween:Tween = create_tween()

@@ -8,3 +8,4 @@
 script = ExtResource("1_2rymf")
 teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r")])
 team_names = Array[String](["Team 1 - Slow And Steady"])
+match_length = Array[int]([30])

@@ -6,6 +6,7 @@ var match_num: int = 0
 var team_num: int = 0
 @export var teams: Array[Character]
 @export var team_names: Array[String]
+@export var match_length: Array[int]
 
 func load_enemy_team():
 	Team.Enemy_GK = teams[team_num * 4]

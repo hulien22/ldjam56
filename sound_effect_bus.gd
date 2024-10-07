@@ -10,7 +10,6 @@ extends AudioStreamPlayer
 @export var cardmany: AudioStream
 @export var tada: AudioStream
 @export var cash: AudioStream
-@export var wind: AudioStream
 
 func play_countdown_beep():
 	stream = beep_low
@@ -52,7 +51,13 @@ func play_cash():
 	stream = cash
 	play()
 	
+@export var wind: AudioStream
 func play_wind():
 	stream = wind
+	play()
+	
+@export var aww: AudioStream
+func play_aww():
+	stream = aww
 	play()
 	
