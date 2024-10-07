@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_rarvx")
 name = "Pepe"
-determination = 45
+determination = 84
 cuteness = 76
 model = ExtResource("1_5ye7e")
 chance = 1

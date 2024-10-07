@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://08m8d67l3ip4"]
+
+[ext_resource type="PackedScene" uid="uid://2ofn7h7u0adc" path="res://assets/characters/models/giraffe_model.tscn" id="1_85niw"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_itfp6"]
+
+[resource]
+script = ExtResource("2_itfp6")
+name = "Antoine Giraffemann"
+determination = 93
+cuteness = 91
+model = ExtResource("1_85niw")
+chance = 0
+nationality = "France"
+type = 5

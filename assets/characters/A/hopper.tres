@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bp16ybfnq81bd"]
+
+[ext_resource type="PackedScene" uid="uid://byrk0pbg2514c" path="res://assets/characters/models/grasshopper_model.tscn" id="1_uhxhu"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_7afi7"]
+
+[resource]
+script = ExtResource("2_7afi7")
+name = "Vinicius Hopper"
+determination = 83
+cuteness = 86
+model = ExtResource("1_uhxhu")
+chance = 1
+nationality = "Brazil"
+type = 7

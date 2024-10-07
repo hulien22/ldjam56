@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_prabq")
 name = "Leonardo Turtle"
-determination = 16
-cuteness = 3
+determination = 26
+cuteness = 38
 model = ExtResource("1_y6uts")
 chance = 2
 nationality = "United States"

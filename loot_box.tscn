@@ -1,21 +1,21 @@
-[gd_scene load_steps=50 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=66 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
 [ext_resource type="Script" path="res://loot_box_manager.gd" id="1_tpc8w"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="2_aucgo"]
-[ext_resource type="Resource" uid="uid://bnw7scnhjf6je" path="res://assets/characters/A/anten.tres" id="3_bbe2g"]
+[ext_resource type="Resource" uid="uid://bnw7scnhjf6je" path="res://assets/characters/S/anten.tres" id="3_bbe2g"]
 [ext_resource type="Resource" uid="uid://bwptmva1ahj5b" path="res://assets/characters/A/cheetallini.tres" id="4_51y3a"]
 [ext_resource type="PackedScene" uid="uid://btf7p5yhrwcew" path="res://assets/VendingMachine.glb" id="4_baohi"]
 [ext_resource type="Texture2D" uid="uid://b3wjq2w0glhr2" path="res://assets/field.png" id="5_a5osi"]
 [ext_resource type="Resource" uid="uid://b6lru1ravre2f" path="res://assets/characters/A/cheetillas.tres" id="5_wy843"]
-[ext_resource type="Resource" uid="uid://njhm1h6ugcxm" path="res://assets/characters/A/frogert.tres" id="6_jx01g"]
+[ext_resource type="Resource" uid="uid://njhm1h6ugcxm" path="res://assets/characters/S/frogert.tres" id="6_jx01g"]
 [ext_resource type="Resource" uid="uid://b3huf27rkrk50" path="res://assets/characters/A/frogio.tres" id="7_iv135"]
 [ext_resource type="Resource" uid="uid://dwwa3yod3ebpi" path="res://assets/characters/A/giantluigi.tres" id="8_ljnyb"]
 [ext_resource type="Resource" uid="uid://mh0400ftqwvp" path="res://assets/characters/S/mcheetah.tres" id="9_rjh6s"]
 [ext_resource type="Resource" uid="uid://h120tirsu2xe" path="res://assets/characters/A/pepe.tres" id="10_5g5qr"]
 [ext_resource type="Resource" uid="uid://bvo0ljklokxrq" path="res://assets/characters/A/ratan.tres" id="11_g7hjt"]
-[ext_resource type="Resource" uid="uid://08m8d67l3ip4" path="res://assets/characters/S/antoine.tres" id="11_jsn4a"]
+[ext_resource type="Resource" uid="uid://08m8d67l3ip4" path="res://assets/characters/S/giraffemann.tres" id="11_jsn4a"]
 [ext_resource type="Resource" uid="uid://bcn12qjcfroh8" path="res://assets/characters/B/remi.tres" id="12_i0owo"]
 [ext_resource type="Resource" uid="uid://bx71bluk36gss" path="res://assets/characters/S/ratnaldo.tres" id="12_onkpj"]
 [ext_resource type="Resource" uid="uid://dgbuhf1lbnumm" path="res://assets/characters/B/flik.tres" id="13_3fgax"]
@@ -35,10 +35,26 @@
 [ext_resource type="Resource" uid="uid://c4cm7w0qbxvuw" path="res://assets/characters/A/duka.tres" id="25_fa06v"]
 [ext_resource type="Resource" uid="uid://b2wxfh71ibw1d" path="res://assets/characters/A/frogden.tres" id="26_av4i3"]
 [ext_resource type="Resource" uid="uid://chavnoe0s5xrj" path="res://assets/characters/A/peng-uin.tres" id="27_lq771"]
+[ext_resource type="Resource" uid="uid://kaojjcn7kxhd" path="res://assets/characters/A/antos.tres" id="27_nsdho"]
+[ext_resource type="Resource" uid="uid://dofr5rp4yqw0x" path="res://assets/characters/A/duckis.tres" id="28_0io8c"]
 [ext_resource type="Resource" uid="uid://dlevg5t68darl" path="res://assets/characters/A/kangich.tres" id="28_3w0iw"]
 [ext_resource type="Resource" uid="uid://ocedrva7o5kv" path="res://assets/characters/B/gera.tres" id="28_gvejx"]
+[ext_resource type="Resource" uid="uid://c75ebhx72sd7e" path="res://assets/characters/A/girafael.tres" id="29_txfjk"]
+[ext_resource type="Resource" uid="uid://cbtq558kplk1o" path="res://assets/characters/A/giteraffe.tres" id="30_afwpa"]
+[ext_resource type="Resource" uid="uid://djityjawmoly4" path="res://assets/characters/A/goateth.tres" id="31_xv2nn"]
+[ext_resource type="Resource" uid="uid://bp16ybfnq81bd" path="res://assets/characters/A/hopper.tres" id="32_5i624"]
+[ext_resource type="Resource" uid="uid://bmk3j7r0ukbu8" path="res://assets/characters/A/lamb.tres" id="33_bpcwp"]
 [ext_resource type="Resource" uid="uid://nauj818ciwfy" path="res://assets/characters/S/penguel.tres" id="33_s7hoe"]
 [ext_resource type="Resource" uid="uid://dfopg263m3ugc" path="res://assets/characters/S/goati.tres" id="34_12sjb"]
+[ext_resource type="Resource" uid="uid://bw5gpmfgqinnw" path="res://assets/characters/A/mohopper.tres" id="34_pj0mg"]
+[ext_resource type="Resource" uid="uid://b8vvjqkq1njpk" path="res://assets/characters/A/pengo.tres" id="35_2wews"]
+[ext_resource type="Resource" uid="uid://drgn1j3ah8cl6" path="res://assets/characters/A/ratney.tres" id="36_un515"]
+[ext_resource type="Resource" uid="uid://7h0q6r0s2iem" path="res://assets/characters/A/robato.tres" id="37_u88cm"]
+[ext_resource type="Resource" uid="uid://un1ldyfqlg18" path="res://assets/characters/A/turti.tres" id="38_7cvfo"]
+[ext_resource type="Resource" uid="uid://c0j7pb2k8wsyx" path="res://assets/characters/S/grassinghop.tres" id="47_scgvt"]
+[ext_resource type="Resource" uid="uid://d1wrb3712psoh" path="res://assets/characters/S/kang.tres" id="48_ax5e8"]
+[ext_resource type="Resource" uid="uid://oydh0ckuax1g" path="res://assets/characters/S/turtal.tres" id="49_largl"]
+[ext_resource type="Resource" uid="uid://cr1toom127lht" path="res://assets/characters/S/bati.tres" id="50_8apms"]
 
 [sub_resource type="Environment" id="Environment_37ics"]
 background_mode = 1
@@ -408,8 +424,8 @@ _data = {
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_tpc8w")
-basic_chars = Array[ExtResource("2_aucgo")]([ExtResource("7_iv135"), ExtResource("8_ljnyb"), ExtResource("11_g7hjt"), ExtResource("10_5g5qr"), ExtResource("6_jx01g"), ExtResource("5_wy843"), ExtResource("4_51y3a"), ExtResource("3_bbe2g"), ExtResource("12_i0owo"), ExtResource("13_3fgax"), ExtResource("14_jm8iw"), ExtResource("15_epesc"), ExtResource("15_vbhh4"), ExtResource("16_3j3d6"), ExtResource("17_5ipu8"), ExtResource("18_g4x1d"), ExtResource("19_k26pi"), ExtResource("21_hjff3"), ExtResource("22_kfou0"), ExtResource("23_3e0ha"), ExtResource("24_pbr5l"), ExtResource("25_fa06v"), ExtResource("26_av4i3"), ExtResource("27_lq771"), ExtResource("28_3w0iw"), ExtResource("28_gvejx")])
-lege_chars = Array[ExtResource("2_aucgo")]([ExtResource("12_onkpj"), ExtResource("9_rjh6s"), ExtResource("11_jsn4a"), ExtResource("20_dexax"), ExtResource("33_s7hoe"), ExtResource("34_12sjb")])
+basic_chars = Array[ExtResource("2_aucgo")]([ExtResource("7_iv135"), ExtResource("8_ljnyb"), ExtResource("11_g7hjt"), ExtResource("10_5g5qr"), ExtResource("5_wy843"), ExtResource("4_51y3a"), ExtResource("12_i0owo"), ExtResource("13_3fgax"), ExtResource("14_jm8iw"), ExtResource("15_epesc"), ExtResource("15_vbhh4"), ExtResource("16_3j3d6"), ExtResource("17_5ipu8"), ExtResource("18_g4x1d"), ExtResource("19_k26pi"), ExtResource("21_hjff3"), ExtResource("22_kfou0"), ExtResource("23_3e0ha"), ExtResource("24_pbr5l"), ExtResource("25_fa06v"), ExtResource("26_av4i3"), ExtResource("27_lq771"), ExtResource("28_3w0iw"), ExtResource("28_gvejx"), ExtResource("27_nsdho"), ExtResource("28_0io8c"), ExtResource("29_txfjk"), ExtResource("30_afwpa"), ExtResource("31_xv2nn"), ExtResource("32_5i624"), ExtResource("33_bpcwp"), ExtResource("34_pj0mg"), ExtResource("35_2wews"), ExtResource("36_un515"), ExtResource("37_u88cm"), ExtResource("38_7cvfo")])
+lege_chars = Array[ExtResource("2_aucgo")]([ExtResource("12_onkpj"), ExtResource("9_rjh6s"), ExtResource("11_jsn4a"), ExtResource("20_dexax"), ExtResource("33_s7hoe"), ExtResource("34_12sjb"), ExtResource("6_jx01g"), ExtResource("3_bbe2g"), ExtResource("47_scgvt"), ExtResource("48_ax5e8"), ExtResource("49_largl"), ExtResource("50_8apms")])
 char_option = ExtResource("17_5iyng")
 
 [node name="Camera3D" type="Camera3D" parent="."]

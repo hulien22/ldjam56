@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_tg57p")
 name = "Gerry Giraffe"
-determination = 3
-cuteness = 4
+determination = 31
+cuteness = 40
 model = ExtResource("1_h8f4u")
 chance = 2
 nationality = "Namibia"

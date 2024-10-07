@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bw5gpmfgqinnw"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_a2bj0"]
+[ext_resource type="PackedScene" uid="uid://byrk0pbg2514c" path="res://assets/characters/models/grasshopper_model.tscn" id="1_yf86d"]
+
+[resource]
+script = ExtResource("1_a2bj0")
+name = "Mohopper Salah"
+determination = 85
+cuteness = 86
+model = ExtResource("1_yf86d")
+chance = 1
+nationality = "Egypt"
+type = 7

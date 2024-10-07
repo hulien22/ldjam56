@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_tkq5r")
 name = "Iker Cheetillas"
-determination = 34
-cuteness = 43
+determination = 79
+cuteness = 83
 model = ExtResource("1_2jtan")
 chance = 1
 nationality = "Spain"

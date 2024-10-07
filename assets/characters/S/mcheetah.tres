@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_klppk")
 name = "Kylian Mcheetah"
-determination = 34
-cuteness = 43
+determination = 98
+cuteness = 93
 model = ExtResource("1_132bh")
 chance = 0
 nationality = "France"

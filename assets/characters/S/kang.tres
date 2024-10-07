@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://d1wrb3712psoh"]
+
+[ext_resource type="PackedScene" uid="uid://cyuiqghame7q7" path="res://assets/characters/models/kangaroo_model.tscn" id="1_4taav"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_nwq33"]
+
+[resource]
+script = ExtResource("1_nwq33")
+name = "Harry Kang"
+determination = 93
+cuteness = 90
+model = ExtResource("1_4taav")
+chance = 0
+nationality = "England"
+type = 8

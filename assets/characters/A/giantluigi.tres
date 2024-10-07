@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_kfh58")
 name = "Giantluigi Buffon"
-determination = 95
+determination = 88
 cuteness = 87
 model = ExtResource("1_efbq8")
 chance = 1
 nationality = "Italy"
+type = 0

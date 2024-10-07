@@ -7,7 +7,7 @@
 script = ExtResource("1_jouch")
 name = "Giorgio Cheetallini"
 determination = 87
-cuteness = 45
+cuteness = 78
 model = ExtResource("1_d65q0")
 chance = 1
 nationality = "Italy"
