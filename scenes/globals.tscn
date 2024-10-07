@@ -15,12 +15,12 @@
 [ext_resource type="Resource" uid="uid://drgn1j3ah8cl6" path="res://assets/characters/A/ratney.tres" id="14_j3i0b"]
 [ext_resource type="Resource" uid="uid://br0ivk4vqkrfq" path="res://assets/characters/S/duckling.tres" id="16_alalc"]
 [ext_resource type="Resource" uid="uid://08m8d67l3ip4" path="res://assets/characters/S/giraffemann.tres" id="16_qbxid"]
-[ext_resource type="Resource" uid="uid://mh0400ftqwvp" path="res://assets/characters/S/mcheetah.tres" id="17_8m5uu"]
+[ext_resource type="Resource" uid="uid://c3f8kvbn8qyrg" path="res://assets/characters/B/charlie.tres" id="16_u1s4c"]
 [ext_resource type="Resource" uid="uid://njhm1h6ugcxm" path="res://assets/characters/S/frogert.tres" id="18_b3u8b"]
 [ext_resource type="Resource" uid="uid://dfopg263m3ugc" path="res://assets/characters/S/goati.tres" id="19_ka1wy"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_2rymf")
-teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("4_7ta8s"), ExtResource("5_coh7f"), ExtResource("6_7viuy"), ExtResource("7_ba6jy"), ExtResource("11_upwad"), ExtResource("16_alalc"), ExtResource("16_alalc"), ExtResource("8_yj35x"), ExtResource("12_pibu2"), ExtResource("13_wqa2d"), ExtResource("14_37pw8"), ExtResource("14_j3i0b"), ExtResource("16_qbxid"), ExtResource("17_8m5uu"), ExtResource("18_b3u8b"), ExtResource("19_ka1wy")])
+teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("4_7ta8s"), ExtResource("5_coh7f"), ExtResource("6_7viuy"), ExtResource("7_ba6jy"), ExtResource("11_upwad"), ExtResource("16_alalc"), ExtResource("16_alalc"), ExtResource("8_yj35x"), ExtResource("12_pibu2"), ExtResource("13_wqa2d"), ExtResource("14_37pw8"), ExtResource("14_j3i0b"), ExtResource("16_qbxid"), ExtResource("16_u1s4c"), ExtResource("18_b3u8b"), ExtResource("19_ka1wy")])
 team_names = Array[String](["Team 1 - Slow And Steady", "Team 2 - Jumpers", "Team 3 - Wingin' It", "Team 4 - Speedsters", "Champions - Alpha FC", "Random Challengers"])
 match_length = Array[int]([30, 60, 60, 60, 90, 90])
