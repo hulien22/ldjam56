@@ -18,8 +18,8 @@ move_speed = 0.7
 move_speed_b = 0.8
 move_speed_s = 0.9
 kick_power = 20.0
-kick_power_b = 40.0
-kick_power_s = 60.0
+kick_power_b = 60.0
+kick_power_s = 120.0
 is_flying = true
 
 [node name="Duck" parent="Model" index="0" instance=ExtResource("2_ft1ye")]

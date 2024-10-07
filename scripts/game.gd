@@ -71,7 +71,11 @@ func load_players_from_global():
 	map_character_to_player(Team.RM)
 	map_character_to_player(Team.ST)
 	
-	Globals.load_enemy_team()
+	if (Globals.team_num <= 4):
+		Globals.load_enemy_team()
+	else:
+		#load random team in lootbox
+		pass
 	map_character_to_player(Team.Enemy_GK)
 	map_character_to_player(Team.Enemy_LM)
 	map_character_to_player(Team.Enemy_RM)
@@ -241,7 +245,11 @@ func show_end_game_screen():
 	
 	%EndGamePanel/info.text += "\n\n"
 	if team1_score > team2_score:
-		%EndGamePanel/info.text += "Moving on to the next team!"
+		if Globals.team_num == 4:
+			%EndGamePanel/info.text += "YOU ARE THE CHAMPION!!!\nThanks for playing!!!"
+		else:
+			%EndGamePanel/info.text += "Moving on to the next team!"
+		Globals.team_num = min(5, Globals.team_num + 1)
 	else:
 		%EndGamePanel/info.text += "Revise your roster and try again!"
 	

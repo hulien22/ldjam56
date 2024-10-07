@@ -195,7 +195,7 @@ func process_ai_movement() -> void:
 		elif (obj is Player && obj.is_team1 != is_team1):
 			process_jump_kick()
 	elif is_flying && global_position.y < 5 && time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
-		dir_to_move.y = 3
+		dir_to_move.y = 10
 		time_since_last_jump = 0
 
 	apply_central_impulse(dir_to_move)

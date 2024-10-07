@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqp0ojqcc5d0g"]
+[gd_scene load_steps=19 format=3 uid="uid://cqp0ojqcc5d0g"]
 
 [ext_resource type="Script" path="res://scripts/globals.gd" id="1_2rymf"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="2_e5erf"]
@@ -8,13 +8,12 @@
 [ext_resource type="Resource" uid="uid://c3rknhbbmb4ov" path="res://assets/characters/B/roo.tres" id="6_7viuy"]
 [ext_resource type="Resource" uid="uid://7xr3hys37c0p" path="res://assets/characters/B/billy.tres" id="7_ba6jy"]
 [ext_resource type="Resource" uid="uid://b27syb14x64s1" path="res://assets/characters/B/cro.tres" id="8_yj35x"]
-[ext_resource type="Resource" uid="uid://c4cm7w0qbxvuw" path="res://assets/characters/A/duka.tres" id="9_mxis2"]
-[ext_resource type="Resource" uid="uid://dofr5rp4yqw0x" path="res://assets/characters/A/duckis.tres" id="10_x3umy"]
 [ext_resource type="Resource" uid="uid://b8vvjqkq1njpk" path="res://assets/characters/A/pengo.tres" id="11_upwad"]
 [ext_resource type="Resource" uid="uid://chavnoe0s5xrj" path="res://assets/characters/A/peng-uin.tres" id="12_pibu2"]
 [ext_resource type="Resource" uid="uid://b6lru1ravre2f" path="res://assets/characters/A/cheetillas.tres" id="13_wqa2d"]
 [ext_resource type="Resource" uid="uid://bwptmva1ahj5b" path="res://assets/characters/A/cheetallini.tres" id="14_37pw8"]
 [ext_resource type="Resource" uid="uid://djityjawmoly4" path="res://assets/characters/A/goateth.tres" id="15_3rhfp"]
+[ext_resource type="Resource" uid="uid://br0ivk4vqkrfq" path="res://assets/characters/S/duckling.tres" id="16_alalc"]
 [ext_resource type="Resource" uid="uid://08m8d67l3ip4" path="res://assets/characters/S/giraffemann.tres" id="16_qbxid"]
 [ext_resource type="Resource" uid="uid://mh0400ftqwvp" path="res://assets/characters/S/mcheetah.tres" id="17_8m5uu"]
 [ext_resource type="Resource" uid="uid://njhm1h6ugcxm" path="res://assets/characters/S/frogert.tres" id="18_b3u8b"]
@@ -22,6 +21,6 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_2rymf")
-teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("4_uraeg"), ExtResource("5_coh7f"), ExtResource("6_7viuy"), ExtResource("7_ba6jy"), ExtResource("8_yj35x"), ExtResource("9_mxis2"), ExtResource("10_x3umy"), ExtResource("11_upwad"), ExtResource("12_pibu2"), ExtResource("13_wqa2d"), ExtResource("14_37pw8"), ExtResource("15_3rhfp"), ExtResource("16_qbxid"), ExtResource("17_8m5uu"), ExtResource("18_b3u8b"), ExtResource("19_ka1wy")])
-team_names = Array[String](["Team 1 - Slow And Steady", "Team 2 - ", "Team 3 - Wingin' It", "Team 4 - Speedsters", "Champions - Alpha FC"])
-match_length = Array[int]([30, 60, 60, 60, 90])
+teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("4_uraeg"), ExtResource("5_coh7f"), ExtResource("6_7viuy"), ExtResource("7_ba6jy"), ExtResource("11_upwad"), ExtResource("16_alalc"), ExtResource("16_alalc"), ExtResource("8_yj35x"), ExtResource("12_pibu2"), ExtResource("13_wqa2d"), ExtResource("14_37pw8"), ExtResource("15_3rhfp"), ExtResource("16_qbxid"), ExtResource("17_8m5uu"), ExtResource("18_b3u8b"), ExtResource("19_ka1wy")])
+team_names = Array[String](["Team 1 - Slow And Steady", "Team 2 - ", "Team 3 - Wingin' It", "Team 4 - Speedsters", "Champions - Alpha FC", "Random Challengers"])
+match_length = Array[int]([30, 60, 60, 60, 90, 90])

@@ -72,6 +72,13 @@ func _ready() -> void:
 		w.set_data(Team.GK)
 		y.set_data(Team.LM)
 		z.set_data(Team.ST)
+		
+	# set random enemy team, will get overwritten
+	Team.Enemy_GK = lege_chars.pick_random()
+	Team.Enemy_LM = lege_chars.pick_random()
+	Team.Enemy_RM = lege_chars.pick_random()
+	Team.Enemy_ST = lege_chars.pick_random()
+	
 	$AnimationPlayer.play("goto_sky", -1, 1.0, true)
 	
 func is_lege():
