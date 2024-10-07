@@ -131,6 +131,8 @@ func at_vend():
 
 func at_sky():
 	%Roster.show()
+	if Team.owned_chars.size() > 4:
+		%Roster/text2.show()
 
 func goto_vending():
 	if (loc != Location.STORE):

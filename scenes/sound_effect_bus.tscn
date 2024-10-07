@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvaydl11d8hvh"]
+[gd_scene load_steps=8 format=3 uid="uid://cvaydl11d8hvh"]
 
 [ext_resource type="Script" path="res://sound_effect_bus.gd" id="1_l34os"]
 [ext_resource type="AudioStream" uid="uid://cbx27nwk0ysnn" path="res://audio/low_beep.ogg" id="2_ihcqt"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bagmjcoii4qoo" path="res://audio/pop.ogg" id="4_mapcw"]
 [ext_resource type="AudioStream" uid="uid://budsnlb0xuqkr" path="res://audio/vending.ogg" id="5_q8uda"]
 [ext_resource type="AudioStream" uid="uid://de0dtue5uwdad" path="res://audio/refwhistle.mp3" id="6_su77t"]
+[ext_resource type="AudioStream" uid="uid://2leykh7vjhg" path="res://audio/soccer-kick-6235.mp3" id="7_f6twa"]
 
 [node name="SoundEffectBus" type="AudioStreamPlayer"]
 script = ExtResource("1_l34os")
@@ -14,3 +15,4 @@ beep_high = ExtResource("3_0vwmh")
 pop = ExtResource("4_mapcw")
 vending = ExtResource("5_q8uda")
 whistle = ExtResource("6_su77t")
+kick = ExtResource("7_f6twa")

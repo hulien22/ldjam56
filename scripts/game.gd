@@ -57,8 +57,9 @@ func load_balls():
 		b.freeze = true
 
 func map_character_to_player(data: Character):
-	var p = player_scenes[data.type as int].instantiate()
-	#set stats
+	var p:Player = player_scenes[data.type as int].instantiate()
+	#TODO set stats
+	p.player_name = data.name
 	%Players.add_child(p)
 	
 func load_players_from_global():
@@ -136,10 +137,12 @@ func _on_goal_goal(body: Node3D, team1_net: bool) -> void:
 	
 func play_intro() -> void:
 	%OpeningCam.current = true
+	$AudioStreamPlayer.volume_db = -50
 	var tween:Tween = create_tween()
 	tween.tween_property(%CamHolder, "rotation", Vector3(0, 0, 0), 0.1)
 	tween.tween_property(%CamHolder, "rotation", Vector3(0, 2*PI, 0), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(%OpeningCam, "position", Vector3(0, 110, 70), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property($AudioStreamPlayer, "volume_db", 0, 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(%OpeningCam, "current", false, 0.001)
 	tween.parallel().tween_property(%MainGameCamera, "current", true, 0.001)
 	tween.tween_property(%Countdown, "text", "3", 0.001)

@@ -1,6 +1,7 @@
 extends RigidBody3D
 class_name Player
 
+var player_name:String = ""
 @export var TIME_STUCK_IN_KICK: float = 5.0
 @export var TIME_BETWEEN_JUMPS:float = 2.0
 @export var move_speed:float = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=51 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dtkxmb7d23xft" path="res://scenes/goal.tscn" id="11_ec0d2"]
 [ext_resource type="PackedScene" uid="uid://bpnrb1lrmy3hv" path="res://scenes/players/turtle.tscn" id="13_8t305"]
 [ext_resource type="PackedScene" uid="uid://ccy8lrly7635v" path="res://scenes/bumper.tscn" id="14_xtw5a"]
+[ext_resource type="AudioStream" uid="uid://cruwarvjrjdep" path="res://audio/crowd-cheering-loop2.mp3" id="23_1qrb8"]
 
 [sub_resource type="Gradient" id="Gradient_fjqub"]
 offsets = PackedFloat32Array(0, 0.3, 0.7, 1)
@@ -492,6 +493,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 98, 3.
 gravity_dir = Vector3(-1, 1, -1)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_1qrb8")
+volume_db = -50.0
+autoplay = true
 
 [connection signal="goal" from="NavigationRegion3D/Goal" to="." method="_on_goal_goal" binds= [true]]
 [connection signal="goal" from="NavigationRegion3D/Goal2" to="." method="_on_goal_goal" binds= [false]]

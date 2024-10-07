@@ -482,15 +482,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42133, 1.32536)
 
 [node name="CenterCard" parent="LootBox" instance=ExtResource("1_m6i81")]
-transform = Transform3D(0.135564, -0.0525227, 0.0369298, -2.18727e-07, -0.0862765, -0.122704, 0.0642062, 0.110895, -0.0779733, 0.249678, -0.401007, -0.907479)
+transform = Transform3D(0.903759, -0.350151, 0.246199, -1.45818e-06, -0.575177, -0.818029, 0.428042, 0.739301, -0.519822, 0.249678, -0.401007, -0.907479)
 
 [node name="RightRot" type="Node3D" parent="LootBox"]
-transform = Transform3D(0.140954, 0, -0.051303, 0, 0.15, 0, 0.051303, 0, 0.140954, 0.85, 0, -0.2)
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 0.85, 0, -0.2)
 
 [node name="RightCard" parent="LootBox/RightRot" instance=ExtResource("1_m6i81")]
 
 [node name="LeftRot" type="Node3D" parent="LootBox"]
-transform = Transform3D(0.140954, 0, 0.051303, 0, 0.15, 0, -0.051303, 0, 0.140954, 0, 0, 0)
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0, 0, 0)
 
 [node name="LeftCard" parent="LootBox/LeftRot" instance=ExtResource("1_m6i81")]
 
@@ -688,12 +688,14 @@ button = NodePath("..")
 
 [node name="Roster" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="text2" type="Label" parent="CanvasLayer/Roster"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 28.3701

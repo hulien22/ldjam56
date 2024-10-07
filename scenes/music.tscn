@@ -1,21 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://b08fron4wel0i"]
+[gd_scene load_steps=6 format=3 uid="uid://b08fron4wel0i"]
 
 [ext_resource type="AudioStream" uid="uid://dmksdbhbt0rpj" path="res://audio/intro.ogg" id="1_f02nj"]
 [ext_resource type="AudioStream" uid="uid://c23ybdprb1x3q" path="res://audio/music.ogg" id="2_7q02c"]
 [ext_resource type="Script" path="res://scenes/music.gd" id="3_7hc1d"]
+[ext_resource type="AudioStream" uid="uid://cecj3mxo4ncy0" path="res://audio/outdoor-noise-of-birds-loop-quiet.mp3" id="3_veftr"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_bjmhu"]
-clip_count = 2
-clip_0/name = &"Intro"
-clip_0/stream = ExtResource("1_f02nj")
+clip_count = 3
+clip_0/name = &"Outdoor-noise-of-birds-loop-quiet"
+clip_0/stream = ExtResource("3_veftr")
 clip_0/auto_advance = 1
-clip_0/next_clip = 1
-clip_1/name = &"Music"
-clip_1/stream = ExtResource("2_7q02c")
+clip_0/next_clip = 0
+clip_1/name = &"Intro"
+clip_1/stream = ExtResource("1_f02nj")
 clip_1/auto_advance = 1
-clip_1/next_clip = 1
+clip_1/next_clip = 2
+clip_2/name = &"Music"
+clip_2/stream = ExtResource("2_7q02c")
+clip_2/auto_advance = 1
+clip_2/next_clip = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = SubResource("AudioStreamInteractive_bjmhu")
-volume_db = -20.0
+volume_db = -5.0
 script = ExtResource("3_7hc1d")
