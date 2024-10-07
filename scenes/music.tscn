@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b08fron4wel0i"]
+
+[ext_resource type="AudioStream" uid="uid://dmksdbhbt0rpj" path="res://audio/intro.ogg" id="1_f02nj"]
+[ext_resource type="AudioStream" uid="uid://c23ybdprb1x3q" path="res://audio/music.ogg" id="2_7q02c"]
+[ext_resource type="Script" path="res://scenes/music.gd" id="3_7hc1d"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_bjmhu"]
+clip_count = 2
+clip_0/name = &"Intro"
+clip_0/stream = ExtResource("1_f02nj")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Music"
+clip_1/stream = ExtResource("2_7q02c")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamInteractive_bjmhu")
+volume_db = -10.0
+script = ExtResource("3_7hc1d")
