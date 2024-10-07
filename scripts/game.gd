@@ -14,6 +14,7 @@ func _ready() -> void:
 	load_balls()
 	load_players()
 	play_intro()
+	%ClockLabel.text = str(clock_time)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_indent"):
@@ -143,6 +144,7 @@ func start_game():
 	# TODO start spawning in balls
 	for b in balls:
 		b.freeze = false
+	$Timer.start()
 
 func _process(delta: float) -> void:
 	if game_mode == GameMode.INTRO && %OpeningCam.current:
@@ -150,3 +152,19 @@ func _process(delta: float) -> void:
 
 func go_to_menu():
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+
+var clock_time: int = 60
+func _on_timer_timeout() -> void:
+	clock_time -= 1
+	%ClockLabel.text = str(clock_time)
+	if (clock_time == 0):
+		stop_game()
+
+func stop_game():
+	game_mode = GameMode.AFTERGAME
+	$Timer.stop()
+	for p in players:
+		p.enable(false)
+	for b in balls:
+		b.freeze = true
+	

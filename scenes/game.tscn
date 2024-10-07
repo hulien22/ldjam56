@@ -510,5 +510,8 @@ gravity_dir = Vector3(1, 1, -1)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 98, 3.5, 68.849)
 gravity_dir = Vector3(-1, 1, -1)
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="goal" from="NavigationRegion3D/Goal" to="." method="_on_goal_goal" binds= [true]]
 [connection signal="goal" from="NavigationRegion3D/Goal2" to="." method="_on_goal_goal" binds= [false]]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
