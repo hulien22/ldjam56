@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkl00b4iegyyw"]
+[gd_scene load_steps=14 format=3 uid="uid://bkl00b4iegyyw"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_j4bjm"]
 [ext_resource type="Environment" uid="uid://ddoqbevt2isgr" path="res://assets/world_environment.tres" id="1_jjfbk"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://fnop14mh4dpe" path="res://scenes/ball_emitter.tscn" id="5_f33oo"]
 
 [sub_resource type="Theme" id="Theme_gkbny"]
+default_font = ExtResource("4_bg1ov")
+default_font_size = 100
+
+[sub_resource type="Theme" id="Theme_m5th2"]
 default_font = ExtResource("4_bg1ov")
 default_font_size = 100
 
@@ -40,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -55,6 +60,18 @@ theme = SubResource("Theme_gkbny")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 text = "Tiny Little League"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 294.0
+offset_right = 1441.0
+offset_bottom = 591.0
+theme = SubResource("Theme_m5th2")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1] Tiny Little League[/wave]"
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
