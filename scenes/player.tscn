@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c74urwytqw3wl"]
+[gd_scene load_steps=14 format=3 uid="uid://c74urwytqw3wl"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vm0mt"]
 [ext_resource type="PackedScene" uid="uid://8qw51eg0amo" path="res://scenes/dizzy_stars.tscn" id="2_q6x8p"]
 [ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="3_ch8e0"]
+[ext_resource type="PackedScene" uid="uid://c6m4s1fxxpx4p" path="res://scenes/healthbar_3d.tscn" id="4_jdkw6"]
 
 [sub_resource type="Animation" id="Animation_sm74f"]
 length = 0.001
@@ -98,6 +99,9 @@ height = 10.1885
 top_radius = 4.0
 height = 0.001
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_bpaa3"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" type="RigidBody3D"]
 gravity_scale = 5.0
 center_of_mass_mode = 1
@@ -149,5 +153,22 @@ debug_shape_thickness = 5
 [node name="TeamBottom" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 mesh = SubResource("CylinderMesh_6pyh5")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="KickProgress" parent="SubViewport" instance=ExtResource("4_jdkw6")]
+unique_name_in_owner = true
+offset_left = -100.0
+offset_top = 0.0
+offset_right = 100.0
+offset_bottom = 27.0
+
+[node name="KickBar" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 15.6466, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_bpaa3")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_safe_velocity_computed"]

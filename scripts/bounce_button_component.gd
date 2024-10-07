@@ -20,5 +20,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	button.scale = Vector2(1,1)
-
-#TODO sounds

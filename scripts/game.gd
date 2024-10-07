@@ -188,7 +188,7 @@ func go_to_menu():
 func go_to_store():
 	get_tree().change_scene_to_file("res://loot_box.tscn") #cant used packed scene because godot
 
-var clock_time: int = 10
+var clock_time: int = 60
 func _on_timer_timeout() -> void:
 	clock_time -= 1
 	%ClockLabel.text = str(clock_time)

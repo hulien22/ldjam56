@@ -64,6 +64,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		on_ground = false
 	
+	CalcKickBar()
+	
 	if can_move():
 		%DizzyStars.hide()
 	else:
@@ -80,6 +82,10 @@ func ForceBottomPos():
 	%TeamBottom.global_position.y = 0.6
 	%TeamBottom.global_rotation = Vector3.ZERO
 
+func CalcKickBar():
+	if !is_player_controlled:
+		return
+	%KickProgress.value = clampf(time_since_last_jump / TIME_BETWEEN_JUMPS, 0, 1) * 100
 
 func process_player_input() -> void:
 	if !can_move():
@@ -213,10 +219,13 @@ func set_is_player(b: bool) -> void:
 	is_player_controlled = b
 	if is_player_controlled:
 		set_bottom_color(Color.GOLD)
+		%KickBar.show()
 	elif is_team1:
 		set_bottom_color(Color.DODGER_BLUE)
+		%KickBar.hide()
 	else:
 		set_bottom_color(Color.CRIMSON)
+		%KickBar.hide()
 
 func set_ai_play_region(marker: Marker3D, mesh: MeshInstance3D):
 	reset_posn = marker.global_position
