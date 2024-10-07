@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=73 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
@@ -321,11 +321,19 @@ material = SubResource("StandardMaterial3D_tibiy")
 size = Vector2(200, 100)
 orientation = 1
 
+[sub_resource type="Theme" id="Theme_k21qv"]
+default_font = ExtResource("57_ny5bw")
+default_font_size = 80
+
 [sub_resource type="Theme" id="Theme_2hu6n"]
 default_font = ExtResource("57_ny5bw")
 default_font_size = 80
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckw1j"]
+
+[sub_resource type="Theme" id="Theme_0v12i"]
+default_font = ExtResource("57_ny5bw")
+default_font_size = 40
 
 [sub_resource type="Animation" id="Animation_me0by"]
 length = 0.001
@@ -525,6 +533,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="text" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.0326
+anchor_top = 12.2889
+anchor_right = 24.2174
+anchor_bottom = 12.2889
+offset_left = -45648.0
+offset_top = -13254.0
+offset_right = -45062.0
+offset_bottom = -13162.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_k21qv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "     Select a Replacement     "
+metadata/_edit_use_anchors_ = true
+
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 visible = false
 anchors_preset = 11
@@ -542,7 +570,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 300
-theme_override_constants/v_separation = 20
+theme_override_constants/v_separation = 30
 columns = 6
 
 [node name="CharacterOption" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("17_5iyng")]
@@ -552,6 +580,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -658,19 +687,39 @@ metadata/_edit_use_anchors_ = true
 button = NodePath("..")
 
 [node name="Roster" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GoToStore" type="Button" parent="CanvasLayer/Roster"]
-unique_name_in_owner = true
-visible = false
+[node name="text2" type="Label" parent="CanvasLayer/Roster"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 41.975
+anchor_left = 28.3701
+anchor_top = 24.2389
+anchor_right = 28.5549
+anchor_bottom = 24.2389
+offset_left = -466.802
+offset_top = -473.556
+offset_right = 466.802
+offset_bottom = -381.556
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_0v12i")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Click a card to replace it"
+metadata/_edit_use_anchors_ = true
+
+[node name="GoToStore" type="Button" parent="CanvasLayer/Roster"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 41.55
 anchor_top = 1.575
-anchor_right = 41.975
+anchor_right = 41.55
 anchor_bottom = 1.575
 offset_left = -293.0
 offset_top = -46.0
@@ -690,6 +739,32 @@ metadata/_edit_use_anchors_ = true
 [node name="BounceButtonComponent" parent="CanvasLayer/Roster/GoToStore" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
 button = NodePath("..")
 
+[node name="StartMatch" type="Button" parent="CanvasLayer/Roster"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 40.2
+anchor_top = 25.525
+anchor_right = 42.35
+anchor_bottom = 25.525
+offset_left = -293.0
+offset_top = -46.0
+offset_right = 293.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_2hu6n")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckw1j")
+text = "     Start Match!     "
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="CanvasLayer/Roster/StartMatch" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
+button = NodePath("..")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ua3rh")
@@ -707,3 +782,4 @@ transform = Transform3D(1, 0, 0, 0, 0.362893, 0.931831, 0, -0.931831, 0.362893, 
 [connection signal="pressed" from="CanvasLayer/Store/GoToRoster" to="." method="goto_sky"]
 [connection signal="pressed" from="CanvasLayer/Store/AddToRoster" to="." method="_on_add_to_roster_pressed"]
 [connection signal="pressed" from="CanvasLayer/Roster/GoToStore" to="." method="goto_vending"]
+[connection signal="pressed" from="CanvasLayer/Roster/StartMatch" to="." method="on_play"]

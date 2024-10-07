@@ -130,7 +130,7 @@ func at_vend():
 	%GoToRoster.show()
 
 func at_sky():
-	%GoToStore.show()
+	%Roster.show()
 
 func goto_vending():
 	if (loc != Location.STORE):
@@ -140,7 +140,7 @@ func goto_vending():
 		$CanvasLayer/ScrollContainer.visible = false
 		$CanvasLayer/Panel.visible = false
 		
-		%GoToStore.hide()
+		%Roster.hide()
 
 func goto_sky():
 	if loc != Location.ROSTER:
@@ -169,7 +169,7 @@ func replace_character(sele: Node3D):
 		list.add_child(op)
 	$CanvasLayer/ScrollContainer.visible = true
 	$CanvasLayer/Panel.visible = true
-	%GoToStore.hide()
+	%Roster.hide()
 	
 	
 func on_character_selected(data: Character):
@@ -186,7 +186,7 @@ func on_character_selected(data: Character):
 		Team.LM = data
 	elif sel == z:
 		Team.ST = data
-	%GoToStore.show()
+	%Roster.show()
 	is_selecting = false
 
 

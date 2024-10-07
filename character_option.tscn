@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://glrrhyu4grvv"]
+[gd_scene load_steps=8 format=3 uid="uid://glrrhyu4grvv"]
 
 [ext_resource type="Script" path="res://character_option.gd" id="1_8weul"]
 [ext_resource type="Texture2D" uid="uid://8tq0f7r55f34" path="res://assets/cards/box_thing_b.png" id="2_h133x"]
 [ext_resource type="Texture2D" uid="uid://cubg4f17bnomg" path="res://assets/cards/box_thing.png" id="2_jp3fw"]
 [ext_resource type="Texture2D" uid="uid://c860xwvvyfx5v" path="res://assets/cards/box_thing_a.png" id="3_b0pmr"]
 [ext_resource type="Texture2D" uid="uid://d01b6s06fmof4" path="res://assets/cards/box_thing_s.png" id="4_3u5jn"]
+[ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="6_gcpmo"]
+
+[sub_resource type="Theme" id="Theme_pp7ty"]
+default_font = ExtResource("6_gcpmo")
+default_font_size = 24
 
 [node name="CharacterOption" type="Control"]
 custom_minimum_size = Vector2(0, 46)
@@ -19,13 +24,12 @@ text_s = ExtResource("4_3u5jn")
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_right = 252.0
-offset_bottom = 50.0
+offset_bottom = 67.0
 texture_normal = ExtResource("2_jp3fw")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureButton"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,6 +43,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = SubResource("Theme_pp7ty")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Cristiano Ratnaldo"
 horizontal_alignment = 1
 vertical_alignment = 1
