@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_5at4d")
 name = "Don Duck"
-determination = 8
-cuteness = 13
+determination = 28
+cuteness = 42
 model = ExtResource("1_qt5ht")
 chance = 2
 nationality = "United States"

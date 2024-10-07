@@ -7,7 +7,7 @@
 script = ExtResource("1_axe48")
 name = "Duka Modric"
 determination = 87
-cuteness = 84
+cuteness = 89
 model = ExtResource("1_3tcj4")
 chance = 1
 nationality = "Croatia"

@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_wwasy")
 name = "Pingu Penguin"
-determination = 5
-cuteness = 18
+determination = 45
+cuteness = 38
 model = ExtResource("1_bkps4")
 chance = 2
 nationality = "Antarctica"

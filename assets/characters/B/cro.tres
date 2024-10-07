@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_jppeq")
 name = "Cro Bat"
-determination = 2
-cuteness = 3
+determination = 42
+cuteness = 33
 model = ExtResource("1_x0ehx")
 chance = 2
 nationality = "Japan"

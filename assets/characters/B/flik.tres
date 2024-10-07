@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_e52lg")
 name = "Flik Ant"
-determination = 4
-cuteness = 5
+determination = 32
+cuteness = 50
 model = ExtResource("1_3h4g1")
 chance = 2
 nationality = "Antigua"
+type = 0

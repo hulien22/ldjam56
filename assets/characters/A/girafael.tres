@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_1eycy")
 name = "Girafael Leao"
-determination = 75
+determination = 82
 cuteness = 78
 model = ExtResource("1_h5hl1")
 chance = 1
