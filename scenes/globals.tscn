@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/globals.gd" id="1_2rymf"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="2_e5erf"]
 [ext_resource type="Resource" uid="uid://bodlec0tbeiyy" path="res://assets/characters/B/leonardo.tres" id="3_na05r"]
-[ext_resource type="Resource" uid="uid://dgbuhf1lbnumm" path="res://assets/characters/B/flik.tres" id="4_uraeg"]
+[ext_resource type="Resource" uid="uid://bsjw3o3rgo0j1" path="res://assets/characters/B/axel.tres" id="4_7ta8s"]
 [ext_resource type="Resource" uid="uid://dtlkwh10b87n2" path="res://assets/characters/B/hop.tres" id="5_coh7f"]
 [ext_resource type="Resource" uid="uid://c3rknhbbmb4ov" path="res://assets/characters/B/roo.tres" id="6_7viuy"]
 [ext_resource type="Resource" uid="uid://7xr3hys37c0p" path="res://assets/characters/B/billy.tres" id="7_ba6jy"]
@@ -21,6 +21,6 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_2rymf")
-teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("4_uraeg"), ExtResource("5_coh7f"), ExtResource("6_7viuy"), ExtResource("7_ba6jy"), ExtResource("11_upwad"), ExtResource("16_alalc"), ExtResource("16_alalc"), ExtResource("8_yj35x"), ExtResource("12_pibu2"), ExtResource("13_wqa2d"), ExtResource("14_37pw8"), ExtResource("15_3rhfp"), ExtResource("16_qbxid"), ExtResource("17_8m5uu"), ExtResource("18_b3u8b"), ExtResource("19_ka1wy")])
-team_names = Array[String](["Team 1 - Slow And Steady", "Team 2 - ", "Team 3 - Wingin' It", "Team 4 - Speedsters", "Champions - Alpha FC", "Random Challengers"])
+teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("4_7ta8s"), ExtResource("5_coh7f"), ExtResource("6_7viuy"), ExtResource("7_ba6jy"), ExtResource("11_upwad"), ExtResource("16_alalc"), ExtResource("16_alalc"), ExtResource("8_yj35x"), ExtResource("12_pibu2"), ExtResource("13_wqa2d"), ExtResource("14_37pw8"), ExtResource("15_3rhfp"), ExtResource("16_qbxid"), ExtResource("17_8m5uu"), ExtResource("18_b3u8b"), ExtResource("19_ka1wy")])
+team_names = Array[String](["Team 1 - Slow And Steady", "Team 2 - Jumpers", "Team 3 - Wingin' It", "Team 4 - Speedsters", "Champions - Alpha FC", "Random Challengers"])
 match_length = Array[int]([30, 60, 60, 60, 90, 90])
