@@ -11,6 +11,16 @@ extends AudioStreamPlayer
 @export var tada: AudioStream
 @export var cash: AudioStream
 
+func play_unique(s: AudioStream, vol: float = 0.0):
+	if s == null:
+		return
+	var p = AudioStreamPlayer.new()
+	p.stream = s
+	p.volume_db = vol
+	add_child(p)
+	p.connect("finished", p.queue_free)
+	p.play()
+
 func play_countdown_beep():
 	stream = beep_low
 	play()
