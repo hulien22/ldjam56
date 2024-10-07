@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://c3rknhbbmb4ov"]
+
+[ext_resource type="PackedScene" uid="uid://cyuiqghame7q7" path="res://assets/characters/models/kangaroo_model.tscn" id="1_lmv2q"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_rt8b4"]
+
+[resource]
+script = ExtResource("1_rt8b4")
+name = "Roo Kangaroo"
+determination = 8
+cuteness = 15
+model = ExtResource("1_lmv2q")
+chance = 2
+nationality = "England"
+type = 8

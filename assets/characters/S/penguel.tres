@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://nauj818ciwfy"]
+
+[ext_resource type="PackedScene" uid="uid://b1xtjdwhp6f2t" path="res://assets/characters/models/penguin_model.tscn" id="1_mou2w"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_s7u0x"]
+
+[resource]
+script = ExtResource("1_s7u0x")
+name = "Penguel Neuer"
+determination = 92
+cuteness = 89
+model = ExtResource("1_mou2w")
+chance = 0
+nationality = "Gernamy"
+type = 9

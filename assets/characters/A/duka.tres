@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://c4cm7w0qbxvuw"]
+
+[ext_resource type="PackedScene" uid="uid://cspk6msumx106" path="res://assets/characters/models/duck_model.tscn" id="1_3tcj4"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_axe48"]
+
+[resource]
+script = ExtResource("1_axe48")
+name = "Duka Modric"
+determination = 87
+cuteness = 84
+model = ExtResource("1_3tcj4")
+chance = 1
+nationality = "Croatia"
+type = 3

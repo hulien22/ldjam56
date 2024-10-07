@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3djhy6j25udh"]
+[gd_scene load_steps=4 format=3 uid="uid://dbx40gdylghut"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_v4uqa"]
 [ext_resource type="PackedScene" uid="uid://b8nbgwfisola8" path="res://assets/animals/Giraffe.glb" id="2_8deea"]

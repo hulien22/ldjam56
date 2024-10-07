@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bodlec0tbeiyy"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_prabq"]
+[ext_resource type="PackedScene" uid="uid://bnniub860xvkm" path="res://assets/characters/models/turtle_model.tscn" id="1_y6uts"]
+
+[resource]
+script = ExtResource("1_prabq")
+name = "Leonardo Turtle"
+determination = 16
+cuteness = 3
+model = ExtResource("1_y6uts")
+chance = 2
+nationality = "United States"
+type = 11

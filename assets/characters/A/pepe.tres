@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://h120tirsu2xe"]
 
-[ext_resource type="PackedScene" uid="uid://dq7wo1456lxnq" path="res://assets/animals/Frog.glb" id="1_ii1dp"]
+[ext_resource type="PackedScene" uid="uid://vhy55yd4csqw" path="res://assets/characters/models/frog_model.tscn" id="1_5ye7e"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_rarvx"]
 
 [resource]
@@ -8,6 +8,7 @@ script = ExtResource("1_rarvx")
 name = "Pepe"
 determination = 45
 cuteness = 76
-model = ExtResource("1_ii1dp")
+model = ExtResource("1_5ye7e")
 chance = 1
 nationality = "Portugal"
+type = 4

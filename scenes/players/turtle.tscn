@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://scccjfpr6gwo"]
+[gd_scene load_steps=5 format=3 uid="uid://bpnrb1lrmy3hv"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_gals1"]
 [ext_resource type="PackedScene" uid="uid://4rxuxrgjnlm1" path="res://assets/animals/Turtle.glb" id="2_ow76n"]

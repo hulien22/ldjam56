@@ -41,12 +41,16 @@ func _ready() -> void:
 			owned_chars[q] = true
 			if lel == 0:
 				x.set_data(q)
+				Team.RM = q
 			elif lel == 1:
 				w.set_data(q)
+				Team.GK = q
 			elif lel == 2:
 				y.set_data(q)
+				Team.LM = q
 			elif lel == 3:
 				z.set_data(q)
+				Team.ST = q
 			lel += 1
 	$AnimationPlayer.play("goto_sky")
 	
@@ -111,6 +115,8 @@ func replace_character(sele: Node3D):
 		c.queue_free()
 		
 	for c in owned_chars:
+		if c == Team.GK or c == Team.LM or c == Team.RM or c == Team.ST:
+			continue
 		var op = char_option.instantiate()
 		op.set_data(c)
 		op.connect("selected_character", on_character_selected)
@@ -119,10 +125,18 @@ func replace_character(sele: Node3D):
 	
 	
 func on_character_selected(data: Character):
-	print("yooooo")
 	print(data)
+	sel.reset_card()
 	sel.set_data(data)
 	$CanvasLayer/ScrollContainer.visible = false
+	if sel == x:
+		Team.RM = data
+	elif sel == w:
+		Team.GK = data
+	elif sel == y:
+		Team.LM = data
+	elif sel == z:
+		Team.ST = data
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

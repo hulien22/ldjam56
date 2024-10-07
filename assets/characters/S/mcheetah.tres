@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://mh0400ftqwvp"]
 
-[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/animals/Cheetah.glb" id="1_b4s7f"]
+[ext_resource type="PackedScene" uid="uid://bd511hay4sqxr" path="res://assets/characters/models/cheetah_model.tscn" id="1_132bh"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_klppk"]
 
 [resource]
@@ -8,6 +8,7 @@ script = ExtResource("1_klppk")
 name = "Kylian Mcheetah"
 determination = 34
 cuteness = 43
-model = ExtResource("1_b4s7f")
+model = ExtResource("1_132bh")
 chance = 0
 nationality = "France"
+type = 2

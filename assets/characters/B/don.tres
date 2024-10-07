@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://crqwrphvv25oy"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_5at4d"]
+[ext_resource type="PackedScene" uid="uid://cspk6msumx106" path="res://assets/characters/models/duck_model.tscn" id="1_qt5ht"]
+
+[resource]
+script = ExtResource("1_5at4d")
+name = "Don Duck"
+determination = 8
+cuteness = 13
+model = ExtResource("1_qt5ht")
+chance = 2
+nationality = "United States"
+type = 3

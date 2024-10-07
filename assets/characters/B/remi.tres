@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bcn12qjcfroh8"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_lbohk"]
-[ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="1_ne2k6"]
+[ext_resource type="PackedScene" uid="uid://d3knjqie0kwof" path="res://assets/characters/models/rat_model.tscn" id="1_lm62a"]
 
 [resource]
 script = ExtResource("1_lbohk")
 name = "Remi Rat"
 determination = 4
 cuteness = 86
-model = ExtResource("1_ne2k6")
+model = ExtResource("1_lm62a")
 chance = 2
 nationality = "France"
+type = 10

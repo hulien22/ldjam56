@@ -22,6 +22,8 @@ func enable_card():
 func reset_card():
 	$Card.set_physics_process(false)
 	$Card.rot = PI
+	for x in $Card/CardImage/SubViewport/Subscene/Scaler.get_children():
+		$Card/CardImage/SubViewport/Subscene/Scaler.remove_child(x)
 
 func set_data(data: Character):
 	var x: Mesh = $Card.mesh
@@ -37,3 +39,6 @@ func set_data(data: Character):
 	y.material.set_shader_parameter("texture_albedo", stickers[data.chance])
 	char_name.text = data.name.replace(" ", "\n")
 	char_stats.text = str(data.determination) + "\n" + str(data.cuteness) + "\nTiny\n" + data.nationality
+	var model = data.model.instantiate()
+	#model.enable(false)
+	$Card/CardImage/SubViewport/Subscene/Scaler.add_child(model)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cbndyojw2aasv"]
+
+[ext_resource type="PackedScene" uid="uid://b1xtjdwhp6f2t" path="res://assets/characters/models/penguin_model.tscn" id="1_bkps4"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_wwasy"]
+
+[resource]
+script = ExtResource("1_wwasy")
+name = "Pingu Penguin"
+determination = 5
+cuteness = 18
+model = ExtResource("1_bkps4")
+chance = 2
+nationality = "Antarctica"
+type = 9

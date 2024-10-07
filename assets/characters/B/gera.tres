@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://ocedrva7o5kv"]
+
+[ext_resource type="PackedScene" uid="uid://2ofn7h7u0adc" path="res://assets/characters/models/giraffe_model.tscn" id="1_h8f4u"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_tg57p"]
+
+[resource]
+script = ExtResource("1_tg57p")
+name = "Gerry Giraffe"
+determination = 3
+cuteness = 4
+model = ExtResource("1_h8f4u")
+chance = 2
+nationality = "Namibia"
+type = 5

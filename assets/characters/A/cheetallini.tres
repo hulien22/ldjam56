@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bwptmva1ahj5b"]
 
+[ext_resource type="PackedScene" uid="uid://bd511hay4sqxr" path="res://assets/characters/models/cheetah_model.tscn" id="1_d65q0"]
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_jouch"]
-[ext_resource type="PackedScene" uid="uid://ftsmpwkl55jl" path="res://assets/animals/Cheetah.glb" id="1_qw6ya"]
 
 [resource]
 script = ExtResource("1_jouch")
 name = "Giorgio Cheetallini"
 determination = 87
 cuteness = 45
-model = ExtResource("1_qw6ya")
+model = ExtResource("1_d65q0")
 chance = 1
 nationality = "Italy"
+type = 2

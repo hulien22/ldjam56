@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://7yfdroi47cd5"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_o0twp"]
+[ext_resource type="PackedScene" uid="uid://cyuiqghame7q7" path="res://assets/characters/models/kangaroo_model.tscn" id="1_wv866"]
+
+[resource]
+script = ExtResource("1_o0twp")
+name = "Kanga DeBruyne"
+determination = 87
+cuteness = 88
+model = ExtResource("1_wv866")
+chance = 1
+nationality = "Belgium"
+type = 8

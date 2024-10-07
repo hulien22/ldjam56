@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://b2wxfh71ibw1d"]
+
+[ext_resource type="PackedScene" uid="uid://vhy55yd4csqw" path="res://assets/characters/models/frog_model.tscn" id="1_nesik"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_ytkin"]
+
+[resource]
+script = ExtResource("1_ytkin")
+name = "Phil Frogden"
+determination = 82
+cuteness = 84
+model = ExtResource("1_nesik")
+chance = 1
+nationality = "England"
+type = 4

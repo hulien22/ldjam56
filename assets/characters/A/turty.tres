@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bxspnhd8mfsb4"]
+
+[ext_resource type="PackedScene" uid="uid://bnniub860xvkm" path="res://assets/characters/models/turtle_model.tscn" id="1_frc1t"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_silgs"]
+
+[resource]
+script = ExtResource("1_silgs")
+name = "Turty Henry"
+determination = 85
+cuteness = 78
+model = ExtResource("1_frc1t")
+chance = 1
+nationality = "France"
+type = 11
