@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqp0ojqcc5d0g"]
+
+[ext_resource type="Script" path="res://scripts/globals.gd" id="1_2rymf"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_e5erf"]
+[ext_resource type="Resource" uid="uid://bodlec0tbeiyy" path="res://assets/characters/B/leonardo.tres" id="3_na05r"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_2rymf")
+teams = Array[ExtResource("2_e5erf")]([ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r"), ExtResource("3_na05r")])
+team_names = Array[String](["Team 1 - Slow And Steady"])

@@ -57,14 +57,14 @@ func _ready() -> void:
 				elif lel == 3:
 					z.set_data(q)
 					Team.ST = q
-				elif lel == 4: #setting the first enemy team :)
-					Team.Enemy_GK = q
-				elif lel == 5:
-					Team.Enemy_LM = q
-				elif lel == 6:
-					Team.Enemy_RM = q
-				elif lel == 7:
-					Team.Enemy_ST = q
+				#elif lel == 4: #setting the first enemy team :)
+					#Team.Enemy_GK = q
+				#elif lel == 5:
+					#Team.Enemy_LM = q
+				#elif lel == 6:
+					#Team.Enemy_RM = q
+				#elif lel == 7:
+					#Team.Enemy_ST = q
 				lel += 1
 	else:
 		x.set_data(Team.RM)

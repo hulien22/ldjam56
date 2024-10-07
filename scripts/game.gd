@@ -16,6 +16,7 @@ func _ready() -> void:
 	load_players()
 	play_intro()
 	%ClockLabel.text = str(clock_time)
+	Globals.match_num += 1
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_indent"):
@@ -25,9 +26,9 @@ func _physics_process(delta: float) -> void:
 			if players[cur_player].is_team1:
 				break
 		players[cur_player].set_is_player(true)
-	if Input.is_action_just_pressed("ui_text_backspace"):
-		for p in players:
-			p.set_target_posn(players[cur_player].global_position)
+	#if Input.is_action_just_pressed("ui_text_backspace"):
+		#for p in players:
+			#p.set_target_posn(players[cur_player].global_position)
 	
 	for p in players:
 		var min_distance_sq:float = MIN_BALL_DISTANCE
@@ -68,6 +69,7 @@ func load_players_from_global():
 	map_character_to_player(Team.RM)
 	map_character_to_player(Team.ST)
 	
+	Globals.load_enemy_team()
 	map_character_to_player(Team.Enemy_GK)
 	map_character_to_player(Team.Enemy_LM)
 	map_character_to_player(Team.Enemy_RM)
@@ -137,12 +139,16 @@ func _on_goal_goal(body: Node3D, team1_net: bool) -> void:
 	
 func play_intro() -> void:
 	%OpeningCam.current = true
+	%IntroInfoPanel.show()
+	%matchlbl.text = "Match " + str(Globals.match_num)
+	%teamlbl.text = str(Globals.team_names[Globals.team_num])
 	$AudioStreamPlayer.volume_db = -50
 	var tween:Tween = create_tween()
 	tween.tween_property(%CamHolder, "rotation", Vector3(0, 0, 0), 0.1)
 	tween.tween_property(%CamHolder, "rotation", Vector3(0, 2*PI, 0), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(%OpeningCam, "position", Vector3(0, 110, 70), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property($AudioStreamPlayer, "volume_db", 0, 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(%IntroInfoPanel, "modulate", Color("ffffff00"), 5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	tween.tween_property(%OpeningCam, "current", false, 0.001)
 	tween.parallel().tween_property(%MainGameCamera, "current", true, 0.001)
 	tween.tween_property(%Countdown, "text", "3", 0.001)

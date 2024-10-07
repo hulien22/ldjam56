@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=52 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
@@ -44,6 +44,10 @@ default_font_size = 50
 
 [sub_resource type="Theme" id="Theme_vcnc5"]
 default_font = ExtResource("2_ick18")
+
+[sub_resource type="Theme" id="Theme_kw0no"]
+default_font = ExtResource("2_ick18")
+default_font_size = 80
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgiw2"]
 size = Vector3(300, 100, 200)
@@ -211,6 +215,87 @@ theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 500
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="IntroInfoPanel" type="Panel" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -513.0
+offset_top = -261.5
+offset_right = 513.0
+offset_bottom = 261.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="matchlbl" type="Label" parent="UI/IntroInfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 21.8951
+anchor_top = 12.4237
+anchor_right = 22.08
+anchor_bottom = 12.4237
+offset_left = -22422.4
+offset_top = -6427.09
+offset_right = -21653.9
+offset_bottom = -6335.09
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_kw0no")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Match 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vs" type="Label" parent="UI/IntroInfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 21.8951
+anchor_top = 12.634
+anchor_right = 22.08
+anchor_bottom = 12.634
+offset_left = -22422.4
+offset_top = -6427.09
+offset_right = -21653.9
+offset_bottom = -6335.09
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_kw0no")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "vs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="teamlbl" type="Label" parent="UI/IntroInfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 21.8951
+anchor_top = 12.8128
+anchor_right = 22.0693
+anchor_bottom = 13.0231
+offset_left = -22422.4
+offset_top = -6416.59
+offset_right = -21653.9
+offset_bottom = -6324.59
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_kw0no")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Team 1 - Slow and Steady"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Balls" type="Node" parent="."]
 unique_name_in_owner = true
