@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ctc136adnmold" path="res://scenes/env3.tscn" id="5_lvccn"]
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
-[ext_resource type="Environment" uid="uid://bc8bb5lim0d64" path="res://assets/world_environment.tres" id="6_mcpyr"]
+[ext_resource type="Environment" uid="uid://ddoqbevt2isgr" path="res://assets/world_environment.tres" id="6_mcpyr"]
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="10_tc1ft"]
 [ext_resource type="PackedScene" uid="uid://dtkxmb7d23xft" path="res://scenes/goal.tscn" id="11_ec0d2"]
