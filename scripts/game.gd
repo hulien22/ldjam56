@@ -147,3 +147,6 @@ func start_game():
 func _process(delta: float) -> void:
 	if game_mode == GameMode.INTRO && %OpeningCam.current:
 		%OpeningCam.look_at(Vector3(0,4,0))
+
+func go_to_menu():
+	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
