@@ -187,10 +187,22 @@ func process_jump_kick() -> void:
 		var jump_f_dir:Vector3 = global_basis.x.normalized() * forwards_jump_power
 		dir_to_move += jump_f_dir
 	# kick
+	var objs: Dictionary = {}
 	if %KickRay.is_colliding():
 		var obj = %KickRay.get_collider()
 		if obj.has_method("on_kick"):
-			obj.on_kick(global_position, kick_power)
+			objs[obj] = true
+	
+	if is_player_controlled:
+		for kray in %PlayerKickRays.get_children():
+			if kray.is_colliding():
+				var obj = kray.get_collider()
+				if obj.has_method("on_kick"):
+					objs[obj] = true
+		#print(objs)
+	
+	for o in objs:
+		o.on_kick(global_position, kick_power)
 
 func on_kick(g_pos: Vector3, k_power:float) -> void:
 	#print(self, " Was kicked!")
@@ -233,7 +245,7 @@ func set_ai_play_region(marker: Marker3D, mesh: MeshInstance3D):
 	var plane: PlaneMesh = mesh.mesh
 	ai_region_top_left = Vector2(mesh.global_position.x - plane.size.x / 2, mesh.global_position.z - plane.size.y / 2)
 	ai_region_bottom_right = Vector2(mesh.global_position.x + plane.size.x / 2, mesh.global_position.z + plane.size.y / 2)
-	print(self, "  ", ai_region_top_left, "  ", ai_region_bottom_right, "  ", reset_posn,  "   ", marker.global_position)
+	#print(self, "  ", ai_region_top_left, "  ", ai_region_bottom_right, "  ", reset_posn,  "   ", marker.global_position)
 
 func set_closest_ball(b: Ball) -> void:
 	closest_ball = b

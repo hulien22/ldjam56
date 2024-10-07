@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://daafunklwkawf"]
+[gd_scene load_steps=7 format=3 uid="uid://daafunklwkawf"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_wxvkw"]
 [ext_resource type="PackedScene" uid="uid://o5rw8o3ouc03" path="res://assets/animals/Ant.glb" id="2_wd05j"]
@@ -14,6 +14,9 @@ albedo_color = Color(1, 0, 0, 0.266667)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3v1hy"]
 radius = 2.0
 height = 4.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d04fi"]
+viewport_path = NodePath("SubViewport")
 
 [node name="player" instance=ExtResource("1_wxvkw")]
 TIME_STUCK_IN_KICK = 10.0
@@ -39,3 +42,6 @@ shape = SubResource("CapsuleShape3D_3v1hy")
 
 [node name="KickRay" parent="." index="3"]
 target_position = Vector3(5, 0, 0)
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_d04fi")

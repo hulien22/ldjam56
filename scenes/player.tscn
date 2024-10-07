@@ -145,6 +145,30 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.18914, 0)
 target_position = Vector3(10, 0, 0)
 
+[node name="PlayerKickRays" type="Node3D" parent="KickRay"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.18914, 0)
+
+[node name="KickRay2" type="RayCast3D" parent="KickRay/PlayerKickRays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.189, 0)
+target_position = Vector3(12, 0, 0)
+
+[node name="KickRay3" type="RayCast3D" parent="KickRay/PlayerKickRays"]
+unique_name_in_owner = true
+transform = Transform3D(0.998629, 0.052336, 0, -0.052336, 0.998629, 0, 0, 0, 1, 0, 2.189, 0)
+target_position = Vector3(12, 0, 0)
+
+[node name="KickRay4" type="RayCast3D" parent="KickRay/PlayerKickRays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.189, -3)
+target_position = Vector3(12, 0, 0)
+
+[node name="KickRay5" type="RayCast3D" parent="KickRay/PlayerKickRays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.189, 3)
+target_position = Vector3(12, 0, 0)
+
 [node name="IsOnGround" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 target_position = Vector3(0, -5, 0)
