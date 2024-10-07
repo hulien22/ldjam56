@@ -36,22 +36,28 @@ func _ready() -> void:
 	y.set_big()
 	z = $CharSelect/CardFlipHack4
 	z.set_big()
-	for q in basic_chars:
-		if q.chance == 2:
-			owned_chars[q] = true
-			if lel == 0:
-				x.set_data(q)
-				Team.RM = q
-			elif lel == 1:
-				w.set_data(q)
-				Team.GK = q
-			elif lel == 2:
-				y.set_data(q)
-				Team.LM = q
-			elif lel == 3:
-				z.set_data(q)
-				Team.ST = q
-			lel += 1
+	if Team.GK == null:
+		for q in basic_chars:
+			if q.chance == 2:
+				owned_chars[q] = true
+				if lel == 0:
+					x.set_data(q)
+					Team.RM = q
+				elif lel == 1:
+					w.set_data(q)
+					Team.GK = q
+				elif lel == 2:
+					y.set_data(q)
+					Team.LM = q
+				elif lel == 3:
+					z.set_data(q)
+					Team.ST = q
+				lel += 1
+	else:
+		x.set_data(Team.RM)
+		w.set_data(Team.GK)
+		y.set_data(Team.LM)
+		z.set_data(Team.ST)
 	$AnimationPlayer.play("goto_sky")
 	
 func is_lege():
