@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxlb3evp1xvav"]
+[gd_scene load_steps=16 format=3 uid="uid://dxlb3evp1xvav"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_j4bjm"]
 [ext_resource type="Environment" uid="uid://ddoqbevt2isgr" path="res://assets/world_environment.tres" id="1_jjfbk"]
 [ext_resource type="PackedScene" uid="uid://cxk6f850u0vnp" path="res://loot_box.tscn" id="2_ap4a0"]
+[ext_resource type="PackedScene" uid="uid://bueoouknkqp8h" path="res://scenes/floating_island_env.tscn" id="3_1bpcv"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="3_fnm0l"]
 [ext_resource type="PackedScene" uid="uid://bwiga76vw0dqy" path="res://scenes/bounce_button_component.tscn" id="4_aahfe"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="4_bg1ov"]
@@ -23,7 +24,7 @@ default_font_size = 80
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7478"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tusu1"]
-size = Vector3(248, 100, 180)
+size = Vector3(260, 100, 220)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0aal"]
 albedo_texture = ExtResource("3_fnm0l")
@@ -35,6 +36,8 @@ material = SubResource("StandardMaterial3D_o0aal")
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_j4bjm")
 lobby_scene = ExtResource("2_ap4a0")
+
+[node name="Secret Camping spot" parent="." instance=ExtResource("3_1bpcv")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -73,7 +76,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 bbcode_enabled = true
 text = "
-[rainbow freq=.0 sat=0.0 val=0.8][wave amp=50.0 freq=5.0 connected=1] Tiny Little League[/wave]"
+[rainbow freq=.0 sat=0.0 val=1][wave amp=50.0 freq=5.0 connected=1] Tiny Little League[/wave]"
 fit_content = true
 
 [node name="Button" type="Button" parent="Control"]
