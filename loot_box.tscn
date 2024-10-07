@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=67 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
@@ -55,6 +55,7 @@
 [ext_resource type="Resource" uid="uid://d1wrb3712psoh" path="res://assets/characters/S/kang.tres" id="48_ax5e8"]
 [ext_resource type="Resource" uid="uid://oydh0ckuax1g" path="res://assets/characters/S/turtal.tres" id="49_largl"]
 [ext_resource type="Resource" uid="uid://cr1toom127lht" path="res://assets/characters/S/bati.tres" id="50_8apms"]
+[ext_resource type="PackedScene" uid="uid://c3uqthjdacj11" path="res://scenes/game.tscn" id="52_i6a35"]
 
 [sub_resource type="Environment" id="Environment_37ics"]
 background_mode = 1
@@ -427,6 +428,7 @@ script = ExtResource("1_tpc8w")
 basic_chars = Array[ExtResource("2_aucgo")]([ExtResource("7_iv135"), ExtResource("8_ljnyb"), ExtResource("11_g7hjt"), ExtResource("10_5g5qr"), ExtResource("5_wy843"), ExtResource("4_51y3a"), ExtResource("12_i0owo"), ExtResource("13_3fgax"), ExtResource("14_jm8iw"), ExtResource("15_epesc"), ExtResource("15_vbhh4"), ExtResource("16_3j3d6"), ExtResource("17_5ipu8"), ExtResource("18_g4x1d"), ExtResource("19_k26pi"), ExtResource("21_hjff3"), ExtResource("22_kfou0"), ExtResource("23_3e0ha"), ExtResource("24_pbr5l"), ExtResource("25_fa06v"), ExtResource("26_av4i3"), ExtResource("27_lq771"), ExtResource("28_3w0iw"), ExtResource("28_gvejx"), ExtResource("27_nsdho"), ExtResource("28_0io8c"), ExtResource("29_txfjk"), ExtResource("30_afwpa"), ExtResource("31_xv2nn"), ExtResource("32_5i624"), ExtResource("33_bpcwp"), ExtResource("34_pj0mg"), ExtResource("35_2wews"), ExtResource("36_un515"), ExtResource("37_u88cm"), ExtResource("38_7cvfo")])
 lege_chars = Array[ExtResource("2_aucgo")]([ExtResource("12_onkpj"), ExtResource("9_rjh6s"), ExtResource("11_jsn4a"), ExtResource("20_dexax"), ExtResource("33_s7hoe"), ExtResource("34_12sjb"), ExtResource("6_jx01g"), ExtResource("3_bbe2g"), ExtResource("47_scgvt"), ExtResource("48_ax5e8"), ExtResource("49_largl"), ExtResource("50_8apms")])
 char_option = ExtResource("17_5iyng")
+game_scene = ExtResource("52_i6a35")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 environment = SubResource("Environment_37ics")
@@ -511,6 +513,10 @@ text = "Vend"
 layout_mode = 2
 text = "Sky"
 
+[node name="Button3" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ua3rh")
@@ -522,3 +528,4 @@ transform = Transform3D(1, 0, 0, 0, 0.362893, 0.931831, 0, -0.931831, 0.362893, 
 [connection signal="swap_player" from="Camera3D" to="." method="replace_character"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="goto_vending"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button2" to="." method="goto_sky"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button3" to="." method="on_play"]

@@ -4,7 +4,8 @@ extends Node3D
 @export var lege_chars: Array[Character]
 
 @export var char_option: PackedScene
-var owned_chars: Dictionary
+@export var game_scene: PackedScene
+#var owned_chars: Dictionary
 var a
 var b
 var c
@@ -36,22 +37,29 @@ func _ready() -> void:
 	y.set_big()
 	z = $CharSelect/CardFlipHack4
 	z.set_big()
-	for q in basic_chars:
-		if q.chance == 2:
-			owned_chars[q] = true
-			if lel == 0:
-				x.set_data(q)
-				Team.RM = q
-			elif lel == 1:
-				w.set_data(q)
-				Team.GK = q
-			elif lel == 2:
-				y.set_data(q)
-				Team.LM = q
-			elif lel == 3:
-				z.set_data(q)
-				Team.ST = q
-			lel += 1
+	if Team.GK == null:
+		for q in basic_chars:
+			if q.chance == 2:
+				if lel < 6:
+					Team.owned_chars[q] = true
+				if lel == 0:
+					x.set_data(q)
+					Team.RM = q
+				elif lel == 1:
+					w.set_data(q)
+					Team.GK = q
+				elif lel == 2:
+					y.set_data(q)
+					Team.LM = q
+				elif lel == 3:
+					z.set_data(q)
+					Team.ST = q
+				lel += 1
+	else:
+		x.set_data(Team.RM)
+		w.set_data(Team.GK)
+		y.set_data(Team.LM)
+		z.set_data(Team.ST)
 	$AnimationPlayer.play("goto_sky")
 	
 func is_lege():
@@ -66,29 +74,32 @@ func random_pack():
 	if is_lege():
 		var t = lege_chars.pick_random()
 		lege_spot.set_data(t)
-		owned_chars[t] = true
+		Team.owned_chars[t] = true
 	else:
 		var t = basic_chars.pick_random()
 		lege_spot.set_data(t)
-		owned_chars[t] = true
+		Team.owned_chars[t] = true
 	if a != lege_spot:
 		var t = basic_chars.pick_random()
 		a.set_data(t)
-		owned_chars[t] = true
+		Team.owned_chars[t] = true
 	if b != lege_spot:
 		var t = basic_chars.pick_random()
 		b.set_data(t)
-		owned_chars[t] = true
+		Team.owned_chars[t] = true
 	if c != lege_spot:
 		var t = basic_chars.pick_random()
 		c.set_data(t)
-		owned_chars[t] = true
+		Team.owned_chars[t] = true
 	
 func on_open_pack():
 	random_pack()
 	
 	$LootBox/AnimationPlayer.play("dispense")
 	#replace_character()
+
+func on_play():
+	get_tree().change_scene_to_packed(game_scene)
 
 func on_clear():
 	pass
@@ -114,7 +125,7 @@ func replace_character(sele: Node3D):
 		list.remove_child(c)
 		c.queue_free()
 		
-	for c in owned_chars:
+	for c in Team.owned_chars:
 		if c == Team.GK or c == Team.LM or c == Team.RM or c == Team.ST:
 			continue
 		var op = char_option.instantiate()

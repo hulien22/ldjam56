@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://c7fxfek34mcgk" path="res://assets/animals/Kangaroo.glb" id="2_d06pt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_88tge"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+margin = 0.04
 radius = 3.25692
 height = 7.77293
 
