@@ -4,6 +4,7 @@ extends AudioStreamPlayer
 @export var beep_high: AudioStream
 @export var pop: AudioStream
 @export var vending: AudioStream
+@export var whistle: AudioStream
 
 func play_countdown_beep():
 	stream = beep_low
@@ -19,4 +20,8 @@ func play_pop():
 	
 func play_vending():
 	stream = vending
+	play()
+
+func play_whistle():
+	stream = whistle
 	play()

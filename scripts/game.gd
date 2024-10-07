@@ -157,7 +157,7 @@ func _process(delta: float) -> void:
 func go_to_menu():
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
-var clock_time: int = 60
+var clock_time: int = 10
 func _on_timer_timeout() -> void:
 	clock_time -= 1
 	%ClockLabel.text = str(clock_time)
@@ -171,4 +171,5 @@ func stop_game():
 		p.enable(false)
 	for b in balls:
 		b.freeze = true
+	SoundEffectBus.play_whistle()
 	
