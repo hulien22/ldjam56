@@ -9,7 +9,7 @@ enum GameMode {INTRO, GAME, AFTERGAME}
 
 var game_mode:GameMode = GameMode.INTRO
 var team1_score: int = 0
-var team2_score: int = 0
+var team2_score: int = 10
 
 func _ready() -> void:
 	load_balls()
@@ -188,12 +188,17 @@ func go_to_menu():
 func go_to_store():
 	get_tree().change_scene_to_file("res://loot_box.tscn") #cant used packed scene because godot
 
-var clock_time: int = 60
+var clock_time: int = 5
 func _on_timer_timeout() -> void:
-	clock_time -= 1
-	%ClockLabel.text = str(clock_time)
-	if (clock_time == 0):
-		stop_game()
+	clock_time = max(-1, clock_time - 1)
+	if clock_time < 0:
+		%ClockLabel.text = "OT"
+	else:
+		%ClockLabel.text = str(clock_time)
+	
+	if (clock_time <= 0):
+		if (team1_score != team2_score):
+			stop_game()
 
 func stop_game():
 	game_mode = GameMode.AFTERGAME
@@ -206,5 +211,38 @@ func stop_game():
 	
 	#temp
 	var tween:Tween = create_tween()
-	tween.tween_property($AudioStreamPlayer, "volume_db", -50, 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(go_to_store)
+	tween.tween_property($AudioStreamPlayer, "volume_db", -50, 3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(show_end_game_screen)
+
+func show_end_game_screen():
+	%EndGamePanel.show()
+	
+	if team1_score > team2_score:
+		%EndGamePanel/title.text = "Victory!"
+	else:
+		%EndGamePanel/title.text = "Defeat..."
+	%EndGamePanel/info.text = ""
+	var total:int = 3
+	%EndGamePanel/info.text += "Match completed: $3\n"
+	if team1_score > team2_score:
+		%EndGamePanel/info.text += "Victory: $6\n"
+		total += 6
+	%EndGamePanel/info.text += "Goals scored: $" + str(team1_score) + "\n"
+	total += team1_score
+	%EndGamePanel/info.text += "---------------\n"
+	
+	%EndGamePanel/info.text += "Total earnings: $" + str(total)
+	
+	%EndGamePanel/info.text += "\n\n"
+	if team1_score > team2_score:
+		%EndGamePanel/info.text += "Moving on to the next team!"
+	else:
+		%EndGamePanel/info.text += "Revise your roster and try again!"
+	
+	%EndGamePanel/info.visible_ratio = 0
+	var tween:Tween = create_tween()
+	tween.tween_property(%EndGamePanel/info, "visible_ratio", 1, 2)
+	tween.tween_callback(show_continue_btn)
+
+func show_continue_btn():
+	%NextButton.show()
