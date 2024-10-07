@@ -1,6 +1,8 @@
 extends Node3D
 class_name Explosion
 
+var play_sound:bool = true
+
 func set_color(c : Color) -> void:
 	(%GPUParticles3D.draw_pass_1.material as StandardMaterial3D).albedo_color = c
 	(%GPUParticles3D.draw_pass_1.material as StandardMaterial3D).emission = c
@@ -15,6 +17,7 @@ func _ready() -> void:
 	global_position = spawn_posn
 	%GPUParticles3D.emitting = true
 	%GPUParticles3D2.emitting = true
-	SoundEffectBus.play_unique(SoundEffectBus.airhorn)
+	if play_sound:
+		SoundEffectBus.play_unique(SoundEffectBus.airhorn)
 	await get_tree().create_timer(1.0).timeout
 	queue_free()
