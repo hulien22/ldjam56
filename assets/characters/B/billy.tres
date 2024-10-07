@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://7xr3hys37c0p"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_6xrin"]
+[ext_resource type="PackedScene" uid="uid://birx3eunj0pfy" path="res://assets/characters/models/goat_model.tscn" id="1_uld5l"]
+
+[resource]
+script = ExtResource("1_6xrin")
+name = "Billy Goat"
+determination = 6
+cuteness = 8
+model = ExtResource("1_uld5l")
+chance = 2
+nationality = "Greece"
+type = 6

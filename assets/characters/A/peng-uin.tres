@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://chavnoe0s5xrj"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_6iq52"]
+[ext_resource type="PackedScene" uid="uid://b1xtjdwhp6f2t" path="res://assets/characters/models/penguin_model.tscn" id="1_h5ow7"]
+
+[resource]
+script = ExtResource("1_6iq52")
+name = "Son Peng-uin"
+determination = 88
+cuteness = 82
+model = ExtResource("1_h5ow7")
+chance = 1
+nationality = "South Korea"
+type = 9

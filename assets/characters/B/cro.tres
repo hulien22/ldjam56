@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://b27syb14x64s1"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_jppeq"]
+[ext_resource type="PackedScene" uid="uid://diqui7s8cou75" path="res://assets/characters/models/bat_model.tscn" id="1_x0ehx"]
+
+[resource]
+script = ExtResource("1_jppeq")
+name = "Cro Bat"
+determination = 2
+cuteness = 3
+model = ExtResource("1_x0ehx")
+chance = 2
+nationality = "Japan"
+type = 1

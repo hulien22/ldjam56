@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://br0ivk4vqkrfq"]
+
+[ext_resource type="PackedScene" uid="uid://cspk6msumx106" path="res://assets/characters/models/duck_model.tscn" id="1_7w2j4"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_v1hmk"]
+
+[resource]
+script = ExtResource("1_v1hmk")
+name = "Duckling Haaland"
+determination = 95
+cuteness = 92
+model = ExtResource("1_7w2j4")
+chance = 0
+nationality = "Norway"
+type = 3

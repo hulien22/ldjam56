@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw436k1muwgdk"]
+[gd_scene load_steps=4 format=3 uid="uid://bbcukjpckbn3i"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_6k4ts"]
 [ext_resource type="PackedScene" uid="uid://hyuc0bdl848q" path="res://assets/animals/Grasshopper.glb" id="2_yjjit"]

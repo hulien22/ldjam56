@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyuiqghame7q7"]
+[gd_scene load_steps=6 format=3 uid="uid://2ofn7h7u0adc"]
 
-[ext_resource type="PackedScene" uid="uid://c7fxfek34mcgk" path="res://assets/animals/Kangaroo.glb" id="1_7symm"]
+[ext_resource type="PackedScene" uid="uid://b8nbgwfisola8" path="res://assets/animals/Giraffe.glb" id="1_y6nvq"]
 
 [sub_resource type="Animation" id="Animation_sm74f"]
 length = 0.001
@@ -80,10 +80,10 @@ _data = {
 "run": SubResource("Animation_05poo")
 }
 
-[node name="KangarooModel" type="Node3D"]
+[node name="GiraffeModel" type="Node3D"]
 
-[node name="Kangaroo" parent="." instance=ExtResource("1_7symm")]
-transform = Transform3D(-0.02, 0, -3.01992e-09, 0, 0.02, 0, 3.01992e-09, 0, -0.02, 0, -0.25, -0.1)
+[node name="Giraffe" parent="." instance=ExtResource("1_y6nvq")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, -0.25, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

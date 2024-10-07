@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxufokv4kyj0t"]
+[gd_scene load_steps=4 format=3 uid="uid://byqwwj5gairjt"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_dvbvt"]
 [ext_resource type="PackedScene" uid="uid://c7fxfek34mcgk" path="res://assets/animals/Kangaroo.glb" id="2_d06pt"]

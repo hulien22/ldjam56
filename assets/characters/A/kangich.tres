@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://dlevg5t68darl"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_7egkv"]
+[ext_resource type="PackedScene" uid="uid://cyuiqghame7q7" path="res://assets/characters/models/kangaroo_model.tscn" id="1_c16hf"]
+
+[resource]
+script = ExtResource("1_7egkv")
+name = "Joshua Kangich"
+determination = 85
+cuteness = 83
+model = ExtResource("1_c16hf")
+chance = 1
+nationality = "Germany"
+type = 8
