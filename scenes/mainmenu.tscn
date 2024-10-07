@@ -65,14 +65,16 @@ text = "Tiny Little League"
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 567.0
-offset_top = 294.0
+offset_top = 185.0
 offset_right = 1441.0
 offset_bottom = 591.0
 theme = SubResource("Theme_m5th2")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1] Tiny Little League[/wave]"
+text = "
+[rainbow freq=.0 sat=0.0 val=0.8][wave amp=50.0 freq=5.0 connected=1] Tiny Little League[/wave]"
+fit_content = true
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
@@ -98,6 +100,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BounceButtonComponent" parent="Control/Button" node_paths=PackedStringArray("button") instance=ExtResource("4_aahfe")]
 button = NodePath("..")
+do_rotate = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

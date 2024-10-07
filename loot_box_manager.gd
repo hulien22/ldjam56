@@ -5,6 +5,7 @@ extends Node3D
 
 @export var char_option: PackedScene
 @export var game_scene: PackedScene
+@export var game_tutorial_scene: PackedScene
 #var owned_chars: Dictionary
 var a
 var b
@@ -112,7 +113,10 @@ func on_open_pack():
 	#replace_character()
 
 func on_play():
-	get_tree().change_scene_to_packed(game_scene)
+	if Globals.did_gameplay_tutorial:
+		get_tree().change_scene_to_packed(game_scene)
+	else:
+		get_tree().change_scene_to_packed(game_tutorial_scene)
 
 func on_clear():
 	pass
@@ -179,8 +183,6 @@ func on_character_selected(data: Character):
 	print(data)
 	sel.reset_card()
 	sel.set_data(data)
-	$CanvasLayer/ScrollContainer.visible = false
-	$CanvasLayer/Panel.visible = false
 	if sel == x:
 		Team.RM = data
 	elif sel == w:
@@ -190,9 +192,16 @@ func on_character_selected(data: Character):
 	elif sel == z:
 		Team.ST = data
 	%Roster.show()
+	$CanvasLayer/ScrollContainer.visible = false
+	$CanvasLayer/Panel.visible = false
 	is_selecting = false
 	SoundEffectBus.play_cardflip()
 
+func _on_stop_select_pressed() -> void:
+	%Roster.show()
+	$CanvasLayer/ScrollContainer.visible = false
+	$CanvasLayer/Panel.visible = false
+	is_selecting = false
 
 func _on_buy_pack_pressed() -> void:
 	#TODO check money

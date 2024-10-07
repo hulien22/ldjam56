@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=74 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
@@ -56,6 +56,7 @@
 [ext_resource type="Resource" uid="uid://oydh0ckuax1g" path="res://assets/characters/S/turtal.tres" id="49_largl"]
 [ext_resource type="Resource" uid="uid://cr1toom127lht" path="res://assets/characters/S/bati.tres" id="50_8apms"]
 [ext_resource type="PackedScene" uid="uid://c3uqthjdacj11" path="res://scenes/game.tscn" id="52_i6a35"]
+[ext_resource type="PackedScene" uid="uid://2xdjqgkir5pq" path="res://scenes/tutorials/gameplay_tutorial.tscn" id="53_sdtks"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="57_ny5bw"]
 [ext_resource type="PackedScene" uid="uid://bwiga76vw0dqy" path="res://scenes/bounce_button_component.tscn" id="58_ndu86"]
 
@@ -470,6 +471,7 @@ basic_chars = Array[ExtResource("2_aucgo")]([ExtResource("12_i0owo"), ExtResourc
 lege_chars = Array[ExtResource("2_aucgo")]([ExtResource("12_onkpj"), ExtResource("9_rjh6s"), ExtResource("11_jsn4a"), ExtResource("20_dexax"), ExtResource("33_s7hoe"), ExtResource("34_12sjb"), ExtResource("6_jx01g"), ExtResource("3_bbe2g"), ExtResource("47_scgvt"), ExtResource("48_ax5e8"), ExtResource("49_largl"), ExtResource("50_8apms")])
 char_option = ExtResource("17_5iyng")
 game_scene = ExtResource("52_i6a35")
+game_tutorial_scene = ExtResource("53_sdtks")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 environment = SubResource("Environment_37ics")
@@ -552,6 +554,32 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 text = "     Select a Replacement     "
 metadata/_edit_use_anchors_ = true
+
+[node name="StopSelect" type="Button" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.5917
+anchor_top = 12.2806
+anchor_right = 24.5917
+anchor_bottom = 12.2806
+offset_left = -45648.0
+offset_top = -13254.0
+offset_right = -45062.0
+offset_bottom = -13162.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_2hu6n")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckw1j")
+text = "X"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="CanvasLayer/Panel/StopSelect" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
+button = NodePath("..")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 visible = false
@@ -777,6 +805,7 @@ transform = Transform3D(1, 0, 0, 0, 0.362893, 0.931831, 0, -0.931831, 0.362893, 
 
 [connection signal="flipped_card" from="Camera3D" to="." method="_on_flipped_pack_card"]
 [connection signal="swap_player" from="Camera3D" to="." method="replace_character"]
+[connection signal="pressed" from="CanvasLayer/Panel/StopSelect" to="." method="_on_stop_select_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="goto_vending"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button2" to="." method="goto_sky"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button3" to="." method="on_play"]

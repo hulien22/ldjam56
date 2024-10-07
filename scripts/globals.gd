@@ -11,3 +11,5 @@ func load_enemy_team():
 	Team.Enemy_LM = teams[team_num * 4 + 2]
 	Team.Enemy_ST = teams[team_num * 4 + 3]
 	print("set team")
+
+var did_gameplay_tutorial:bool = false

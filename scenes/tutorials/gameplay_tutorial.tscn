@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://2xdjqgkir5pq"]
+
+[ext_resource type="Script" path="res://scripts/tutorials/gameplay_tutorial.gd" id="1_641py"]
+[ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="1_i7xyn"]
+[ext_resource type="PackedScene" uid="uid://c3uqthjdacj11" path="res://scenes/game.tscn" id="2_4qvqi"]
+[ext_resource type="Texture2D" uid="uid://c2pply11w2hqn" path="res://assets/pics/tutorial_gameplay.png" id="2_lv5w0"]
+[ext_resource type="PackedScene" uid="uid://bwiga76vw0dqy" path="res://scenes/bounce_button_component.tscn" id="3_wbj0e"]
+
+[sub_resource type="Theme" id="Theme_ck0hg"]
+default_font = ExtResource("1_i7xyn")
+default_font_size = 80
+
+[sub_resource type="Theme" id="Theme_3u8hv"]
+default_font = ExtResource("1_i7xyn")
+default_font_size = 80
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8na2m"]
+
+[node name="tutorial" type="Node2D"]
+script = ExtResource("1_641py")
+game_scene = ExtResource("2_4qvqi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -52.0
+offset_top = -44.0
+offset_right = 1974.0
+offset_bottom = 1146.0
+color = Color(0.219585, 0.284644, 0.521428, 1)
+
+[node name="text" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 492.0
+offset_top = 18.0
+offset_right = 1433.0
+offset_bottom = 102.0
+grow_horizontal = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_ck0hg")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "Gameplay Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialGameplay" type="Sprite2D" parent="."]
+position = Vector2(977, 349.5)
+texture = ExtResource("2_lv5w0")
+
+[node name="text2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 264.5
+offset_right = 839.0
+offset_bottom = 435.5
+grow_horizontal = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_ck0hg")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Arrow keys
+to move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text3" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1113.0
+offset_top = 264.5
+offset_right = 2054.0
+offset_bottom = 435.5
+grow_horizontal = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_ck0hg")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Space bar
+to kick/jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text4" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 522.0
+offset_top = 519.5
+offset_right = 1463.0
+offset_bottom = 690.5
+grow_horizontal = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_ck0hg")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Tab to
+swap players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartMatch" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 40.2
+anchor_top = 25.525
+anchor_right = 42.35
+anchor_bottom = 25.525
+offset_left = 622.0
+offset_top = 937.0
+offset_right = 1294.0
+offset_bottom = 1029.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_3u8hv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8na2m")
+text = "     Start Match!     "
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="StartMatch" node_paths=PackedStringArray("button") instance=ExtResource("3_wbj0e")]
+button = NodePath("..")
+
+[connection signal="pressed" from="StartMatch" to="." method="_on_start_match_pressed"]
