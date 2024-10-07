@@ -3,6 +3,7 @@ extends Node3D
 const MIN_BALL_DISTANCE:float = 10000000000
 @onready var explosion_scene = preload("res://scenes/explosion.tscn")
 @onready var ball_scene = preload("res://scenes/ball.tscn")
+@export var player_scenes: Array[PackedScene]
 
 enum GameMode {INTRO, GAME, AFTERGAME}
 
@@ -55,9 +56,26 @@ func load_balls():
 		b.global_position = Vector3(0, 40, (i - num_balls/2) * 40)
 		b.freeze = true
 
+func map_character_to_player(data: Character):
+	var p = player_scenes[data.type as int].instantiate()
+	#set stats
+	%Players.add_child(p)
+	
+func load_players_from_global():
+	map_character_to_player(Team.GK)
+	map_character_to_player(Team.LM)
+	map_character_to_player(Team.RM)
+	map_character_to_player(Team.ST)
+	
+	map_character_to_player(Team.Enemy_GK)
+	map_character_to_player(Team.Enemy_LM)
+	map_character_to_player(Team.Enemy_RM)
+	map_character_to_player(Team.Enemy_ST)
+
 var players: Array[Player] = []
 var cur_player: int = 0
 func load_players():
+	load_players_from_global()
 	players = []  
 	for obj in %Players.get_children():
 		players.push_back(obj)
@@ -173,3 +191,5 @@ func stop_game():
 		b.freeze = true
 	SoundEffectBus.play_whistle()
 	
+	#temp
+	get_tree().change_scene_to_file("res://loot_box.tscn") #cant used packed scene because godot
