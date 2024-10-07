@@ -109,6 +109,7 @@ func at_vend():
 
 func goto_vending():
 	$AnimationPlayer.play("goto_vend")
+	$CanvasLayer/ScrollContainer.visible = false
 	
 
 func goto_sky():
