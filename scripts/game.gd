@@ -178,6 +178,9 @@ func _process(delta: float) -> void:
 
 func go_to_menu():
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+	
+func go_to_store():
+	get_tree().change_scene_to_file("res://loot_box.tscn") #cant used packed scene because godot
 
 var clock_time: int = 10
 func _on_timer_timeout() -> void:
@@ -196,4 +199,6 @@ func stop_game():
 	SoundEffectBus.play_whistle()
 	
 	#temp
-	get_tree().change_scene_to_file("res://loot_box.tscn") #cant used packed scene because godot
+	var tween:Tween = create_tween()
+	tween.tween_property($AudioStreamPlayer, "volume_db", -50, 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(go_to_store)
