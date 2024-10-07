@@ -10,6 +10,7 @@ extends AudioStreamPlayer
 @export var cardmany: AudioStream
 @export var tada: AudioStream
 @export var cash: AudioStream
+@export var airhorn: AudioStream
 
 func play_unique(s: AudioStream, vol: float = 0.0):
 	if s == null:

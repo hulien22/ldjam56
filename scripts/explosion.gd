@@ -15,5 +15,6 @@ func _ready() -> void:
 	global_position = spawn_posn
 	%GPUParticles3D.emitting = true
 	%GPUParticles3D2.emitting = true
+	SoundEffectBus.play_unique(SoundEffectBus.airhorn)
 	await get_tree().create_timer(1.0).timeout
 	queue_free()

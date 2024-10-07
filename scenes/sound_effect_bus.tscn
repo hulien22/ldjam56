@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvaydl11d8hvh"]
+[gd_scene load_steps=15 format=3 uid="uid://cvaydl11d8hvh"]
 
 [ext_resource type="Script" path="res://sound_effect_bus.gd" id="1_l34os"]
 [ext_resource type="AudioStream" uid="uid://cbx27nwk0ysnn" path="res://audio/low_beep.ogg" id="2_ihcqt"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dno560cw5qj1g" path="res://audio/card-sounds-35956.mp3" id="9_7wjy5"]
 [ext_resource type="AudioStream" uid="uid://b4nul0jd6om7w" path="res://audio/tada-fanfare-a-6313.mp3" id="9_mstd6"]
 [ext_resource type="AudioStream" uid="uid://cmdjqopf56buh" path="res://audio/cash-register-purchase-87313.mp3" id="10_cevkr"]
+[ext_resource type="AudioStream" uid="uid://dwrnjw3ps76il" path="res://audio/airhorn-short.mp3" id="12_00ipk"]
 [ext_resource type="AudioStream" uid="uid://dkyw2bixvtfg8" path="res://audio/rapid-wind-sound-effect-1-108398.mp3" id="12_t0a22"]
 [ext_resource type="AudioStream" uid="uid://djgfxuja0stlh" path="res://audio/aww-cute-reaction-6208.mp3" id="13_iyfpf"]
 
@@ -26,5 +27,6 @@ cardflip = ExtResource("8_fjfkh")
 cardmany = ExtResource("9_7wjy5")
 tada = ExtResource("9_mstd6")
 cash = ExtResource("10_cevkr")
+airhorn = ExtResource("12_00ipk")
 wind = ExtResource("12_t0a22")
 aww = ExtResource("13_iyfpf")

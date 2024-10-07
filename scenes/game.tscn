@@ -340,6 +340,7 @@ pivot_offset = Vector2(190, 42)
 theme = SubResource("Theme_3uftx")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
 text = "Victory!"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
