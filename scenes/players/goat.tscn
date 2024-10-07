@@ -4,10 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://kquc3pnpgjud" path="res://assets/animals/Goat.glb" id="2_kyikd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3rkr"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+margin = 0.04
 radius = 3.28659
 height = 10.6462
 
-[node name="player" instance=ExtResource("1_as4y1")]
+[node name="player3" instance=ExtResource("1_as4y1")]
 TIME_STUCK_IN_KICK = 2.0
 move_speed = 1.6
 jump_power = 40.0

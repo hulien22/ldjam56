@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkl00b4iegyyw"]
+[gd_scene load_steps=14 format=3 uid="uid://dxlb3evp1xvav"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_j4bjm"]
 [ext_resource type="Environment" uid="uid://ddoqbevt2isgr" path="res://assets/world_environment.tres" id="1_jjfbk"]
-[ext_resource type="PackedScene" uid="uid://c3uqthjdacj11" path="res://scenes/game.tscn" id="2_l2c0k"]
+[ext_resource type="PackedScene" uid="uid://cxk6f850u0vnp" path="res://loot_box.tscn" id="2_ap4a0"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="3_fnm0l"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="4_bg1ov"]
-[ext_resource type="PackedScene" uid="uid://fnop14mh4dpe" path="res://scenes/ball_emitter.tscn" id="5_f33oo"]
+[ext_resource type="PackedScene" path="res://scenes/ball_emitter.tscn" id="5_f33oo"]
 
 [sub_resource type="Theme" id="Theme_gkbny"]
 default_font = ExtResource("4_bg1ov")
@@ -33,7 +33,7 @@ material = SubResource("StandardMaterial3D_o0aal")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_j4bjm")
-game_scene = ExtResource("2_l2c0k")
+lobby_scene = ExtResource("2_ap4a0")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
