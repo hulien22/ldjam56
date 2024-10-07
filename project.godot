@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="ldjam56"
+config/name="tinylittleleague"
 run/main_scene="res://scenes/mainmenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.707967, 0.707967, 0.707967, 1)
 boot_splash/image="res://assets/pics/splash.png"
-config/icon="res://icon.svg"
+config/icon="res://assets/pics/icon.png"
+config/windows_native_icon="res://assets/pics/icon.ico"
 
 [autoload]
 
