@@ -1,6 +1,6 @@
 extends Node
 
-var money:int = 3
+var money:int = 30
 
 var match_num: int = 0
 var team_num: int = 0

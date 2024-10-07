@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpnrb1lrmy3hv"]
+[gd_scene load_steps=7 format=3 uid="uid://bpnrb1lrmy3hv"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_gals1"]
+[ext_resource type="Script" path="res://scripts/turtle.gd" id="2_hqbcq"]
 [ext_resource type="PackedScene" uid="uid://4rxuxrgjnlm1" path="res://assets/animals/Turtle.glb" id="2_ow76n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f86o"]
@@ -11,13 +12,26 @@ absorbent = true
 radius = 3.0
 height = 6.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_0w5ku"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" instance=ExtResource("1_gals1")]
 physics_material_override = SubResource("PhysicsMaterial_0f86o")
+script = ExtResource("2_hqbcq")
 TIME_STUCK_IN_KICK = 1.0
+TIME_BETWEEN_JUMPS_B = 1.8
+TIME_BETWEEN_JUMPS_S = 1.5
 move_speed = 0.83
+move_speed_b = 0.9
+move_speed_s = 1.5
 jump_power = 0.0
+jump_power_b = 5.0
+jump_power_s = 10.0
 kick_power = 30.0
+kick_power_b = 50.0
+kick_power_s = 90.0
 rot_speed = 0.01
+rot_speed_b = 0.03
 on_kicked_mult = 0.5
 
 [node name="Turtle" parent="Model" index="0" instance=ExtResource("2_ow76n")]
@@ -32,3 +46,6 @@ shape = SubResource("CapsuleShape3D_hhx45")
 
 [node name="KickRay" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47556, 0)
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_0w5ku")

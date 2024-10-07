@@ -4,11 +4,21 @@ class_name Player
 var player_name:String = ""
 @export var TIME_STUCK_IN_KICK: float = 5.0
 @export var TIME_BETWEEN_JUMPS:float = 2.0
+@export var TIME_BETWEEN_JUMPS_B:float = 2.0
+@export var TIME_BETWEEN_JUMPS_S:float = 2.0
 @export var move_speed:float = 1.0
+@export var move_speed_b:float = 1.0
+@export var move_speed_s:float = 1.0
 @export var jump_power:float = 30
+@export var jump_power_b:float = 30
+@export var jump_power_s:float = 30
 @export var forwards_jump_power:float = 0
 @export var kick_power:float = 100
+@export var kick_power_b:float = 100
+@export var kick_power_s:float = 100
 @export var rot_speed: float = 0.1
+@export var rot_speed_b: float = 0.1
+@export var rot_speed_s: float = 0.1
 @export var on_kicked_mult: float = 1.0
 @export var is_flying: bool = false
 @export var reset_posn: Vector3 = Vector3.ZERO
@@ -20,6 +30,7 @@ var player_name:String = ""
 
 @onready var nav:NavigationAgent3D = $NavigationAgent3D
 
+var rarity:int = 2
 var is_player_controlled:bool = false
 
 var on_ground:bool = false;
@@ -43,7 +54,48 @@ func _ready() -> void:
 	%DizzyStars.hide()
 	
 	time_since_kicked = TIME_STUCK_IN_KICK
-	time_since_last_jump = TIME_BETWEEN_JUMPS
+	time_since_last_jump = comp_TIME_BETWEEN_JUMPS()
+
+func comp_TIME_BETWEEN_JUMPS() -> float:
+	match rarity:
+		0:
+			return TIME_BETWEEN_JUMPS_S
+		1:
+			return TIME_BETWEEN_JUMPS_B
+		_: 
+			return TIME_BETWEEN_JUMPS
+func comp_move_speed() -> float:
+	match rarity:
+		0:
+			return move_speed_s
+		1:
+			return move_speed_b
+		_: 
+			return move_speed
+func comp_jump_power() -> float:
+	match rarity:
+		0:
+			return jump_power_s
+		1:
+			return jump_power_b
+		_: 
+			return jump_power
+func comp_kick_power() -> float:
+	match rarity:
+		0:
+			return kick_power_s
+		1:
+			return kick_power_b
+		_: 
+			return kick_power
+func comp_rot_speed() -> float:
+	match rarity:
+		0:
+			return rot_speed_s
+		1:
+			return rot_speed_b
+		_: 
+			return rot_speed
 
 func enable(b : bool) -> void:
 	freeze = !b
@@ -85,7 +137,7 @@ func ForceBottomPos():
 func CalcKickBar():
 	if !is_player_controlled:
 		return
-	%KickProgress.value = clampf(time_since_last_jump / TIME_BETWEEN_JUMPS, 0, 1) * 100
+	%KickProgress.value = clampf(time_since_last_jump / comp_TIME_BETWEEN_JUMPS(), 0, 1) * 100
 
 func process_player_input() -> void:
 	if !can_move():
@@ -99,11 +151,11 @@ func process_player_input() -> void:
 	if Input.is_action_pressed("ui_up"):
 		dir_to_move.z -= 1
 		
-	dir_to_move = dir_to_move.normalized() * move_speed
+	dir_to_move = dir_to_move.normalized() * comp_move_speed()
 	
 	# process jump afterwards
 	if Input.is_action_just_pressed("ui_accept"):
-		if time_since_last_jump > TIME_BETWEEN_JUMPS:
+		if time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
 			process_jump_kick()
 	apply_central_impulse(dir_to_move)
 
@@ -120,13 +172,13 @@ func process_ai_movement() -> void:
 	var next_point = ai_target_posn
 	var dir:Vector3 = Vector3(next_point.x - global_position.x, 0, next_point.z - global_position.z)
 	#dir.y = 0
-	dir = dir.normalized() * move_speed
+	dir = dir.normalized() * comp_move_speed()
 	
 	#NavigationServer3D.agent_set_velocity(nav_agent_rid, linear_velocity)
 	#nav.set_velocity(dir)
 	dir_to_move = dir
 	
-	if %KickRay.is_colliding() && time_since_last_jump > TIME_BETWEEN_JUMPS:
+	if %KickRay.is_colliding() && time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
 		var obj = %KickRay.get_collider()
 		if (obj is Ball):
 			# only kick if towards other side
@@ -134,7 +186,7 @@ func process_ai_movement() -> void:
 				process_jump_kick()
 		elif (obj is Player && obj.is_team1 != is_team1):
 			process_jump_kick()
-	elif is_flying && global_position.y < 5 && time_since_last_jump > TIME_BETWEEN_JUMPS:
+	elif is_flying && global_position.y < 5 && time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
 		dir_to_move.y = 3
 		time_since_last_jump = 0
 	
@@ -165,7 +217,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if (dir_to_move != Vector3.ZERO):
 		#print(dir_to_move)
 		look_follow(state, global_transform, global_position + dir_to_move)
-		swap_to_anim_if_not_started("run", move_speed)
+		swap_to_anim_if_not_started("run", comp_move_speed())
 	else:
 		swap_to_anim_if_not_started("bounce", 1.0)
 
@@ -173,7 +225,7 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 	var forward_local_axis: Vector3 = Vector3(1, 0, 0)
 	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()
 	var target_dir: Vector3 = (target_position - current_transform.origin).normalized()
-	var local_speed: float = clampf(rot_speed, 0, acos(forward_dir.dot(target_dir)))
+	var local_speed: float = clampf(comp_rot_speed(), 0, acos(forward_dir.dot(target_dir)))
 	if abs(forward_dir.dot(target_dir)) > 1e-4:
 		var new_av = local_speed * forward_dir.cross(target_dir) / state.step
 		#state.angular_velocity = new_av
@@ -181,7 +233,7 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 
 func process_jump_kick() -> void:
 	# jump
-	dir_to_move.y = jump_power
+	dir_to_move.y = comp_jump_power()
 	time_since_last_jump = 0.0
 	if forwards_jump_power > 0:
 		var jump_f_dir:Vector3 = global_basis.x.normalized() * forwards_jump_power
@@ -202,7 +254,7 @@ func process_jump_kick() -> void:
 		#print(objs)
 	
 	for o in objs:
-		o.on_kick(global_position, kick_power)
+		o.on_kick(global_position, comp_kick_power())
 
 func on_kick(g_pos: Vector3, k_power:float) -> void:
 	#print(self, " Was kicked!")

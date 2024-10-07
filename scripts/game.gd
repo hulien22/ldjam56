@@ -62,6 +62,7 @@ func map_character_to_player(data: Character):
 	var p:Player = player_scenes[data.type as int].instantiate()
 	#TODO set stats
 	p.player_name = data.name
+	p.rarity = data.chance
 	%Players.add_child(p)
 	
 func load_players_from_global():

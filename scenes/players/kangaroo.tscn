@@ -1,21 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://byqwwj5gairjt"]
+[gd_scene load_steps=5 format=3 uid="uid://byqwwj5gairjt"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_dvbvt"]
 [ext_resource type="PackedScene" uid="uid://c7fxfek34mcgk" path="res://assets/animals/Kangaroo.glb" id="2_d06pt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_88tge"]
-resource_local_to_scene = false
-resource_name = ""
-custom_solver_bias = 0.0
-margin = 0.04
 radius = 3.25692
 height = 7.77293
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_50ul3"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" instance=ExtResource("1_dvbvt")]
 TIME_BETWEEN_JUMPS = 0.5
+TIME_BETWEEN_JUMPS_B = 0.4
+TIME_BETWEEN_JUMPS_S = 0.3
 move_speed = 1.1
+move_speed_b = 1.2
+move_speed_s = 1.4
 jump_power = 75.0
-kick_power = 250.0
+jump_power_b = 75.0
+jump_power_s = 75.0
+kick_power = 150.0
+kick_power_b = 200.0
+kick_power_s = 250.0
 
 [node name="Kangaroo" parent="Model" index="0" instance=ExtResource("2_d06pt")]
 transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, -1.07184, 0, 0)
@@ -26,3 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817986, 5.96264, 0)
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54812, 0)
 shape = SubResource("CapsuleShape3D_88tge")
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_50ul3")

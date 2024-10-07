@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk0ui88cguwxs"]
+[gd_scene load_steps=5 format=3 uid="uid://dk0ui88cguwxs"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_jfaev"]
 [ext_resource type="PackedScene" uid="uid://bsnp23eui8cq2" path="res://assets/animals/Duck.glb" id="2_ft1ye"]
@@ -7,10 +7,19 @@
 radius = 2.82285
 height = 6.78686
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_axqya"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" instance=ExtResource("1_jfaev")]
 gravity_scale = 1.0
+TIME_BETWEEN_JUMPS_B = 1.8
+TIME_BETWEEN_JUMPS_S = 1.5
 move_speed = 0.7
+move_speed_b = 0.8
+move_speed_s = 0.9
 kick_power = 20.0
+kick_power_b = 40.0
+kick_power_s = 60.0
 is_flying = true
 
 [node name="Duck" parent="Model" index="0" instance=ExtResource("2_ft1ye")]
@@ -22,3 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 0)
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84521, 0)
 shape = SubResource("CapsuleShape3D_mdkt1")
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_axqya")
