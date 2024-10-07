@@ -1,6 +1,6 @@
 extends Node3D
 
-const MIN_BALL_DISTANCE:float = 10000
+const MIN_BALL_DISTANCE:float = 10000000000
 @onready var explosion_scene = preload("res://scenes/explosion.tscn")
 @onready var ball_scene = preload("res://scenes/ball.tscn")
 
@@ -28,6 +28,8 @@ func _physics_process(delta: float) -> void:
 		var min_distance_sq:float = MIN_BALL_DISTANCE
 		var min_ball:Ball = null
 		for b in balls:
+			if !p.is_in_ai_region(b.global_position):
+				continue
 			# TODO consider y direction?
 			var dist_sq = p.global_position.distance_squared_to(b.global_position)
 			if dist_sq < min_distance_sq:
@@ -62,9 +64,34 @@ func load_players():
 			obj.global_rotation.y = 0
 		else:
 			obj.global_rotation.y = PI
+		match players.size():
+			1:
+				obj.set_ai_play_region($SpawnPositions/Team1/Keeper, $AiRegions/Team1/Keeper)
+				obj.global_position = $SpawnPositions/Team1/Keeper.global_position
+			2:
+				obj.set_ai_play_region($SpawnPositions/Team1/TopMid, $AiRegions/Team1/TopMid)
+				obj.global_position = $SpawnPositions/Team1/TopMid.global_position
+			3:
+				obj.set_ai_play_region($SpawnPositions/Team1/BotMid, $AiRegions/Team1/BotMid)
+				obj.global_position = $SpawnPositions/Team1/BotMid.global_position
+			4:
+				obj.set_ai_play_region($SpawnPositions/Team1/Striker, $AiRegions/Team1/Striker)
+				obj.global_position = $SpawnPositions/Team1/Striker.global_position
+			5:
+				obj.set_ai_play_region($SpawnPositions/Team2/Keeper, $AiRegions/Team2/Keeper)
+				obj.global_position = $SpawnPositions/Team2/Keeper.global_position
+			6:
+				obj.set_ai_play_region($SpawnPositions/Team2/TopMid, $AiRegions/Team2/TopMid)
+				obj.global_position = $SpawnPositions/Team2/TopMid.global_position
+			7:
+				obj.set_ai_play_region($SpawnPositions/Team2/BotMid, $AiRegions/Team2/BotMid)
+				obj.global_position = $SpawnPositions/Team2/BotMid.global_position
+			_:
+				obj.set_ai_play_region($SpawnPositions/Team2/Striker, $AiRegions/Team2/Striker)
+				obj.global_position = $SpawnPositions/Team2/Striker.global_position
 			
 	cur_player = 0
-	players[cur_player].set_is_player(true)
+	#players[cur_player].set_is_player(true)
 
 func show_scores():
 	%Team1Score.text = str(team1_score)

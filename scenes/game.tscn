@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c3uqthjdacj11"]
+[gd_scene load_steps=42 format=3 uid="uid://c3uqthjdacj11"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7qlyq"]
 [ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="2_ick18"]
@@ -9,18 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ctc136adnmold" path="res://scenes/env3.tscn" id="5_lvccn"]
 [ext_resource type="PackedScene" uid="uid://b8b775sm8ye1x" path="res://scenes/players/frog.tscn" id="5_s688w"]
 [ext_resource type="PackedScene" uid="uid://daafunklwkawf" path="res://scenes/players/ant.tscn" id="6_8wiww"]
-[ext_resource type="PackedScene" uid="uid://dk0ui88cguwxs" path="res://scenes/players/duck.tscn" id="6_c1ujs"]
-[ext_resource type="PackedScene" uid="uid://cw436k1muwgdk" path="res://scenes/players/grasshopper.tscn" id="6_ceyhc"]
-[ext_resource type="PackedScene" uid="uid://scccjfpr6gwo" path="res://scenes/players/turtle.tscn" id="6_gmisd"]
 [ext_resource type="Environment" uid="uid://bc8bb5lim0d64" path="res://assets/world_environment.tres" id="6_mcpyr"]
-[ext_resource type="PackedScene" uid="uid://cc5yta7dfxagy" path="res://scenes/players/goat.tscn" id="6_motx4"]
-[ext_resource type="PackedScene" uid="uid://bvw8oi358rqpt" path="res://scenes/players/penguin.tscn" id="6_o2em6"]
-[ext_resource type="PackedScene" uid="uid://d2sogis3k2l1o" path="res://scenes/players/bat.tscn" id="6_ucc4a"]
-[ext_resource type="PackedScene" uid="uid://dxufokv4kyj0t" path="res://scenes/players/kangaroo.tscn" id="6_xo5sq"]
 [ext_resource type="PackedScene" uid="uid://3un8ql7oylar" path="res://scenes/players/cheetah.tscn" id="7_qjedi"]
-[ext_resource type="PackedScene" uid="uid://d3djhy6j25udh" path="res://scenes/players/giraffe.tscn" id="8_g7h5i"]
 [ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="10_tc1ft"]
 [ext_resource type="PackedScene" uid="uid://dtkxmb7d23xft" path="res://scenes/goal.tscn" id="11_ec0d2"]
+[ext_resource type="PackedScene" uid="uid://ccy8lrly7635v" path="res://scenes/bumper.tscn" id="14_xtw5a"]
 
 [sub_resource type="Gradient" id="Gradient_fjqub"]
 offsets = PackedFloat32Array(0, 0.3, 0.7, 1)
@@ -85,6 +78,30 @@ uv1_scale = Vector3(3, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vqi6"]
 material = SubResource("StandardMaterial3D_o0aal")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0wgla"]
+size = Vector2(60, 91.11)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5acj2"]
+size = Vector2(150, 75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0oosj"]
+size = Vector2(150, 75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pflqy"]
+size = Vector2(150, 150)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_38b7g"]
+size = Vector2(60, 91.11)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_efipj"]
+size = Vector2(150, 75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fk2vd"]
+size = Vector2(150, 75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oja8s"]
+size = Vector2(150, 150)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_7qlyq")
@@ -346,30 +363,6 @@ attributes = SubResource("CameraAttributesPractical_38kb1")
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="player16" parent="Players" instance=ExtResource("8_g7h5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0966, 0, 17.1606)
-
-[node name="player15" parent="Players" instance=ExtResource("6_c1ujs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
-[node name="player14" parent="Players" instance=ExtResource("6_gmisd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
-[node name="player13" parent="Players" instance=ExtResource("6_xo5sq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
-[node name="player12" parent="Players" instance=ExtResource("6_motx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
-[node name="player11" parent="Players" instance=ExtResource("6_ucc4a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
-[node name="player10" parent="Players" instance=ExtResource("6_o2em6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
-[node name="player9" parent="Players" instance=ExtResource("6_ceyhc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0766, 0, 0)
-
 [node name="player" parent="Players" instance=ExtResource("4_7ungm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6025, -33.2535, 0)
 
@@ -417,6 +410,105 @@ shape = SubResource("BoxShape3D_dgiw2")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
 transform = Transform3D(248, 0, 0, 0, 1, 0, 0, 0, 180, 0, 0, 0)
 mesh = SubResource("BoxMesh_3vqi6")
+
+[node name="AiRegions" type="Node" parent="."]
+
+[node name="Team1" type="Node3D" parent="AiRegions"]
+
+[node name="Keeper" type="MeshInstance3D" parent="AiRegions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_0wgla")
+skeleton = NodePath("../../../SpawnPositions/Team1/Keeper")
+
+[node name="TopMid" type="MeshInstance3D" parent="AiRegions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, -37.5)
+visible = false
+mesh = SubResource("PlaneMesh_5acj2")
+skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
+
+[node name="BotMid" type="MeshInstance3D" parent="AiRegions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 37.5)
+visible = false
+mesh = SubResource("PlaneMesh_0oosj")
+skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
+
+[node name="Striker" type="MeshInstance3D" parent="AiRegions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_pflqy")
+
+[node name="Team2" type="Node3D" parent="AiRegions"]
+
+[node name="Keeper" type="MeshInstance3D" parent="AiRegions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_38b7g")
+skeleton = NodePath("../../../SpawnPositions/Team1/Keeper")
+
+[node name="TopMid" type="MeshInstance3D" parent="AiRegions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -37.5)
+visible = false
+mesh = SubResource("PlaneMesh_efipj")
+skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
+
+[node name="BotMid" type="MeshInstance3D" parent="AiRegions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 37.5)
+visible = false
+mesh = SubResource("PlaneMesh_fk2vd")
+skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
+
+[node name="Striker" type="MeshInstance3D" parent="AiRegions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_oja8s")
+
+[node name="SpawnPositions" type="Node" parent="."]
+
+[node name="Team1" type="Node3D" parent="SpawnPositions"]
+
+[node name="Keeper" type="Marker3D" parent="SpawnPositions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 0)
+
+[node name="TopMid" type="Marker3D" parent="SpawnPositions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -30)
+
+[node name="BotMid" type="Marker3D" parent="SpawnPositions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 30)
+
+[node name="Striker" type="Marker3D" parent="SpawnPositions/Team1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="Team2" type="Node3D" parent="SpawnPositions"]
+
+[node name="Keeper" type="Marker3D" parent="SpawnPositions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
+
+[node name="TopMid" type="Marker3D" parent="SpawnPositions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -30)
+
+[node name="BotMid" type="Marker3D" parent="SpawnPositions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 30)
+
+[node name="Striker" type="Marker3D" parent="SpawnPositions/Team2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Bumpers" type="Node" parent="."]
+
+[node name="Bumper1" parent="Bumpers" instance=ExtResource("14_xtw5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98, 3.5, -68.849)
+
+[node name="Bumper2" parent="Bumpers" instance=ExtResource("14_xtw5a")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 98, 3.5, -68.849)
+gravity_dir = Vector3(-1, 1, 1)
+
+[node name="Bumper3" parent="Bumpers" instance=ExtResource("14_xtw5a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -98, 3.5, 68.849)
+gravity_dir = Vector3(1, 1, -1)
+
+[node name="Bumper4" parent="Bumpers" instance=ExtResource("14_xtw5a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 98, 3.5, 68.849)
+gravity_dir = Vector3(-1, 1, -1)
 
 [connection signal="goal" from="NavigationRegion3D/Goal" to="." method="_on_goal_goal" binds= [true]]
 [connection signal="goal" from="NavigationRegion3D/Goal2" to="." method="_on_goal_goal" binds= [false]]

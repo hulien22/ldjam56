@@ -25,6 +25,10 @@ var on_ground:bool = false;
 var time_since_kicked:float
 var time_since_last_jump: float
 
+# 2d region to stay within
+var ai_region_top_left: Vector2 = Vector2.ZERO
+var ai_region_bottom_right: Vector2 = Vector2.ZERO
+
 var ai_target_posn:Vector3
 var closest_ball: Ball
 
@@ -213,6 +217,14 @@ func set_is_player(b: bool) -> void:
 	else:
 		set_bottom_color(Color.CRIMSON)
 
+func set_ai_play_region(marker: Marker3D, mesh: MeshInstance3D):
+	reset_posn = marker.global_position
+	#reset_posn = mesh.global_position
+	var plane: PlaneMesh = mesh.mesh
+	ai_region_top_left = Vector2(mesh.global_position.x - plane.size.x / 2, mesh.global_position.z - plane.size.y / 2)
+	ai_region_bottom_right = Vector2(mesh.global_position.x + plane.size.x / 2, mesh.global_position.z + plane.size.y / 2)
+	print(self, "  ", ai_region_top_left, "  ", ai_region_bottom_right, "  ", reset_posn,  "   ", marker.global_position)
+
 func set_closest_ball(b: Ball) -> void:
 	closest_ball = b
 
@@ -220,11 +232,19 @@ func set_target_posn(p: Vector3) -> void:
 	ai_target_posn = p
 	ai_target_posn.y = 0
 
+func is_in_ai_region(gp: Vector3) -> bool:
+	return gp.x >= ai_region_top_left.x && gp.x <= ai_region_bottom_right.x && gp.z >= ai_region_top_left.y && gp.z <= ai_region_bottom_right.y
+
 func compute_target_posn() -> void:
+	# if outside ai region, move there
+	if !is_in_ai_region(global_position):
+		set_target_posn(reset_posn)
+		return
 	# if no ball, return to reset posn?
 	if closest_ball == null:
 		#print(self, " no ball close")
 		set_target_posn(reset_posn)
+		#set_target_posn(global_position)
 		return
 	
 	var my_posn: Vector2 = Vector2(global_position.x, global_position.z)
