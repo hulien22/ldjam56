@@ -3,7 +3,7 @@ extends Node
 var money:int = 3
 
 var match_num: int = 0
-var team_num: int = 0
+var team_num: int = 4
 @export var teams: Array[Character]
 @export var team_names: Array[String]
 @export var match_length: Array[int]

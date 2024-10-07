@@ -55,6 +55,14 @@ func _ready() -> void:
 	
 	time_since_kicked = TIME_STUCK_IN_KICK
 	time_since_last_jump = comp_TIME_BETWEEN_JUMPS()
+	
+	match rarity:
+		0:
+			angular_damp = 5
+		1:
+			angular_damp = 4
+		_:
+			angular_damp = 3
 
 func comp_TIME_BETWEEN_JUMPS() -> float:
 	match rarity:
