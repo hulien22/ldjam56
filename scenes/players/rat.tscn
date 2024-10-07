@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://doad7nohjqxxn"]
+[gd_scene load_steps=6 format=3 uid="uid://doad7nohjqxxn"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_eh0gu"]
 [ext_resource type="PackedScene" uid="uid://cuytcypxpwf5m" path="res://assets/animals/Rat.glb" id="2_fg6xo"]
@@ -9,8 +9,19 @@ height = 10.1885
 
 [sub_resource type="Skin" id="Skin_evoto"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8b6vl"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" instance=ExtResource("1_eh0gu")]
+TIME_BETWEEN_JUMPS_B = 1.5
+TIME_BETWEEN_JUMPS_S = 1.0
 move_speed = 2.0
+move_speed_b = 2.2
+move_speed_s = 2.5
+jump_power_b = 35.0
+jump_power_s = 40.0
+kick_power_b = 110.0
+kick_power_s = 120.0
 
 [node name="Rat2" parent="Model" index="0" instance=ExtResource("2_fg6xo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648608, 0, 0)
@@ -23,3 +34,6 @@ shape = SubResource("CapsuleShape3D_mm0nh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
 skin = SubResource("Skin_evoto")
+
+[node name="KickBar" parent="." index="8"]
+texture = SubResource("ViewportTexture_8b6vl")

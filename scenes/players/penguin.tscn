@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvw8oi358rqpt"]
+[gd_scene load_steps=6 format=3 uid="uid://bvw8oi358rqpt"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_bt155"]
 [ext_resource type="PackedScene" uid="uid://clxerufdosu7t" path="res://assets/animals/Penguin.glb" id="2_hyvmj"]
@@ -10,10 +10,20 @@ friction = 0.0
 radius = 2.80886
 height = 10.42
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_h3qgb"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" instance=ExtResource("1_bt155")]
 physics_material_override = SubResource("PhysicsMaterial_sody4")
+TIME_BETWEEN_JUMPS_B = 1.5
+TIME_BETWEEN_JUMPS_S = 1.0
 move_speed = 1.5
+move_speed_b = 1.7
+move_speed_s = 2.0
 jump_power = 20.0
+jump_power_b = 25.0
+kick_power_b = 110.0
+kick_power_s = 120.0
 
 [node name="Penguin" parent="Model" index="0" instance=ExtResource("2_hyvmj")]
 transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -24,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.28562, 0)
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.85634, 0)
 shape = SubResource("CapsuleShape3D_5abu3")
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_h3qgb")

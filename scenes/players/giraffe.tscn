@@ -1,21 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbx40gdylghut"]
+[gd_scene load_steps=5 format=3 uid="uid://dbx40gdylghut"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_v4uqa"]
 [ext_resource type="PackedScene" uid="uid://b8nbgwfisola8" path="res://assets/animals/Giraffe.glb" id="2_8deea"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xamyo"]
-resource_local_to_scene = false
-resource_name = ""
-custom_solver_bias = 0.0
-margin = 0.04
 radius = 4.58208
 height = 21.302
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_kqmmd"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player2" instance=ExtResource("1_v4uqa")]
+TIME_BETWEEN_JUMPS_B = 1.5
+TIME_BETWEEN_JUMPS_S = 1.0
 move_speed = 1.2
+move_speed_b = 1.4
+move_speed_s = 1.6
 jump_power = 10.0
+jump_power_b = 20.0
 kick_power = 120.0
+kick_power_b = 130.0
+kick_power_s = 140.0
 rot_speed = 0.05
+rot_speed_b = 0.05
+rot_speed_s = 0.05
 on_kicked_mult = 0.5
 
 [node name="Giraffe" parent="Model" index="0" instance=ExtResource("2_8deea")]
@@ -27,3 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49452, 11.9439, 0)
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5263, 0)
 shape = SubResource("CapsuleShape3D_xamyo")
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_kqmmd")

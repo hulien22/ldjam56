@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2sogis3k2l1o"]
+[gd_scene load_steps=5 format=3 uid="uid://d2sogis3k2l1o"]
 
 [ext_resource type="PackedScene" uid="uid://c74urwytqw3wl" path="res://scenes/player.tscn" id="1_6rv37"]
 [ext_resource type="PackedScene" uid="uid://c8xclcxxdpmg0" path="res://assets/animals/Bat.glb" id="2_di4v5"]
@@ -7,11 +7,22 @@
 radius = 2.66934
 height = 10.227
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_6vqb7"]
+viewport_path = NodePath("SubViewport")
+
 [node name="player" instance=ExtResource("1_6rv37")]
 gravity_scale = 3.0
 lock_rotation = true
 TIME_BETWEEN_JUMPS = 0.1
+TIME_BETWEEN_JUMPS_B = 0.1
+TIME_BETWEEN_JUMPS_S = 0.1
+move_speed_b = 1.1
+move_speed_s = 1.2
 jump_power = 20.0
+jump_power_b = 20.0
+jump_power_s = 20.0
+kick_power = 70.0
+kick_power_b = 85.0
 is_flying = true
 
 [node name="Bat" parent="Model" index="0" instance=ExtResource("2_di4v5")]
@@ -23,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.09217, 0)
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73981, 0)
 shape = SubResource("CapsuleShape3D_onydd")
+
+[node name="KickBar" parent="." index="7"]
+texture = SubResource("ViewportTexture_6vqb7")

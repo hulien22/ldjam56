@@ -7,6 +7,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mdaf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rh52r"]
+resource_local_to_scene = true
 height = 30.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6hpj"]
@@ -28,15 +29,24 @@ viewport_path = NodePath("SubViewport")
 [node name="player" instance=ExtResource("1_6xuho")]
 physics_material_override = SubResource("PhysicsMaterial_6mdaf")
 script = ExtResource("2_d1ua0")
+TIME_BETWEEN_JUMPS_B = 1.5
+TIME_BETWEEN_JUMPS_S = 1.0
+move_speed_b = 1.2
+move_speed_s = 1.5
 jump_power = 100.0
+jump_power_b = 100.0
+jump_power_s = 100.0
+kick_power_b = 120.0
+kick_power_s = 140.0
 rot_speed = 0.03
+rot_speed_b = 0.06
 
 [node name="Frog" parent="Model" index="0" instance=ExtResource("2_j8mhp")]
 transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 0, 0, 0)
 
 [node name="TongueMesh" type="MeshInstance3D" parent="Model" index="1"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 14.3063, 4.31742, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 14.306, 4.317, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_rh52r")
 skeleton = NodePath("../..")
