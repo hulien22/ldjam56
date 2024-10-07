@@ -80,28 +80,28 @@ uv1_scale = Vector3(3, 2, 2)
 material = SubResource("StandardMaterial3D_o0aal")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0wgla"]
-size = Vector2(60, 91.11)
+size = Vector2(100, 150)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_5acj2"]
-size = Vector2(150, 75)
+[sub_resource type="PlaneMesh" id="PlaneMesh_5osyc"]
+size = Vector2(200, 90)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0oosj"]
-size = Vector2(150, 75)
+size = Vector2(200, 90)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pflqy"]
-size = Vector2(150, 150)
+size = Vector2(200, 150)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_38b7g"]
-size = Vector2(60, 91.11)
+size = Vector2(100, 150)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_efipj"]
-size = Vector2(150, 75)
+size = Vector2(200, 90)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fk2vd"]
-size = Vector2(150, 75)
+size = Vector2(200, 90)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oja8s"]
-size = Vector2(150, 150)
+size = Vector2(200, 150)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_7qlyq")
@@ -416,19 +416,19 @@ mesh = SubResource("BoxMesh_3vqi6")
 [node name="Team1" type="Node3D" parent="AiRegions"]
 
 [node name="Keeper" type="MeshInstance3D" parent="AiRegions/Team1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 1, 0)
 visible = false
 mesh = SubResource("PlaneMesh_0wgla")
 skeleton = NodePath("../../../SpawnPositions/Team1/Keeper")
 
 [node name="TopMid" type="MeshInstance3D" parent="AiRegions/Team1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, -37.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -30)
 visible = false
-mesh = SubResource("PlaneMesh_5acj2")
+mesh = SubResource("PlaneMesh_5osyc")
 skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
 
 [node name="BotMid" type="MeshInstance3D" parent="AiRegions/Team1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 37.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 30)
 visible = false
 mesh = SubResource("PlaneMesh_0oosj")
 skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
@@ -441,19 +441,19 @@ mesh = SubResource("PlaneMesh_pflqy")
 [node name="Team2" type="Node3D" parent="AiRegions"]
 
 [node name="Keeper" type="MeshInstance3D" parent="AiRegions/Team2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 1, 0)
 visible = false
 mesh = SubResource("PlaneMesh_38b7g")
 skeleton = NodePath("../../../SpawnPositions/Team1/Keeper")
 
 [node name="TopMid" type="MeshInstance3D" parent="AiRegions/Team2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -37.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -30)
 visible = false
 mesh = SubResource("PlaneMesh_efipj")
 skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
 
 [node name="BotMid" type="MeshInstance3D" parent="AiRegions/Team2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 37.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 30)
 visible = false
 mesh = SubResource("PlaneMesh_fk2vd")
 skeleton = NodePath("../../../SpawnPositions/Team1/TopMid")
