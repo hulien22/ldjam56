@@ -1,21 +1,21 @@
 extends RigidBody3D
 class_name Player
 
-var player_name:String = ""
+var player_name: String = ""
 @export var TIME_STUCK_IN_KICK: float = 5.0
-@export var TIME_BETWEEN_JUMPS:float = 2.0
-@export var TIME_BETWEEN_JUMPS_B:float = 2.0
-@export var TIME_BETWEEN_JUMPS_S:float = 2.0
-@export var move_speed:float = 1.0
-@export var move_speed_b:float = 1.0
-@export var move_speed_s:float = 1.0
-@export var jump_power:float = 30
-@export var jump_power_b:float = 30
-@export var jump_power_s:float = 30
-@export var forwards_jump_power:float = 0
-@export var kick_power:float = 100
-@export var kick_power_b:float = 100
-@export var kick_power_s:float = 100
+@export var TIME_BETWEEN_JUMPS: float = 2.0
+@export var TIME_BETWEEN_JUMPS_B: float = 2.0
+@export var TIME_BETWEEN_JUMPS_S: float = 2.0
+@export var move_speed: float = 1.0
+@export var move_speed_b: float = 1.0
+@export var move_speed_s: float = 1.0
+@export var jump_power: float = 30
+@export var jump_power_b: float = 30
+@export var jump_power_s: float = 30
+@export var forwards_jump_power: float = 0
+@export var kick_power: float = 100
+@export var kick_power_b: float = 100
+@export var kick_power_s: float = 100
 @export var rot_speed: float = 0.1
 @export var rot_speed_b: float = 0.1
 @export var rot_speed_s: float = 0.1
@@ -28,20 +28,20 @@ var player_name:String = ""
 @export var x_bound: float = 100
 @export var z_bound: float = 75
 
-@onready var nav:NavigationAgent3D = $NavigationAgent3D
+@onready var nav: NavigationAgent3D = $NavigationAgent3D
 
-var rarity:int = 2
-var is_player_controlled:bool = false
+var rarity: int = 2
+var is_player_controlled: bool = false
 
-var on_ground:bool = false;
-var time_since_kicked:float
+var on_ground: bool = false;
+var time_since_kicked: float
 var time_since_last_jump: float
 
 # 2d region to stay within
 var ai_region_top_left: Vector2 = Vector2.ZERO
 var ai_region_bottom_right: Vector2 = Vector2.ZERO
 
-var ai_target_posn:Vector3
+var ai_target_posn: Vector3
 var closest_ball: Ball
 
 func _ready() -> void:
@@ -50,12 +50,12 @@ func _ready() -> void:
 		set_bottom_color(Color.DODGER_BLUE)
 	else:
 		set_bottom_color(Color.CRIMSON)
-	
+
 	%DizzyStars.hide()
-	
+
 	time_since_kicked = TIME_STUCK_IN_KICK
 	time_since_last_jump = comp_TIME_BETWEEN_JUMPS()
-	
+
 	match rarity:
 		0:
 			angular_damp = 5
@@ -70,7 +70,7 @@ func comp_TIME_BETWEEN_JUMPS() -> float:
 			return TIME_BETWEEN_JUMPS_S
 		1:
 			return TIME_BETWEEN_JUMPS_B
-		_: 
+		_:
 			return TIME_BETWEEN_JUMPS
 func comp_move_speed() -> float:
 	match rarity:
@@ -78,7 +78,7 @@ func comp_move_speed() -> float:
 			return move_speed_s
 		1:
 			return move_speed_b
-		_: 
+		_:
 			return move_speed
 func comp_jump_power() -> float:
 	match rarity:
@@ -86,7 +86,7 @@ func comp_jump_power() -> float:
 			return jump_power_s
 		1:
 			return jump_power_b
-		_: 
+		_:
 			return jump_power
 func comp_kick_power() -> float:
 	match rarity:
@@ -94,7 +94,7 @@ func comp_kick_power() -> float:
 			return kick_power_s
 		1:
 			return kick_power_b
-		_: 
+		_:
 			return kick_power
 func comp_rot_speed() -> float:
 	match rarity:
@@ -102,10 +102,10 @@ func comp_rot_speed() -> float:
 			return rot_speed_s
 		1:
 			return rot_speed_b
-		_: 
+		_:
 			return rot_speed
 
-func enable(b : bool) -> void:
+func enable(b: bool) -> void:
 	freeze = !b
 
 func can_move() -> bool:
@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 	ForceBottomPos();
 	if freeze:
 		return
-	
+
 	dir_to_move = Vector3.ZERO
 	time_since_kicked += delta
 	if (%IsOnGround.is_colliding() || is_flying):
@@ -123,14 +123,14 @@ func _physics_process(delta: float) -> void:
 		time_since_last_jump += delta
 	else:
 		on_ground = false
-	
+
 	CalcKickBar()
-	
+
 	if can_move():
 		%DizzyStars.hide()
 	else:
 		%DizzyStars.show()
-	
+
 	if (is_player_controlled):
 		process_player_input()
 	else:
@@ -158,9 +158,9 @@ func process_player_input() -> void:
 		dir_to_move.z += 1
 	if Input.is_action_pressed("ui_up"):
 		dir_to_move.z -= 1
-		
+
 	dir_to_move = dir_to_move.normalized() * comp_move_speed()
-	
+
 	# process jump afterwards
 	if Input.is_action_just_pressed("ui_accept"):
 		if time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
@@ -178,14 +178,14 @@ func process_ai_movement() -> void:
 	#var next_point:Vector3 = nav.get_next_path_position()
 	nav.get_next_path_position() # just for debug pathing
 	var next_point = ai_target_posn
-	var dir:Vector3 = Vector3(next_point.x - global_position.x, 0, next_point.z - global_position.z)
+	var dir: Vector3 = Vector3(next_point.x - global_position.x, 0, next_point.z - global_position.z)
 	#dir.y = 0
 	dir = dir.normalized() * comp_move_speed()
-	
+
 	#NavigationServer3D.agent_set_velocity(nav_agent_rid, linear_velocity)
 	#nav.set_velocity(dir)
 	dir_to_move = dir
-	
+
 	if %KickRay.is_colliding() && time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
 		var obj = %KickRay.get_collider()
 		if (obj is Ball):
@@ -197,18 +197,18 @@ func process_ai_movement() -> void:
 	elif is_flying && global_position.y < 5 && time_since_last_jump > comp_TIME_BETWEEN_JUMPS():
 		dir_to_move.y = 3
 		time_since_last_jump = 0
-	
+
 	apply_central_impulse(dir_to_move)
 
 var dir_to_move: Vector3
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# Keep in bounds
 	if abs(global_position.x) > x_bound + 100:
-		global_position = Vector3(0,100,0)
+		global_position = Vector3(0, 100, 0)
 		linear_velocity = Vector3.ZERO
 		return
 	if abs(global_position.z) > z_bound + 100:
-		global_position = Vector3(0,100,0)
+		global_position = Vector3(0, 100, 0)
 		linear_velocity = Vector3.ZERO
 		return
 	if (global_position.y < -100):
@@ -219,7 +219,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if !can_move():
 		swap_to_anim_if_not_started("RESET", 1.0)
 		return
-	
+
 	#apply_torque_impulse(Vector3(0,1,0))
 	#
 	if (dir_to_move != Vector3.ZERO):
@@ -234,7 +234,7 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()
 	var target_dir: Vector3 = (target_position - current_transform.origin).normalized()
 	var local_speed: float = clampf(comp_rot_speed(), 0, acos(forward_dir.dot(target_dir)))
-	if abs(forward_dir.dot(target_dir)) > 1e-4:
+	if abs(forward_dir.dot(target_dir)) > 1e - 4:
 		var new_av = local_speed * forward_dir.cross(target_dir) / state.step
 		#state.angular_velocity = new_av
 		state.angular_velocity.y = new_av.y
@@ -244,7 +244,7 @@ func process_jump_kick() -> void:
 	dir_to_move.y = comp_jump_power()
 	time_since_last_jump = 0.0
 	if forwards_jump_power > 0:
-		var jump_f_dir:Vector3 = global_basis.x.normalized() * forwards_jump_power
+		var jump_f_dir: Vector3 = global_basis.x.normalized() * forwards_jump_power
 		dir_to_move += jump_f_dir
 	# kick
 	var objs: Dictionary = {}
@@ -252,7 +252,7 @@ func process_jump_kick() -> void:
 		var obj = %KickRay.get_collider()
 		if obj.has_method("on_kick"):
 			objs[obj] = true
-	
+
 	if is_player_controlled:
 		for kray in %PlayerKickRays.get_children():
 			if kray.is_colliding():
@@ -260,14 +260,14 @@ func process_jump_kick() -> void:
 				if obj.has_method("on_kick"):
 					objs[obj] = true
 		#print(objs)
-	
+
 	for o in objs:
 		o.on_kick(global_position, comp_kick_power())
 
-func on_kick(g_pos: Vector3, k_power:float) -> void:
+func on_kick(g_pos: Vector3, k_power: float) -> void:
 	#print(self, " Was kicked!")
 	time_since_kicked = 0
-	var imp = (global_position - g_pos + Vector3(0,1,0)).normalized() * k_power * on_kicked_mult
+	var imp = (global_position - g_pos + Vector3(0, 1, 0)).normalized() * k_power * on_kicked_mult
 	apply_central_impulse(imp)
 
 func swap_to_anim_if_not_started(anim: String, a_speed: float) -> void:
@@ -285,7 +285,7 @@ func set_bottom_color(c: Color) -> void:
 	#(%TeamBottom.material_override as StandardMaterial3D).emission = c
 	#(%TeamBottom.material_override as StandardMaterial3D).emission_energy_multiplier = 1
 	(%TeamBottom.material_override as StandardMaterial3D).albedo_color.a = 0.8
-	(%TeamBottom.material_override as StandardMaterial3D).transparency = BaseMaterial3D.TRANSPARENCY_ALPHA 
+	(%TeamBottom.material_override as StandardMaterial3D).transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 
 func set_is_player(b: bool) -> void:
 	is_player_controlled = b
@@ -328,21 +328,21 @@ func compute_target_posn() -> void:
 		set_target_posn(reset_posn)
 		#set_target_posn(global_position)
 		return
-	
+
 	var my_posn: Vector2 = Vector2(global_position.x, global_position.z)
 	var ball_posn: Vector2 = Vector2(closest_ball.global_position.x, closest_ball.global_position.z)
-	var angle:float
+	var angle: float
 	if (is_team1):
 		angle = my_posn.angle_to_point(ball_posn)
 	else:
 		angle = ball_posn.angle_to_point(my_posn)
-	
+
 	# In the attack cone, so charge!!
 	if (abs(angle) < deg_to_rad(attack_angle_deg)):
 		#print(self, " charge!!")
 		set_target_posn(closest_ball.global_position)
 		return
-	
+
 	# behind the ball, but not in attack cone, so move towards the cone
 	if (is_team1 && my_posn.x < ball_posn.x) || (!is_team1 && my_posn.x > ball_posn.x):
 		var dir: Vector2 = Vector2.RIGHT * 100
@@ -358,7 +358,7 @@ func compute_target_posn() -> void:
 		set_target_posn(global_position + Vector3(dir.x, 0, dir.y))
 		#print(self, " move into attack cone")
 		return
-	
+
 	# on wrong side of ball, need to get other side
 	#print(self, " wrong side")
 	var dir: Vector2 = Vector2.RIGHT * 100
