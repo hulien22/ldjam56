@@ -148,7 +148,7 @@ func play_intro() -> void:
 	tween.tween_property(%CamHolder, "rotation", Vector3(0, 0, 0), 0.1)
 	tween.tween_property(%CamHolder, "rotation", Vector3(0, 2*PI, 0), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(%OpeningCam, "position", Vector3(0, 110, 70), 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property($AudioStreamPlayer, "volume_db", 0, 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property($AudioStreamPlayer, "volume_db", -10, 5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(%IntroInfoPanel, "modulate", Color("ffffff00"), 5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	tween.tween_property(%OpeningCam, "current", false, 0.001)
 	tween.parallel().tween_property(%MainGameCamera, "current", true, 0.001)
