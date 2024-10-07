@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvaydl11d8hvh"]
+[gd_scene load_steps=17 format=3 uid="uid://cvaydl11d8hvh"]
 
 [ext_resource type="Script" path="res://sound_effect_bus.gd" id="1_l34os"]
 [ext_resource type="AudioStream" uid="uid://cbx27nwk0ysnn" path="res://audio/low_beep.ogg" id="2_ihcqt"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dkyw2bixvtfg8" path="res://audio/rapid-wind-sound-effect-1-108398.mp3" id="12_t0a22"]
 [ext_resource type="AudioStream" uid="uid://djgfxuja0stlh" path="res://audio/aww-cute-reaction-6208.mp3" id="13_iyfpf"]
 [ext_resource type="AudioStream" uid="uid://ducugkpsbmbst" path="res://audio/spacebar-click-keyboard-199448.mp3" id="13_lmvp1"]
+[ext_resource type="AudioStream" uid="uid://co4am158v2eo3" path="res://audio/boing-spring-mouth-harp-04-20-13-4-103346.mp3" id="14_ehjcm"]
 
 [node name="SoundEffectBus" type="AudioStreamPlayer"]
 script = ExtResource("1_l34os")
@@ -30,5 +31,6 @@ tada = ExtResource("9_mstd6")
 cash = ExtResource("10_cevkr")
 airhorn = ExtResource("12_00ipk")
 keypress = ExtResource("13_lmvp1")
+boing = ExtResource("14_ehjcm")
 wind = ExtResource("12_t0a22")
 aww = ExtResource("13_iyfpf")
