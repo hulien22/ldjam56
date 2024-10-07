@@ -217,7 +217,7 @@ func replace_character(sele: Node3D):
 	
 	
 func on_character_selected(data: Character):
-	print(data)
+	#print(data)
 	sel.reset_card()
 	sel.set_data(data)
 	if sel == x:

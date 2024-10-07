@@ -32,7 +32,7 @@ func set_data(data: Character):
 	var x: Mesh = $Card.mesh
 	var y: Mesh = $Card/Sitcker.mesh
 	if data.chance == 0:
-		print("LEGOO")
+		#print("LEGOO")
 		x.material.set_shader_parameter("threshold", 0.1)
 		y.material.set_shader_parameter("threshold", 0.1)
 	else:
