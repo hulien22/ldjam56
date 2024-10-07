@@ -1,6 +1,6 @@
 extends Node
 
-@export var button: Control
+@export var button: Button
 @export var do_rotate:bool = true
 
 func _ready() -> void:
@@ -14,8 +14,9 @@ func _ready() -> void:
 		tween.tween_property(button, "rotation", 0, 0.5)
 
 func _on_mouse_entered() -> void:
-	button.scale = Vector2(1.2,1.2)
-	SoundEffectBus.play_kick()
+	if !button.disabled:
+		button.scale = Vector2(1.2,1.2)
+		SoundEffectBus.play_kick()
 
 func _on_mouse_exited() -> void:
 	button.scale = Vector2(1,1)

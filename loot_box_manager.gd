@@ -106,6 +106,7 @@ func random_pack():
 	
 func on_open_pack():
 	%BuyPack.hide()
+	%MoneyLbl.hide()
 	%GoToRoster.hide()
 	random_pack()
 	
@@ -130,7 +131,11 @@ func at_vend():
 	$LootBox/RightRot.global_position.y = 0.64
 	$LootBox/LeftRot.global_position.y = 0.64
 	$LootBox/AnimationPlayer.play("dispense", -1, -1)
+	
+	%BuyPack.disabled = Globals.money < 3
 	%BuyPack.show()
+	%MoneyLbl.text = "$" + str(Globals.money)
+	%MoneyLbl.show()
 	%GoToRoster.show()
 
 func at_sky():
@@ -153,6 +158,7 @@ func goto_sky():
 		loc = Location.ROSTER
 		$AnimationPlayer.play("goto_sky")
 		%BuyPack.hide()
+		%MoneyLbl.hide()
 		%GoToRoster.hide()
 	
 var is_selecting:bool = false
@@ -204,7 +210,7 @@ func _on_stop_select_pressed() -> void:
 	is_selecting = false
 
 func _on_buy_pack_pressed() -> void:
-	#TODO check money
+	Globals.money -= 3
 	SoundEffectBus.play_cash()
 	on_open_pack()
 
