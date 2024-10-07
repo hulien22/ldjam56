@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_qevtk")
 name = "Hop Grasshopper"
-determination = 41
+determination = 8
 cuteness = 26
 model = ExtResource("1_vxfiu")
 chance = 2

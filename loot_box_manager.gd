@@ -108,6 +108,8 @@ func on_open_pack():
 	%BuyPack.hide()
 	%MoneyLbl.hide()
 	%GoToRoster.hide()
+	%TutorialPanel.hide()
+	Globals.bought_a_pack = true
 	random_pack()
 	
 	$LootBox/AnimationPlayer.play("dispense")
@@ -137,11 +139,31 @@ func at_vend():
 	%MoneyLbl.text = "$" + str(Globals.money)
 	%MoneyLbl.show()
 	%GoToRoster.show()
+	if !Globals.bought_a_pack:
+		%GoToRoster.hide()
+		%TutorialPanel.show()
+		%TutorialPanel/text.text = "Purchase a pack to get new players!"
+	elif !Globals.swapped_a_player:
+		%TutorialPanel.show()
+		%TutorialPanel/text.text = "Now lets head back and update our roster"
+		
 
 func at_sky():
 	%Roster.show()
 	if Team.owned_chars.size() > 4:
 		%Roster/text2.show()
+	
+	if !Globals.did_roster_tutorial1:
+		Globals.did_roster_tutorial1 = true
+		%TutorialPanel.show()
+		%TutorialPanel/text.text = "This is your current team\n\nThey're not very good...\n\nGo to the store to get some new players"
+		%StartMatch.hide()
+	elif !Globals.swapped_a_player:
+		%StartMatch.hide()
+		%TutorialPanel.show()
+		%TutorialPanel/text.text = "Swap out one of our players"
+	else:
+		%StartMatch.show()
 
 func goto_vending():
 	if (loc != Location.STORE):
@@ -152,6 +174,7 @@ func goto_vending():
 		$CanvasLayer/Panel.visible = false
 		
 		%Roster.hide()
+		%TutorialPanel.hide()
 
 func goto_sky():
 	if loc != Location.ROSTER:
@@ -160,6 +183,7 @@ func goto_sky():
 		%BuyPack.hide()
 		%MoneyLbl.hide()
 		%GoToRoster.hide()
+		%TutorialPanel.hide()
 	
 var is_selecting:bool = false
 func replace_character(sele: Node3D):
@@ -202,6 +226,9 @@ func on_character_selected(data: Character):
 	$CanvasLayer/Panel.visible = false
 	is_selecting = false
 	SoundEffectBus.play_cardflip()
+	Globals.swapped_a_player = true
+	%StartMatch.show()
+	%TutorialPanel.hide()
 
 func _on_stop_select_pressed() -> void:
 	%Roster.show()

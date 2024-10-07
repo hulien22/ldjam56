@@ -16,3 +16,6 @@ func load_enemy_team():
 	print("set team")
 
 var did_gameplay_tutorial:bool = false
+var did_roster_tutorial1:bool = false
+var bought_a_pack:bool = false
+var swapped_a_player:bool = false
