@@ -13,6 +13,7 @@ extends AudioStreamPlayer
 @export var airhorn: AudioStream
 @export var keypress: AudioStream
 @export var boing: AudioStream
+@export var hit: AudioStream
 
 func play_unique(s: AudioStream, vol: float = 0.0):
 	if s == null:

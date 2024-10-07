@@ -12,12 +12,12 @@ var team1_score: int = 0
 var team2_score: int = 0
 
 func _ready() -> void:
-	load_balls()
-	load_players()
-	play_intro()
 	Globals.match_num += 1
 	clock_time = Globals.match_length[Globals.team_num]
 	%ClockLabel.text = str(clock_time)
+	load_balls()
+	load_players()
+	play_intro()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_indent"):

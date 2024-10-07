@@ -266,6 +266,8 @@ func process_jump_kick() -> void:
 
 func on_kick(g_pos: Vector3, k_power: float) -> void:
 	#print(self, " Was kicked!")
+	if time_since_kicked > 0.2:
+		SoundEffectBus.play_unique(SoundEffectBus.hit)
 	time_since_kicked = 0
 	var imp = (global_position - g_pos + Vector3(0, 1, 0)).normalized() * k_power * on_kicked_mult
 	apply_central_impulse(imp)
