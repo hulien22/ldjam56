@@ -5,6 +5,9 @@ var char_stats: TextMesh
 @export var textures: Array[Texture]
 @export var stickers: Array[Texture]
 
+@onready var internal_card: Card = $Card
+var starting_pos: Vector3
+
 func _ready() -> void:
 	char_name = $Card/Name.mesh
 	char_stats = $Card/Stats.mesh

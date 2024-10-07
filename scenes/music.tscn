@@ -17,5 +17,5 @@ clip_1/next_clip = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = SubResource("AudioStreamInteractive_bjmhu")
-volume_db = -10.0
+volume_db = -20.0
 script = ExtResource("3_7hc1d")

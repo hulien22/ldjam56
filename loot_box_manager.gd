@@ -19,6 +19,9 @@ var sel
 
 var lege_guar = true
 
+enum Location {ROSTER, STORE}
+var loc:Location = Location.ROSTER
+
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
 		#on_click(event.position)
@@ -68,7 +71,7 @@ func _ready() -> void:
 		w.set_data(Team.GK)
 		y.set_data(Team.LM)
 		z.set_data(Team.ST)
-	$AnimationPlayer.play("goto_sky")
+	$AnimationPlayer.play("goto_sky", -1, 1.0, true)
 	
 func is_lege():
 	if lege_guar:
@@ -101,6 +104,8 @@ func random_pack():
 		Team.owned_chars[t] = true
 	
 func on_open_pack():
+	%BuyPack.hide()
+	%GoToRoster.hide()
 	random_pack()
 	
 	$LootBox/AnimationPlayer.play("dispense")
@@ -113,21 +118,41 @@ func on_clear():
 	pass
 	
 func at_vend():
-	on_open_pack()
-
-func goto_vending():
-	$AnimationPlayer.play("goto_vend")
-	$CanvasLayer/ScrollContainer.visible = false
-	
-
-func goto_sky():
+	#on_open_pack()
 	a.reset_card()
 	b.reset_card()
 	c.reset_card()
-	$AnimationPlayer.play("goto_sky")
-	$LootBox/AnimationPlayer.play("RESET")
+	$LootBox/CenterCard.global_position.y = 0.64
+	$LootBox/RightRot.global_position.y = 0.64
+	$LootBox/LeftRot.global_position.y = 0.64
+	$LootBox/AnimationPlayer.play("dispense", -1, -1)
+	%BuyPack.show()
+	%GoToRoster.show()
+
+func at_sky():
+	%GoToStore.show()
+
+func goto_vending():
+	if (loc != Location.STORE):
+		loc = Location.STORE
+		$LootBox/AnimationPlayer.play("dispense", -1, -1)
+		$AnimationPlayer.play("goto_vend")
+		$CanvasLayer/ScrollContainer.visible = false
+		
+		%GoToStore.hide()
+
+func goto_sky():
+	if loc != Location.ROSTER:
+		loc = Location.ROSTER
+		$AnimationPlayer.play("goto_sky")
+		%BuyPack.hide()
+		%GoToRoster.hide()
 	
+var is_selecting:bool = false
 func replace_character(sele: Node3D):
+	if is_selecting:
+		return
+	is_selecting = true
 	sel = sele
 	var list = $CanvasLayer/ScrollContainer/VBoxContainer
 	for c in list.get_children():
@@ -142,6 +167,7 @@ func replace_character(sele: Node3D):
 		op.connect("selected_character", on_character_selected)
 		list.add_child(op)
 	$CanvasLayer/ScrollContainer.visible = true
+	%GoToStore.hide()
 	
 	
 func on_character_selected(data: Character):
@@ -157,7 +183,32 @@ func on_character_selected(data: Character):
 		Team.LM = data
 	elif sel == z:
 		Team.ST = data
+	%GoToStore.show()
+	is_selecting = false
+
+
+func _on_buy_pack_pressed() -> void:
+	on_open_pack()
+
+
+func _on_add_to_roster_pressed() -> void:
+	%AddToRoster.hide()
+	var tween:Tween = create_tween()
+	tween.tween_property($LootBox/CenterCard, "global_position", Vector3($LootBox/CenterCard.global_position.x, -2, $LootBox/CenterCard.global_position.z), 0.5)
+	tween.parallel().tween_property($LootBox/RightRot, "global_position",  Vector3($LootBox/RightRot.global_position.x, -2, $LootBox/RightRot.global_position.z), 0.5)
+	tween.parallel().tween_property($LootBox/LeftRot, "global_position",  Vector3($LootBox/LeftRot.global_position.x, -2, $LootBox/LeftRot.global_position.z), 0.5)
+	tween.tween_callback(at_vend)
+
+
+func _on_flipped_pack_card() -> void:
+	# Check if all cards are flipped
+	var cards_to_check = []
+	cards_to_check.push_back(a)
+	cards_to_check.push_back(b)
+	cards_to_check.push_back(c)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	for card in cards_to_check:
+		if card.internal_card.rot != 0:
+			return
+	# all cards are flipped!
+	%AddToRoster.show()

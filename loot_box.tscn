@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cxk6f850u0vnp"]
+[gd_scene load_steps=71 format=3 uid="uid://cxk6f850u0vnp"]
 
 [ext_resource type="PackedScene" uid="uid://d3ptubg66smx" path="res://card.tscn" id="1_m6i81"]
 [ext_resource type="Script" path="res://loot_camera.gd" id="1_mpnbw"]
@@ -56,6 +56,8 @@
 [ext_resource type="Resource" uid="uid://oydh0ckuax1g" path="res://assets/characters/S/turtal.tres" id="49_largl"]
 [ext_resource type="Resource" uid="uid://cr1toom127lht" path="res://assets/characters/S/bati.tres" id="50_8apms"]
 [ext_resource type="PackedScene" uid="uid://c3uqthjdacj11" path="res://scenes/game.tscn" id="52_i6a35"]
+[ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="57_ny5bw"]
+[ext_resource type="PackedScene" uid="uid://bwiga76vw0dqy" path="res://scenes/bounce_button_component.tscn" id="58_ndu86"]
 
 [sub_resource type="Environment" id="Environment_37ics"]
 background_mode = 1
@@ -293,6 +295,17 @@ tracks/13/keys = {
 "method": &"enable_card"
 }]
 }
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q7y8r"]
 _data = {
@@ -307,6 +320,12 @@ albedo_texture = ExtResource("5_a5osi")
 material = SubResource("StandardMaterial3D_tibiy")
 size = Vector2(200, 100)
 orientation = 1
+
+[sub_resource type="Theme" id="Theme_2hu6n"]
+default_font = ExtResource("57_ny5bw")
+default_font_size = 80
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckw1j"]
 
 [sub_resource type="Animation" id="Animation_me0by"]
 length = 0.001
@@ -358,6 +377,20 @@ tracks/2/path = NodePath("Camera3D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"at_sky"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -441,15 +474,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42133, 1.32536)
 
 [node name="CenterCard" parent="LootBox" instance=ExtResource("1_m6i81")]
-transform = Transform3D(0.135564, -0.0525227, 0.0369297, -2.18727e-07, -0.0862765, -0.122704, 0.0642063, 0.110895, -0.0779731, 0.249678, -0.401007, -0.907479)
+transform = Transform3D(0.135564, -0.0525227, 0.0369298, -2.18727e-07, -0.0862765, -0.122704, 0.0642062, 0.110895, -0.0779733, 0.249678, -0.401007, -0.907479)
 
 [node name="RightRot" type="Node3D" parent="LootBox"]
-transform = Transform3D(0.140954, 0, -0.0513031, 0, 0.15, 0, 0.0513031, 0, 0.140954, 0.85, 0, -0.2)
+transform = Transform3D(0.140954, 0, -0.051303, 0, 0.15, 0, 0.051303, 0, 0.140954, 0.85, 0, -0.2)
 
 [node name="RightCard" parent="LootBox/RightRot" instance=ExtResource("1_m6i81")]
 
 [node name="LeftRot" type="Node3D" parent="LootBox"]
-transform = Transform3D(0.140954, 0, 0.0513031, 0, 0.15, 0, -0.0513031, 0, 0.140954, 0, 0, 0)
+transform = Transform3D(0.140954, 0, 0.051303, 0, 0.15, 0, -0.051303, 0, 0.140954, 0, 0, 0)
 
 [node name="LeftCard" parent="LootBox/LeftRot" instance=ExtResource("1_m6i81")]
 
@@ -521,6 +554,129 @@ text = "Sky"
 layout_mode = 2
 text = "Play"
 
+[node name="Store" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BuyPack" type="Button" parent="CanvasLayer/Store"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.125
+anchor_top = 12.7
+anchor_right = 24.125
+anchor_bottom = 12.7
+offset_left = -45549.0
+offset_top = -13254.0
+offset_right = -45161.0
+offset_bottom = -13162.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_2hu6n")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckw1j")
+text = "     Buy a Pack     "
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="CanvasLayer/Store/BuyPack" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
+button = NodePath("..")
+
+[node name="GoToRoster" type="Button" parent="CanvasLayer/Store"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 23.7182
+anchor_top = 12.2889
+anchor_right = 23.8505
+anchor_bottom = 12.2889
+offset_left = -45549.0
+offset_top = -13254.0
+offset_right = -45161.0
+offset_bottom = -13162.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_2hu6n")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckw1j")
+text = "     Go to Roster     "
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="CanvasLayer/Store/GoToRoster" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
+button = NodePath("..")
+
+[node name="AddToRoster" type="Button" parent="CanvasLayer/Store"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.0438
+anchor_top = 13.1333
+anchor_right = 24.2062
+anchor_bottom = 13.1333
+offset_left = -45549.0
+offset_top = -13254.0
+offset_right = -45161.0
+offset_bottom = -13162.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_2hu6n")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckw1j")
+text = "     Add to Roster     "
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="CanvasLayer/Store/AddToRoster" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
+button = NodePath("..")
+
+[node name="Roster" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoToStore" type="Button" parent="CanvasLayer/Roster"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 41.975
+anchor_top = 1.575
+anchor_right = 41.975
+anchor_bottom = 1.575
+offset_left = -293.0
+offset_top = -46.0
+offset_right = 293.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(190, 42)
+theme = SubResource("Theme_2hu6n")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckw1j")
+text = "     Visit Store     "
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BounceButtonComponent" parent="CanvasLayer/Roster/GoToStore" node_paths=PackedStringArray("button") instance=ExtResource("58_ndu86")]
+button = NodePath("..")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ua3rh")
@@ -529,7 +685,12 @@ libraries = {
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.362893, 0.931831, 0, -0.931831, 0.362893, -2.30152, 3.72247, -3.13093)
 
+[connection signal="flipped_card" from="Camera3D" to="." method="_on_flipped_pack_card"]
 [connection signal="swap_player" from="Camera3D" to="." method="replace_character"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="goto_vending"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button2" to="." method="goto_sky"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button3" to="." method="on_play"]
+[connection signal="pressed" from="CanvasLayer/Store/BuyPack" to="." method="_on_buy_pack_pressed"]
+[connection signal="pressed" from="CanvasLayer/Store/GoToRoster" to="." method="goto_sky"]
+[connection signal="pressed" from="CanvasLayer/Store/AddToRoster" to="." method="_on_add_to_roster_pressed"]
+[connection signal="pressed" from="CanvasLayer/Roster/GoToStore" to="." method="goto_vending"]

@@ -20,10 +20,12 @@ func _process(delta: float) -> void:
 	cam.global_rotation = get_viewport().get_camera_3d().global_rotation
 	
 func flip_card():
-	if rot == 0:
-		rot = PI
-	else:
+	if rot != 0:
 		rot = 0
+	#if rot == 0:
+		#rot = PI
+	#else:
+		#rot = 0
 
 func set_tilt(pos: Vector3):
 	tilt_target = pos - global_position
