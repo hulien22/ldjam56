@@ -482,7 +482,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42133, 1.32536)
 
 [node name="CenterCard" parent="LootBox" instance=ExtResource("1_m6i81")]
-transform = Transform3D(0.903759, -0.350151, 0.246199, -1.45818e-06, -0.575177, -0.818029, 0.428042, 0.739301, -0.519822, 0.249678, -0.401007, -0.907479)
+transform = Transform3D(0.903759, -0.350151, 0.246199, -1.45818e-06, -0.575177, -0.818029, 0.428041, 0.739301, -0.519822, 0.249678, -0.401007, -0.907479)
 
 [node name="RightRot" type="Node3D" parent="LootBox"]
 transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 0.85, 0, -0.2)

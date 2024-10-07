@@ -155,6 +155,7 @@ var is_selecting:bool = false
 func replace_character(sele: Node3D):
 	if is_selecting || Team.owned_chars.size() <= 4:
 		return
+	SoundEffectBus.play_cardmany()
 	is_selecting = true
 	sel = sele
 	var list = $CanvasLayer/ScrollContainer/VBoxContainer
@@ -190,14 +191,18 @@ func on_character_selected(data: Character):
 		Team.ST = data
 	%Roster.show()
 	is_selecting = false
+	SoundEffectBus.play_cardflip()
 
 
 func _on_buy_pack_pressed() -> void:
+	#TODO check money
+	SoundEffectBus.play_cash()
 	on_open_pack()
 
 
 func _on_add_to_roster_pressed() -> void:
 	%AddToRoster.hide()
+	SoundEffectBus.play_cardmany()
 	var tween:Tween = create_tween()
 	tween.tween_property($LootBox/CenterCard, "global_position", Vector3($LootBox/CenterCard.global_position.x, -2, $LootBox/CenterCard.global_position.z), 0.5)
 	tween.parallel().tween_property($LootBox/RightRot, "global_position",  Vector3($LootBox/RightRot.global_position.x, -2, $LootBox/RightRot.global_position.z), 0.5)

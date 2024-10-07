@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvaydl11d8hvh"]
+[gd_scene load_steps=13 format=3 uid="uid://cvaydl11d8hvh"]
 
 [ext_resource type="Script" path="res://sound_effect_bus.gd" id="1_l34os"]
 [ext_resource type="AudioStream" uid="uid://cbx27nwk0ysnn" path="res://audio/low_beep.ogg" id="2_ihcqt"]
@@ -7,6 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://budsnlb0xuqkr" path="res://audio/vending.ogg" id="5_q8uda"]
 [ext_resource type="AudioStream" uid="uid://de0dtue5uwdad" path="res://audio/refwhistle.mp3" id="6_su77t"]
 [ext_resource type="AudioStream" uid="uid://2leykh7vjhg" path="res://audio/soccer-kick-6235.mp3" id="7_f6twa"]
+[ext_resource type="AudioStream" uid="uid://7qw0le5v6dqm" path="res://audio/flipcard-91468.mp3" id="8_fjfkh"]
+[ext_resource type="AudioStream" uid="uid://dno560cw5qj1g" path="res://audio/card-sounds-35956.mp3" id="9_7wjy5"]
+[ext_resource type="AudioStream" uid="uid://b4nul0jd6om7w" path="res://audio/tada-fanfare-a-6313.mp3" id="9_mstd6"]
+[ext_resource type="AudioStream" uid="uid://cmdjqopf56buh" path="res://audio/cash-register-purchase-87313.mp3" id="10_cevkr"]
+[ext_resource type="AudioStream" uid="uid://dkyw2bixvtfg8" path="res://audio/rapid-wind-sound-effect-1-108398.mp3" id="12_t0a22"]
 
 [node name="SoundEffectBus" type="AudioStreamPlayer"]
 script = ExtResource("1_l34os")
@@ -16,3 +21,8 @@ pop = ExtResource("4_mapcw")
 vending = ExtResource("5_q8uda")
 whistle = ExtResource("6_su77t")
 kick = ExtResource("7_f6twa")
+cardflip = ExtResource("8_fjfkh")
+cardmany = ExtResource("9_7wjy5")
+tada = ExtResource("9_mstd6")
+cash = ExtResource("10_cevkr")
+wind = ExtResource("12_t0a22")

@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 func flip_card():
 	if rot != 0:
 		rot = 0
+		SoundEffectBus.play_cardflip()
 	#if rot == 0:
 		#rot = PI
 	#else:

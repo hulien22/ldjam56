@@ -6,6 +6,11 @@ extends AudioStreamPlayer
 @export var vending: AudioStream
 @export var whistle: AudioStream
 @export var kick: AudioStream
+@export var cardflip: AudioStream
+@export var cardmany: AudioStream
+@export var tada: AudioStream
+@export var cash: AudioStream
+@export var wind: AudioStream
 
 func play_countdown_beep():
 	stream = beep_low
@@ -30,3 +35,24 @@ func play_whistle():
 func play_kick():
 	stream = kick
 	play()
+
+func play_cardflip():
+	stream = cardflip
+	play()
+
+func play_cardmany():
+	stream = cardmany
+	play()
+	
+func play_tada():
+	stream = tada
+	play()
+	
+func play_cash():
+	stream = cash
+	play()
+	
+func play_wind():
+	stream = wind
+	play()
+	
