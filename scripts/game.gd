@@ -18,7 +18,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_indent"):
 		players[cur_player].set_is_player(false)
-		cur_player = (cur_player + 1) % players.size()
+		while true:
+			cur_player = (cur_player + 1) % players.size()
+			if players[cur_player].is_team1:
+				break
 		players[cur_player].set_is_player(true)
 	if Input.is_action_just_pressed("ui_text_backspace"):
 		for p in players:
@@ -48,7 +51,7 @@ func load_balls():
 		var b:Ball = ball_scene.instantiate()
 		balls.push_back(b)
 		%Balls.add_child(b)
-		b.global_position = Vector3((i - num_balls/2) * 40, 40, (i - num_balls/2) * 40)
+		b.global_position = Vector3(0, 40, (i - num_balls/2) * 40)
 		b.freeze = true
 
 var players: Array[Player] = []

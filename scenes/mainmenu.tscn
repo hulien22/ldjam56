@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkl00b4iegyyw"]
+
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_j4bjm"]
+[ext_resource type="Environment" uid="uid://ddoqbevt2isgr" path="res://assets/world_environment.tres" id="1_jjfbk"]
+[ext_resource type="Texture2D" uid="uid://c7maohgkbt8r6" path="res://assets/field_long.png" id="3_fnm0l"]
+[ext_resource type="FontFile" uid="uid://d3l5tyjkcw6om" path="res://assets/fonts/Fancake.ttf" id="4_bg1ov"]
+[ext_resource type="PackedScene" uid="uid://fnop14mh4dpe" path="res://scenes/ball_emitter.tscn" id="5_f33oo"]
+
+[sub_resource type="Animation" id="Animation_8avqm"]
+resource_name = "spin"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_udisj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0sug8"]
+_data = {
+"RESET": SubResource("Animation_udisj"),
+"spin": SubResource("Animation_8avqm")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tusu1"]
+size = Vector3(248, 100, 180)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0aal"]
+albedo_texture = ExtResource("3_fnm0l")
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6a2w5"]
+material = SubResource("StandardMaterial3D_o0aal")
+
+[sub_resource type="Theme" id="Theme_gkbny"]
+default_font = ExtResource("4_bg1ov")
+default_font_size = 100
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_j4bjm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.2
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_jjfbk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.553392, 0.832921, 0, -0.832921, 0.553392, 0, 100, 70)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_0sug8")
+}
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+shape = SubResource("BoxShape3D_tusu1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(248, 0, 0, 0, 1, 0, 0, 0, 180, 0, 0, 0)
+mesh = SubResource("BoxMesh_6a2w5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -388.0
+offset_top = 294.0
+offset_right = 389.0
+offset_bottom = -678.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_gkbny")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+text = "Tiny Little League"
+
+[node name="BallEmitter" parent="." instance=ExtResource("5_f33oo")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 98.3928, 134.796, -66.5639)
+
+[node name="BallEmitter2" parent="." instance=ExtResource("5_f33oo")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -118.372, 10, 98.2864)

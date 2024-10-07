@@ -72,12 +72,12 @@ dof_blur_far_distance = 180.0
 vertices = PackedVector3Array(-118, 1, -89.5, -118, 1, 89.5, 118, 1, 89.5, 118, 1, -89.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0aal"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ailom"]
 albedo_texture = ExtResource("10_tc1ft")
 uv1_scale = Vector3(3, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vqi6"]
-material = SubResource("StandardMaterial3D_o0aal")
+material = SubResource("StandardMaterial3D_ailom")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0wgla"]
 size = Vector2(100, 150)
