@@ -11,6 +11,7 @@ extends AudioStreamPlayer
 @export var tada: AudioStream
 @export var cash: AudioStream
 @export var airhorn: AudioStream
+@export var keypress: AudioStream
 
 func play_unique(s: AudioStream, vol: float = 0.0):
 	if s == null:

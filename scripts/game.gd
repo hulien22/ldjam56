@@ -250,6 +250,10 @@ func show_end_game_screen():
 	var tween:Tween = create_tween()
 	tween.tween_property(%EndGamePanel/info, "visible_ratio", 1, 2)
 	tween.tween_callback(show_continue_btn)
+	
+	var stween:Tween = create_tween().set_loops(20)
+	stween.tween_callback(SoundEffectBus.play_unique.bind(SoundEffectBus.keypress))
+	stween.tween_interval(0.1)
 
 func show_continue_btn():
 	%NextButton.show()
