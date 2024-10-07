@@ -79,6 +79,7 @@ func load_players():
 	players = []  
 	for obj in %Players.get_children():
 		players.push_back(obj)
+		obj.is_team1 = (players.size() <= 4)
 		obj.set_is_player(false)
 		obj.set_nav_reg(%NavigationRegion3D)
 		obj.enable(false)
@@ -113,7 +114,7 @@ func load_players():
 				obj.global_position = $SpawnPositions/Team2/Striker.global_position
 			
 	cur_player = 0
-	#players[cur_player].set_is_player(true)
+	players[cur_player].set_is_player(true)
 
 func show_scores():
 	%Team1Score.text = str(team1_score)

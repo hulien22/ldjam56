@@ -11,3 +11,6 @@ var Enemy_LM: Character
 var Enemy_RM: Character
 
 var owned_chars: Dictionary
+
+func reset() -> void:
+	owned_chars.clear()

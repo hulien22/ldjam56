@@ -43,7 +43,7 @@ func _ready() -> void:
 	if Team.GK == null:
 		for q in basic_chars:
 			if q.chance == 2:
-				if lel < 6:
+				if lel < 4:
 					Team.owned_chars[q] = true
 				if lel == 0:
 					x.set_data(q)
@@ -138,6 +138,7 @@ func goto_vending():
 		$LootBox/AnimationPlayer.play("dispense", -1, -1)
 		$AnimationPlayer.play("goto_vend")
 		$CanvasLayer/ScrollContainer.visible = false
+		$CanvasLayer/Panel.visible = false
 		
 		%GoToStore.hide()
 
@@ -150,7 +151,7 @@ func goto_sky():
 	
 var is_selecting:bool = false
 func replace_character(sele: Node3D):
-	if is_selecting:
+	if is_selecting || Team.owned_chars.size() <= 4:
 		return
 	is_selecting = true
 	sel = sele
@@ -167,6 +168,7 @@ func replace_character(sele: Node3D):
 		op.connect("selected_character", on_character_selected)
 		list.add_child(op)
 	$CanvasLayer/ScrollContainer.visible = true
+	$CanvasLayer/Panel.visible = true
 	%GoToStore.hide()
 	
 	
@@ -175,6 +177,7 @@ func on_character_selected(data: Character):
 	sel.reset_card()
 	sel.set_data(data)
 	$CanvasLayer/ScrollContainer.visible = false
+	$CanvasLayer/Panel.visible = false
 	if sel == x:
 		Team.RM = data
 	elif sel == w:
